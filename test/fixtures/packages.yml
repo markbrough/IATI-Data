@@ -19,14 +19,14 @@ one:
   groups: MyString
   groups_types: MyString
   donors: MyString
-  activity_period_from: 2011-06-11
+  activity_period_from: 2011-06-12
   verified: MyString
   iati_preview: MyText
   donors_type: MyString
   activity_count: MyString
   country: MyString
   donors_country: MyString
-  activity_period_to: 2011-06-11
+  activity_period_to: 2011-06-12
   ratings_average: MyString
   ratings_count: MyString
   resourcesid: MyString
@@ -37,6 +37,9 @@ one:
   resources_hash: MyString
   resources_position: MyString
   ckan_url: MyText
+  url: MyText
+  retrieved: 1
+  retrieved_date: 2011-06-12
 
 two:
   packageid: MyString
@@ -57,14 +60,14 @@ two:
   groups: MyString
   groups_types: MyString
   donors: MyString
-  activity_period_from: 2011-06-11
+  activity_period_from: 2011-06-12
   verified: MyString
   iati_preview: MyText
   donors_type: MyString
   activity_count: MyString
   country: MyString
   donors_country: MyString
-  activity_period_to: 2011-06-11
+  activity_period_to: 2011-06-12
   ratings_average: MyString
   ratings_count: MyString
   resourcesid: MyString
@@ -75,3 +78,6 @@ two:
   resources_hash: MyString
   resources_position: MyString
   ckan_url: MyText
+  url: MyText
+  retrieved: 1
+  retrieved_date: 2011-06-12

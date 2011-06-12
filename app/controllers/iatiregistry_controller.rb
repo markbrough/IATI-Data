@@ -1,6 +1,17 @@
 class IatiregistryController < ApplicationController
   def getPackage
     @package = Package.find(params[:id])
+	  pu = {}
+	  pu[:retrieved] = 1
+	  pu[:retrieved_date] = DateTime.now
+	  @package.update_attributes(pu)
+
+    # check if this package is already in db
+    @thetext ='';
+    @activity_exists = Activity.find_by_package_id(@package.packageid)
+    if @activity_exists
+	@thetext += "<p>The package <b>" + @package.name + "</b> (" + @package.title + ") has already been downloaded.</p>"
+    else
     url = @package.resources_url
 	require 'net/http'
 	require 'rexml/document'
@@ -10,12 +21,12 @@ class IatiregistryController < ApplicationController
 
 	# parse XML tree elements
 	@doc = REXML::Document.new(xml_data)
-	@thetext ='';
 	@doc.elements.each('iati-activities') do |data|
 		version = data.attributes["version"]
 		generated_datetime = data.attributes["generated-datetime"]
 		data.elements.each('iati-activity') do |activity| 
 			a={}
+			a[:package_id] = @package.packageid
 			a[:activity_lang] = activity.attributes["xml:lang"] if activity.attributes["xml:lang"]
 			a[:default_currency] = activity.attributes["default-currency"] if activity.attributes["default-currency"]
 			a[:hierarchy] = activity.attributes["hierarchy"] if activity.attributes["hierarchy"]
@@ -73,8 +84,8 @@ class IatiregistryController < ApplicationController
 				sectors << {
 					   :text => (s.text if s.text), 
 					   :vocab => (s.attributes["vocabulary"] if s.attributes["vocabulary"]), 
-					   :code => (s.attributes["code"] if s.attributes["code"]) 
-				#	   :percentage => (s.attributes["percentage"] if s.attributes["percentage"])
+					   :code => (s.attributes["code"] if s.attributes["code"]),
+					   :percentage => (s.attributes["percentage"] if s.attributes["percentage"])
 					  }
 				@thetext += "<p>" + s.text + "</p>"
 			end
@@ -84,7 +95,7 @@ class IatiregistryController < ApplicationController
 				policy_markers << {
 					   :text => (pm.text if pm.text), 
 					   :vocab => (pm.attributes["vocabulary"] if pm.attributes["vocabulary"]), 
-#					   :significance => (pm.attributes["significance"] if pm.attributes["significance"]), 
+					   :significance => (pm.attributes["significance"] if pm.attributes["significance"]), 
 					   :code => (pm.attributes["code"] if pm.attributes["code"])
 					  }
 				@thetext += "<i>" + pm.text + "</i>"  if pm.text
@@ -150,6 +161,7 @@ class IatiregistryController < ApplicationController
 
 			transactions = []
 			activity.elements.each('transaction') do |t|
+				t.elements["transaction-date"].attributes["iso-date"].chop! if t.elements["transaction-date"].attributes["iso-date"] and @package.donors=='dfid'
 				transactions << {
 					:activity_id => (@activity.id),
 					:value => (t.elements["value"].text if t.elements["value"].text),
@@ -169,6 +181,8 @@ class IatiregistryController < ApplicationController
 
 					:transaction_date => (t.elements["transaction-date"].text if t.elements["transaction-date"]),
 					:transaction_date_iso => (t.elements["transaction-date"].attributes["iso-date"] if t.elements["transaction-date"].attributes["iso-date"]),
+
+			
 
 					:flow_type => (t.elements["flow-type"].text if t.elements["flow-type"]),
 					:flow_type_code => (t.elements["flow-type"].attributes["code"] if t.elements["flow-type"]),
@@ -192,6 +206,8 @@ class IatiregistryController < ApplicationController
 			sectors.each do |sr|
 				thesr = Sector.find_by_text(sr[:text])
 				sector_activities = {}
+				sector_activities[:percentage] = (sr[:percentage] if sr[:percentage])
+				sr.delete(:percentage)
 				if thesr
 				sector_activities[:sector_id] = thesr.id.to_s
 				# Sector already exists, just add reference in relationship table
@@ -207,8 +223,8 @@ class IatiregistryController < ApplicationController
 				sector_activities[:sector_id] = @sector.id.to_s
 				end
 
-				
 				sector_activities[:activity_id] = @activity.id.to_s
+
 				@sector_activities = SectorsActivity.new(sector_activities)
 
 				  if @sector_activities.save
@@ -220,6 +236,8 @@ class IatiregistryController < ApplicationController
 			policy_markers.each do |pom|
 				thepom = PolicyMarker.find_by_text(pom[:text])
 				policy_markers_activities ={}
+				policy_markers_activities[:significance] = (pom[:significance] if pom[:significance])
+				pom.delete(:significance)
 
 				if thepom
 				policy_markers_activities[:policy_marker_id] = thepom.id.to_s
@@ -259,7 +277,8 @@ class IatiregistryController < ApplicationController
 		end 
 	end
 
-
+	end
+	# end check if package exists already
 
   end
   def index
@@ -269,56 +288,66 @@ class IatiregistryController < ApplicationController
     result = Net::HTTP.get(URI(url))
     packages = ActiveSupport::JSON.decode(result)
     @showpackages = ''
-    packages = packages.first(1)
+    @max = 5
+    @count = 0
+    #packages = packages.first(1)
+    # check if package already has been downloaded
     packages.each do |x|
 	thepackage = Package.find_by_packageid(x)
 	if thepackage
-	  @showpackages += "<br />Got package " + thepackage.name
+	  @showpackages += "<br />Already got package " + thepackage.name
         else
-	  newpackage ={}
-	  packageurl = "http://iatiregistry.org/api/2/rest/package/" + x
-	  puts packageurl
-	  packageresult = Net::HTTP.get(URI(packageurl))
-	  package = ActiveSupport::JSON.decode(packageresult)
-	  @showpackages +=  "<br />Found new package: <a href=\"get_package/" + package["id"] + "\">" + package["name"] + "</a> - " + package["title"]
-	  newpackage = package
-	  # get other data you don't have
-	  newpackage[:packageid] = package["id"]
-	  newpackage[:tags] = package["tags"][0]
-	  newpackage[:groups_types] = package["groups_types"][0]
-	  newpackage[:groups] = package["groups"][0]
-	  newpackage[:donors] = package["extras"]["donors"][0]
-	  newpackage[:activity_period_from] = package["extras"]["activity_period-from"]
-	  newpackage[:verified] = package["extras"]["verified"]
-	  newpackage[:donors_type] = package["extras"]["donors_type"][0]
-	  newpackage[:activity_count] = package["extras"]["activity_count"]
-	  newpackage[:country] = package["extras"]["country"]
-	  newpackage[:donors_country] = package["extras"]["donors_country"][0]
-	  newpackage[:activity_period_to] = package["extras"]["activity_period-to"]
-	  newpackage[:revisionid] = package["revision_id"]
-	  newpackage.delete("revision_id")
-	  newpackage[:licenseid] = package["license_id"]
-	  newpackage.delete("license_id")
-	  newpackage[:resourcesid] = package["resources"][0]["id"]
-          resourcesid = newpackage[:resourcesid]
-	  newpackage[:iati_preview] = package["extras"]["iati:preview:"+resourcesid]
-	  newpackage[:resources_packageid] = package["resources"][0]["package_id"]
-	  newpackage[:resources_url] = package["resources"][0]["url"]
-	  newpackage[:resources_format] = package["resources"][0]["format"]
-	  newpackage[:resources_description] = package["resources"][0]["description"]
-	  newpackage[:resources_hash] = package["resources"][0]["hash"]
-	  newpackage[:resources_position] = package["resources"][0]["position"]
-	  newpackage.delete("relationships")
-	  newpackage.delete("extras")
-	  newpackage.delete("resources")
-	  
-	  @package = Package.new(newpackage)
 
-	  if @package.save
-		@showpackages += "Saved package."
-	  else
-		@showpackages += "Couldn't save package."
-	  end
+	  
+	    if (@count < @max)
+	    # only get 2 packages
+		  @count = @count +1
+		  newpackage ={}
+		  packageurl = "http://iatiregistry.org/api/2/rest/package/" + x
+		  puts packageurl
+		  packageresult = Net::HTTP.get(URI(packageurl))
+		  package = ActiveSupport::JSON.decode(packageresult)
+		  @showpackages +=  "<br />Found new package: <a href=\"get_package/" + package["id"] + "\">" + package["name"] + "</a> - " + package["title"] + "<br/>"
+		  newpackage = package
+		  # get other data you don't have
+		  newpackage[:packageid] = package["id"]
+		  newpackage[:tags] = package["tags"][0]
+		  newpackage[:groups_types] = package["groups_types"][0]
+		  newpackage[:groups] = package["groups"][0]
+		  newpackage[:donors] = package["extras"]["donors"][0]
+		  newpackage[:activity_period_from] = package["extras"]["activity_period-from"]
+		  newpackage[:verified] = package["extras"]["verified"]
+		  newpackage[:donors_type] = package["extras"]["donors_type"][0]
+		  newpackage[:activity_count] = package["extras"]["activity_count"]
+		  newpackage[:country] = package["extras"]["country"]
+		  newpackage[:donors_country] = package["extras"]["donors_country"][0]
+		  newpackage[:activity_period_to] = package["extras"]["activity_period-to"]
+		  newpackage[:revisionid] = package["revision_id"]
+		  newpackage.delete("revision_id")
+		  newpackage[:licenseid] = package["license_id"]
+		  newpackage.delete("license_id")
+		  newpackage[:resourcesid] = package["resources"][0]["id"]
+		  resourcesid = newpackage[:resourcesid]
+		  newpackage[:iati_preview] = package["extras"]["iati:preview:"+resourcesid]
+		  newpackage[:resources_packageid] = package["resources"][0]["package_id"]
+		  newpackage[:resources_url] = package["resources"][0]["url"]
+		  newpackage[:resources_format] = package["resources"][0]["format"]
+		  newpackage[:resources_description] = package["resources"][0]["description"]
+		  newpackage[:resources_hash] = package["resources"][0]["hash"]
+		  newpackage[:resources_position] = package["resources"][0]["position"]
+
+		  newpackage.delete("relationships")
+		  newpackage.delete("extras")
+		  newpackage.delete("resources")
+		  
+		  @package = Package.new(newpackage)
+
+		  if @package.save
+			@showpackages += "<font color=\"green\">Saved package.</font>"
+		  else
+			@showpackages += "<font color=\"red\">Couldn't save package.</font>"
+		  end
+	    end
         end
     end
   end

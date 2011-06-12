@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :packages
+
   map.resources :activities
 
   map.resources :policy_markers_activities
@@ -16,8 +18,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sectors
 
   map.resources :transactions
-
-  map.resources :packages
 
   # The priority is based upon order of creation: first created -> highest priority.
 

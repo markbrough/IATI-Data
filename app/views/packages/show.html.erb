@@ -178,6 +178,21 @@
   <%=h @package.ckan_url %>
 </p>
 
+<p>
+  <b>Url:</b>
+  <%=h @package.url %>
+</p>
+
+<p>
+  <b>Retrieved:</b>
+  <%=h @package.retrieved %>
+</p>
+
+<p>
+  <b>Retrieved date:</b>
+  <%=h @package.retrieved_date %>
+</p>
+
 
 <%= link_to 'Edit', edit_package_path(@package) %> |
 <%= link_to 'Back', packages_path %>

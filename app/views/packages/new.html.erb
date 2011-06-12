@@ -148,6 +148,18 @@
     <%= f.text_area :ckan_url %>
   </p>
   <p>
+    <%= f.label :url %><br />
+    <%= f.text_area :url %>
+  </p>
+  <p>
+    <%= f.label :retrieved %><br />
+    <%= f.text_field :retrieved %>
+  </p>
+  <p>
+    <%= f.label :retrieved_date %><br />
+    <%= f.date_select :retrieved_date %>
+  </p>
+  <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>

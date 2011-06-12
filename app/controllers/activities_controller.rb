@@ -2,7 +2,42 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.xml
   def index
-    @activities = Activity.all
+
+    @limit = 5.to_f
+    if params[:page]
+      page = params[:page]
+      page = page.to_f
+      page = page -1
+    else
+      page = 0
+    end
+    pagemultiplier = @limit * page
+    conditions = {}
+    conditions[:implementing_org] = params[:implementing_org] unless params[:implementing_org].blank?
+    conditions[:recipient_country] = params[:recipient_country] unless params[:recipient_country].blank?
+    
+    if params[:sector]
+      sector_conditions = {}
+      sector_conditions[:sector_id] = params[:sector]
+      @sector=SectorsActivity.find(:all, :conditions=>sector_conditions)
+      conditions[:id] = @sector
+    end
+    @activities = Activity.find(:all, :conditions=> conditions, :limit => @limit, :offset=>pagemultiplier)
+
+    # get total number of rows
+    @totalrows = Activity.count.to_f
+    @numpages = (@totalrows / @limit)
+    @pagination = []
+	for i in 1..@numpages
+          @pagination << {
+		:page => i.to_s
+		}
+        end
+	if ((@numpages.to_f - i.to_f) > 0)
+		@pagination << {
+			:page => (i+1).to_s
+		}
+	end
 
     respond_to do |format|
       format.html # index.html.erb

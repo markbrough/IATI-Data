@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110612150036) do
+ActiveRecord::Schema.define(:version => 20110612151959) do
 
   create_table "activities", :force => true do |t|
     t.string   "package_id"
@@ -100,6 +100,9 @@ ActiveRecord::Schema.define(:version => 20110612150036) do
     t.string   "resources_hash"
     t.string   "resources_position"
     t.text     "ckan_url"
+    t.text     "download_url"
+    t.integer  "retrieved"
+    t.date     "retrieved_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
