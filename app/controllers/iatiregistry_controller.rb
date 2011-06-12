@@ -12,6 +12,7 @@ class IatiregistryController < ApplicationController
     if @activity_exists
 	@thetext += "<p>The package <b>" + @package.name + "</b> (" + @package.title + ") has already been downloaded.</p>"
     else
+	@thetext += "<p>Downloading new package <b>" + @package.name + "</b> (" + @package.title + ").</p>"
     url = @package.resources_url
 	require 'net/http'
 	require 'rexml/document'
@@ -87,7 +88,6 @@ class IatiregistryController < ApplicationController
 					   :code => (s.attributes["code"] if s.attributes["code"]),
 					   :percentage => (s.attributes["percentage"] if s.attributes["percentage"])
 					  }
-				@thetext += "<p>" + s.text + "</p>"
 			end
 			
 			policy_markers = []
@@ -98,7 +98,6 @@ class IatiregistryController < ApplicationController
 					   :significance => (pm.attributes["significance"] if pm.attributes["significance"]), 
 					   :code => (pm.attributes["code"] if pm.attributes["code"])
 					  }
-				@thetext += "<i>" + pm.text + "</i>"  if pm.text
 			end
 			
 			a[:legacy_data_name] = (activity.elements["legacy-data"].attributes["name"] if activity.elements["legacy-data"])
@@ -145,12 +144,6 @@ class IatiregistryController < ApplicationController
 					:reltype => rel.attributes["type"]
 				}
 			end
-			
-
-			#@thetext += "<b>Title:</b> " + title + "<br /><b>Funding org:</b> " + funding_org + "<br /><b>Extending org:</b> " + extending_org + "<br />"
-			#@thetext += "<i>(Reported by " + reporting_org + ", " + reporting_org_ref + ", " + reporting_org_type + ")</i>"
-			#@thetext += "<br />" + date_end_actual + " " + date_start_planned + @package.donors
-
 			@activity = Activity.new(a)
 
 			  if @activity.save
