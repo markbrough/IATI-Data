@@ -1,6 +1,5 @@
 class CreatePackages < ActiveRecord::Migration
   def self.up
-    drop_table :packages
     create_table :packages do |t|
       t.string :packageid
       t.string :name
@@ -37,6 +36,7 @@ class CreatePackages < ActiveRecord::Migration
       t.text :resources_description
       t.string :resources_hash
       t.string :resources_position
+      t.string :resources_url
       t.text :ckan_url
 
       t.timestamps

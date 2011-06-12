@@ -1,6 +1,5 @@
 class CreateRelatedActivities < ActiveRecord::Migration
   def self.up
-    drop_table :related_activities
     create_table :related_activities do |t|
       t.integer :activity_id
       t.string :text

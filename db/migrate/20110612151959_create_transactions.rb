@@ -1,7 +1,5 @@
 class CreateTransactions < ActiveRecord::Migration
   def self.up
-
-    drop_table :transactions
     create_table :transactions do |t|
       t.integer :activity_id
       t.string :value

@@ -1,7 +1,5 @@
 class CreateActivities < ActiveRecord::Migration
   def self.up
-
-    drop_table :activities
     create_table :activities do |t|
       t.string :package_id
       t.string :activity_lang
