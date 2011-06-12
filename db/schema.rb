@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110612151959) do
+ActiveRecord::Schema.define(:version => 20110612233633) do
 
   create_table "activities", :force => true do |t|
     t.string   "package_id"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20110612151959) do
     t.string   "default_finance_type_code"
     t.string   "iati_identifier"
     t.string   "title"
-    t.string   "description"
+    t.text     "description",                 :limit => 255
     t.date     "date_start_actual"
     t.date     "date_start_planned"
     t.date     "date_end_actual"
