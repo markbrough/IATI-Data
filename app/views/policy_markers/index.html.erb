@@ -1,0 +1,24 @@
+<h1>Listing policy_markers</h1>
+
+<table>
+  <tr>
+    <th>Text</th>
+    <th>Vocab</th>
+    <th>Code</th>
+  </tr>
+
+<% @policy_markers.each do |policy_marker| %>
+  <tr>
+    <td><%=h policy_marker.text %></td>
+    <td><%=h policy_marker.vocab %></td>
+    <td><%=h policy_marker.code %></td>
+    <td><%= link_to 'Show', policy_marker %></td>
+    <td><%= link_to 'Edit', edit_policy_marker_path(policy_marker) %></td>
+    <td><%= link_to 'Destroy', policy_marker, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New policy_marker', new_policy_marker_path %>

@@ -1,0 +1,51 @@
+<h1>Listing packages</h1>
+
+<table>
+  <tr>
+   <th>Name</th>
+   <th>Title</th>
+   <th>Author email</th>
+   <th>Donors</th>
+   <th>Activity period from</th>
+   <th>Verified</th>
+<!--   <th>Iati preview</th>-->
+   <th>Donors type</th>
+   <th>Country</th>
+   <th>Donors country</th>
+   <th>Activity period to</th>
+   <th>Resources url</th>
+   <th>Resources format</th>
+   <th>Resources description</th>
+   <th>Ckan url</th>
+  </tr>
+
+
+
+<% @packages.each do |package| %>
+  <tr>
+    <td><%=h package.name %></td>
+    <td><%=h package.title %></td>
+    <td><%=h package.author_email %></td>
+    <td><%=h package.donors %></td>
+    <td><%=h package.activity_period_from %></td>
+    <td><%=h package.verified %></td>
+<!--    <td><%=h package.iati_preview %></td>-->
+    <td><%=h package.donors_type %></td>
+    <td><%=h package.country %></td>
+    <td><%=h package.donors_country %></td>
+    <td><%=h package.activity_period_to %></td>
+    <td><%=h package.resources_url %></td>
+    <td><%=h package.resources_format %></td>
+    <td><%=h package.resources_description %></td>
+    <td><%=h package.ckan_url %></td>
+    <td><%= link_to 'Show', package %></td>
+    <td><%= link_to 'Get Package', 'iatiregistry/getPackage/' + package.id.to_s %>
+    <td><%= link_to 'Edit', edit_package_path(package) %></td>
+    <td><%= link_to 'Destroy', package, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New package', new_package_path %>

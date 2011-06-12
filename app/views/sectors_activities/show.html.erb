@@ -1,0 +1,18 @@
+<p>
+  <b>Activity:</b>
+  <%=h @sectors_activity.activity_id %>
+</p>
+
+<p>
+  <b>Sector:</b>
+  <%=h @sectors_activity.sector_id %>
+</p>
+
+<p>
+  <b>Percentage:</b>
+  <%=h @sectors_activity.percentage %>
+</p>
+
+
+<%= link_to 'Edit', edit_sectors_activity_path(@sectors_activity) %> |
+<%= link_to 'Back', sectors_activities_path %>

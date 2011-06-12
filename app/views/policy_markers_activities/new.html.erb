@@ -1,0 +1,23 @@
+<h1>New policy_markers_activity</h1>
+
+<% form_for(@policy_markers_activity) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :activity_id %><br />
+    <%= f.text_field :activity_id %>
+  </p>
+  <p>
+    <%= f.label :policy_marker_id %><br />
+    <%= f.text_field :policy_marker_id %>
+  </p>
+  <p>
+    <%= f.label :significance %><br />
+    <%= f.text_field :significance %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', policy_markers_activities_path %>

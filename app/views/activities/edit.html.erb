@@ -1,0 +1,200 @@
+<h1>Editing activity</h1>
+
+<% form_for(@activity) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :package_id %><br />
+    <%= f.text_field :package_id %>
+  </p>
+  <p>
+    <%= f.label :activity_lang %><br />
+    <%= f.text_field :activity_lang %>
+  </p>
+  <p>
+    <%= f.label :default_currency %><br />
+    <%= f.text_field :default_currency %>
+  </p>
+  <p>
+    <%= f.label :hierarchy %><br />
+    <%= f.text_field :hierarchy %>
+  </p>
+  <p>
+    <%= f.label :last_updated %><br />
+    <%= f.text_field :last_updated %>
+  </p>
+  <p>
+    <%= f.label :reporting_org %><br />
+    <%= f.text_field :reporting_org %>
+  </p>
+  <p>
+    <%= f.label :reporting_org_ref %><br />
+    <%= f.text_field :reporting_org_ref %>
+  </p>
+  <p>
+    <%= f.label :reporting_org_type %><br />
+    <%= f.text_field :reporting_org_type %>
+  </p>
+  <p>
+    <%= f.label :funding_org %><br />
+    <%= f.text_field :funding_org %>
+  </p>
+  <p>
+    <%= f.label :funding_org_ref %><br />
+    <%= f.text_field :funding_org_ref %>
+  </p>
+  <p>
+    <%= f.label :funding_org_type %><br />
+    <%= f.text_field :funding_org_type %>
+  </p>
+  <p>
+    <%= f.label :extending_org %><br />
+    <%= f.text_field :extending_org %>
+  </p>
+  <p>
+    <%= f.label :extending_org_ref %><br />
+    <%= f.text_field :extending_org_ref %>
+  </p>
+  <p>
+    <%= f.label :extending_org_type %><br />
+    <%= f.text_field :extending_org_type %>
+  </p>
+  <p>
+    <%= f.label :implementing_org %><br />
+    <%= f.text_field :implementing_org %>
+  </p>
+  <p>
+    <%= f.label :implementing_org_ref %><br />
+    <%= f.text_field :implementing_org_ref %>
+  </p>
+  <p>
+    <%= f.label :implementing_org_type %><br />
+    <%= f.text_field :implementing_org_type %>
+  </p>
+  <p>
+    <%= f.label :recipient_region %><br />
+    <%= f.text_field :recipient_region %>
+  </p>
+  <p>
+    <%= f.label :recipient_region_code %><br />
+    <%= f.text_field :recipient_region_code %>
+  </p>
+  <p>
+    <%= f.label :recipient_country %><br />
+    <%= f.text_field :recipient_country %>
+  </p>
+  <p>
+    <%= f.label :recipient_country_code %><br />
+    <%= f.text_field :recipient_country_code %>
+  </p>
+  <p>
+    <%= f.label :collaboration_type %><br />
+    <%= f.text_field :collaboration_type %>
+  </p>
+  <p>
+    <%= f.label :collaboration_type_code %><br />
+    <%= f.text_field :collaboration_type_code %>
+  </p>
+  <p>
+    <%= f.label :default_flow_type %><br />
+    <%= f.text_field :default_flow_type %>
+  </p>
+  <p>
+    <%= f.label :default_flow_type_code %><br />
+    <%= f.text_field :default_flow_type_code %>
+  </p>
+  <p>
+    <%= f.label :default_aid_type %><br />
+    <%= f.text_field :default_aid_type %>
+  </p>
+  <p>
+    <%= f.label :default_aid_type_code %><br />
+    <%= f.text_field :default_aid_type_code %>
+  </p>
+  <p>
+    <%= f.label :default_finance_type %><br />
+    <%= f.text_field :default_finance_type %>
+  </p>
+  <p>
+    <%= f.label :default_finance_type_code %><br />
+    <%= f.text_field :default_finance_type_code %>
+  </p>
+  <p>
+    <%= f.label :iati_identifier %><br />
+    <%= f.text_field :iati_identifier %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :date_start_actual %><br />
+    <%= f.date_select :date_start_actual %>
+  </p>
+  <p>
+    <%= f.label :date_start_planned %><br />
+    <%= f.date_select :date_start_planned %>
+  </p>
+  <p>
+    <%= f.label :date_end_actual %><br />
+    <%= f.date_select :date_end_actual %>
+  </p>
+  <p>
+    <%= f.label :date_end_planned %><br />
+    <%= f.date_select :date_end_planned %>
+  </p>
+  <p>
+    <%= f.label :status_code %><br />
+    <%= f.text_field :status_code %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </p>
+  <p>
+    <%= f.label :contact_organisation %><br />
+    <%= f.text_field :contact_organisation %>
+  </p>
+  <p>
+    <%= f.label :contact_telephone %><br />
+    <%= f.text_field :contact_telephone %>
+  </p>
+  <p>
+    <%= f.label :contact_email %><br />
+    <%= f.text_field :contact_email %>
+  </p>
+  <p>
+    <%= f.label :contact_mailing_address %><br />
+    <%= f.text_field :contact_mailing_address %>
+  </p>
+  <p>
+    <%= f.label :default_tied_status %><br />
+    <%= f.text_field :default_tied_status %>
+  </p>
+  <p>
+    <%= f.label :default_tied_status_code %><br />
+    <%= f.text_field :default_tied_status_code %>
+  </p>
+  <p>
+    <%= f.label :legacy_data_name %><br />
+    <%= f.text_field :legacy_data_name %>
+  </p>
+  <p>
+    <%= f.label :legacy_data_value %><br />
+    <%= f.text_field :legacy_data_value %>
+  </p>
+  <p>
+    <%= f.label :legacy_data_iati_equivalent %><br />
+    <%= f.text_field :legacy_data_iati_equivalent %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @activity %> |
+<%= link_to 'Back', activities_path %>

@@ -1,0 +1,24 @@
+<h1>Editing sectors_activity</h1>
+
+<% form_for(@sectors_activity) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :activity_id %><br />
+    <%= f.text_field :activity_id %>
+  </p>
+  <p>
+    <%= f.label :sector_id %><br />
+    <%= f.text_field :sector_id %>
+  </p>
+  <p>
+    <%= f.label :percentage %><br />
+    <%= f.text_field :percentage %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @sectors_activity %> |
+<%= link_to 'Back', sectors_activities_path %>

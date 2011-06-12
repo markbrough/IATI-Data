@@ -1,0 +1,24 @@
+<h1>Listing policy_markers_activities</h1>
+
+<table>
+  <tr>
+    <th>Activity</th>
+    <th>Policy marker</th>
+    <th>Significance</th>
+  </tr>
+
+<% @policy_markers_activities.each do |policy_markers_activity| %>
+  <tr>
+    <td><%=h policy_markers_activity.activity_id %></td>
+    <td><%=h policy_markers_activity.policy_marker_id %></td>
+    <td><%=h policy_markers_activity.significance %></td>
+    <td><%= link_to 'Show', policy_markers_activity %></td>
+    <td><%= link_to 'Edit', edit_policy_markers_activity_path(policy_markers_activity) %></td>
+    <td><%= link_to 'Destroy', policy_markers_activity, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New policy_markers_activity', new_policy_markers_activity_path %>

@@ -1,0 +1,155 @@
+<h1>New package</h1>
+
+<% form_for(@package) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :packageid %><br />
+    <%= f.text_field :packageid %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :version %><br />
+    <%= f.text_field :version %>
+  </p>
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :author %><br />
+    <%= f.text_field :author %>
+  </p>
+  <p>
+    <%= f.label :author_email %><br />
+    <%= f.text_field :author_email %>
+  </p>
+  <p>
+    <%= f.label :maintainer %><br />
+    <%= f.text_field :maintainer %>
+  </p>
+  <p>
+    <%= f.label :maintainer_email %><br />
+    <%= f.text_field :maintainer_email %>
+  </p>
+  <p>
+    <%= f.label :notes %><br />
+    <%= f.text_field :notes %>
+  </p>
+  <p>
+    <%= f.label :licenseid %><br />
+    <%= f.text_field :licenseid %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.label :revisionid %><br />
+    <%= f.text_field :revisionid %>
+  </p>
+  <p>
+    <%= f.label :license %><br />
+    <%= f.text_field :license %>
+  </p>
+  <p>
+    <%= f.label :tags %><br />
+    <%= f.text_field :tags %>
+  </p>
+  <p>
+    <%= f.label :groups %><br />
+    <%= f.text_field :groups %>
+  </p>
+  <p>
+    <%= f.label :groups_types %><br />
+    <%= f.text_field :groups_types %>
+  </p>
+  <p>
+    <%= f.label :donors %><br />
+    <%= f.text_field :donors %>
+  </p>
+  <p>
+    <%= f.label :activity_period_from %><br />
+    <%= f.date_select :activity_period_from %>
+  </p>
+  <p>
+    <%= f.label :verified %><br />
+    <%= f.text_field :verified %>
+  </p>
+  <p>
+    <%= f.label :iati_preview %><br />
+    <%= f.text_area :iati_preview %>
+  </p>
+  <p>
+    <%= f.label :donors_type %><br />
+    <%= f.text_field :donors_type %>
+  </p>
+  <p>
+    <%= f.label :activity_count %><br />
+    <%= f.text_field :activity_count %>
+  </p>
+  <p>
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </p>
+  <p>
+    <%= f.label :donors_country %><br />
+    <%= f.text_field :donors_country %>
+  </p>
+  <p>
+    <%= f.label :activity_period_to %><br />
+    <%= f.date_select :activity_period_to %>
+  </p>
+  <p>
+    <%= f.label :ratings_average %><br />
+    <%= f.text_field :ratings_average %>
+  </p>
+  <p>
+    <%= f.label :ratings_count %><br />
+    <%= f.text_field :ratings_count %>
+  </p>
+  <p>
+    <%= f.label :resourcesid %><br />
+    <%= f.text_field :resourcesid %>
+  </p>
+  <p>
+    <%= f.label :resources_packageid %><br />
+    <%= f.text_field :resources_packageid %>
+  </p>
+  <p>
+    <%= f.label :resources_url %><br />
+    <%= f.text_field :resources_url %>
+  </p>
+  <p>
+    <%= f.label :resources_format %><br />
+    <%= f.text_field :resources_format %>
+  </p>
+  <p>
+    <%= f.label :resources_description %><br />
+    <%= f.text_area :resources_description %>
+  </p>
+  <p>
+    <%= f.label :resources_hash %><br />
+    <%= f.text_field :resources_hash %>
+  </p>
+  <p>
+    <%= f.label :resources_position %><br />
+    <%= f.text_field :resources_position %>
+  </p>
+  <p>
+    <%= f.label :ckan_url %><br />
+    <%= f.text_area :ckan_url %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', packages_path %>

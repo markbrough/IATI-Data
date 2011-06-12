@@ -1,0 +1,24 @@
+<h1>Editing sector</h1>
+
+<% form_for(@sector) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </p>
+  <p>
+    <%= f.label :vocab %><br />
+    <%= f.text_field :vocab %>
+  </p>
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @sector %> |
+<%= link_to 'Back', sectors_path %>

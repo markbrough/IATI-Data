@@ -1,0 +1,2 @@
+module RelatedActivitiesHelper
+end

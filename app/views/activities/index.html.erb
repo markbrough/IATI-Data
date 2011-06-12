@@ -1,0 +1,112 @@
+<h1>Listing activities</h1>
+
+<table>
+  <tr>
+    <th>Package</th>
+    <th>Activity lang</th>
+    <th>Default currency</th>
+    <th>Hierarchy</th>
+    <th>Last updated</th>
+    <th>Reporting org</th>
+    <th>Reporting org ref</th>
+    <th>Reporting org type</th>
+    <th>Funding org</th>
+    <th>Funding org ref</th>
+    <th>Funding org type</th>
+    <th>Extending org</th>
+    <th>Extending org ref</th>
+    <th>Extending org type</th>
+    <th>Implementing org</th>
+    <th>Implementing org ref</th>
+    <th>Implementing org type</th>
+    <th>Recipient region</th>
+    <th>Recipient region code</th>
+    <th>Recipient country</th>
+    <th>Recipient country code</th>
+    <th>Collaboration type</th>
+    <th>Collaboration type code</th>
+    <th>Default flow type</th>
+    <th>Default flow type code</th>
+    <th>Default aid type</th>
+    <th>Default aid type code</th>
+    <th>Default finance type</th>
+    <th>Default finance type code</th>
+    <th>Iati identifier</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Date start actual</th>
+    <th>Date start planned</th>
+    <th>Date end actual</th>
+    <th>Date end planned</th>
+    <th>Status code</th>
+    <th>Status</th>
+    <th>Contact organisation</th>
+    <th>Contact telephone</th>
+    <th>Contact email</th>
+    <th>Contact mailing address</th>
+    <th>Default tied status</th>
+    <th>Default tied status code</th>
+    <th>Legacy data name</th>
+    <th>Legacy data value</th>
+    <th>Legacy data iati equivalent</th>
+  </tr>
+
+<% @activities.each do |activity| %>
+  <tr>
+    <td><%=h activity.package_id %></td>
+    <td><%=h activity.activity_lang %></td>
+    <td><%=h activity.default_currency %></td>
+    <td><%=h activity.hierarchy %></td>
+    <td><%=h activity.last_updated %></td>
+    <td><%=h activity.reporting_org %></td>
+    <td><%=h activity.reporting_org_ref %></td>
+    <td><%=h activity.reporting_org_type %></td>
+    <td><%=h activity.funding_org %></td>
+    <td><%=h activity.funding_org_ref %></td>
+    <td><%=h activity.funding_org_type %></td>
+    <td><%=h activity.extending_org %></td>
+    <td><%=h activity.extending_org_ref %></td>
+    <td><%=h activity.extending_org_type %></td>
+    <td><%=h activity.implementing_org %></td>
+    <td><%=h activity.implementing_org_ref %></td>
+    <td><%=h activity.implementing_org_type %></td>
+    <td><%=h activity.recipient_region %></td>
+    <td><%=h activity.recipient_region_code %></td>
+    <td><%=h activity.recipient_country %></td>
+    <td><%=h activity.recipient_country_code %></td>
+    <td><%=h activity.collaboration_type %></td>
+    <td><%=h activity.collaboration_type_code %></td>
+    <td><%=h activity.default_flow_type %></td>
+    <td><%=h activity.default_flow_type_code %></td>
+    <td><%=h activity.default_aid_type %></td>
+    <td><%=h activity.default_aid_type_code %></td>
+    <td><%=h activity.default_finance_type %></td>
+    <td><%=h activity.default_finance_type_code %></td>
+    <td><%=h activity.iati_identifier %></td>
+    <td><%=h activity.title %></td>
+    <td><%=h activity.description %></td>
+    <td><%=h activity.date_start_actual %></td>
+    <td><%=h activity.date_start_planned %></td>
+    <td><%=h activity.date_end_actual %></td>
+    <td><%=h activity.date_end_planned %></td>
+    <td><%=h activity.status_code %></td>
+    <td><%=h activity.status %></td>
+    <td><%=h activity.contact_organisation %></td>
+    <td><%=h activity.contact_telephone %></td>
+    <td><%=h activity.contact_email %></td>
+    <td><%=h activity.contact_mailing_address %></td>
+    <td><%=h activity.default_tied_status %></td>
+    <td><%=h activity.default_tied_status_code %></td>
+    <td><%=h activity.legacy_data_name %></td>
+    <td><%=h activity.legacy_data_value %></td>
+    <td><%=h activity.legacy_data_iati_equivalent %></td>
+    <td><%= link_to 'Show', activity %></td>
+    <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+    <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New activity', new_activity_path %>

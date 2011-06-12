@@ -1,0 +1,64 @@
+<h1>Listing transactions</h1>
+
+<table>
+  <tr>
+    <th>Activity</th>
+    <th>Value</th>
+    <th>Value date</th>
+    <th>Value currency</th>
+    <th>Transaction type</th>
+    <th>Transaction type code</th>
+    <th>Provider org</th>
+    <th>Provider org ref</th>
+    <th>Provider org type</th>
+    <th>Receiver org</th>
+    <th>Receiver org ref</th>
+    <th>Receiver org type</th>
+    <th>Description</th>
+    <th>Transaction date</th>
+    <th>Transaction date iso</th>
+    <th>Flow type</th>
+    <th>Flow type code</th>
+    <th>Aid type</th>
+    <th>Aid type code</th>
+    <th>Finance type</th>
+    <th>Finance type code</th>
+    <th>Tied status code</th>
+    <th>Disbursement channel code</th>
+  </tr>
+
+<% @transactions.each do |transaction| %>
+  <tr>
+    <td><%=h transaction.activity_id %></td>
+    <td><%=h transaction.value %></td>
+    <td><%=h transaction.value_date %></td>
+    <td><%=h transaction.value_currency %></td>
+    <td><%=h transaction.transaction_type %></td>
+    <td><%=h transaction.transaction_type_code %></td>
+    <td><%=h transaction.provider_org %></td>
+    <td><%=h transaction.provider_org_ref %></td>
+    <td><%=h transaction.provider_org_type %></td>
+    <td><%=h transaction.receiver_org %></td>
+    <td><%=h transaction.receiver_org_ref %></td>
+    <td><%=h transaction.receiver_org_type %></td>
+    <td><%=h transaction.description %></td>
+    <td><%=h transaction.transaction_date %></td>
+    <td><%=h transaction.transaction_date_iso %></td>
+    <td><%=h transaction.flow_type %></td>
+    <td><%=h transaction.flow_type_code %></td>
+    <td><%=h transaction.aid_type %></td>
+    <td><%=h transaction.aid_type_code %></td>
+    <td><%=h transaction.finance_type %></td>
+    <td><%=h transaction.finance_type_code %></td>
+    <td><%=h transaction.tied_status_code %></td>
+    <td><%=h transaction.disbursement_channel_code %></td>
+    <td><%= link_to 'Show', transaction %></td>
+    <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
+    <td><%= link_to 'Destroy', transaction, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New transaction', new_transaction_path %>

@@ -1,0 +1,51 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  activity_id: 1
+  value: MyString
+  value_date: MyString
+  value_currency: MyString
+  transaction_type: MyString
+  transaction_type_code: MyString
+  provider_org: MyString
+  provider_org_ref: MyString
+  provider_org_type: MyString
+  receiver_org: MyString
+  receiver_org_ref: MyString
+  receiver_org_type: MyString
+  description: MyString
+  transaction_date: MyString
+  transaction_date_iso: MyString
+  flow_type: MyString
+  flow_type_code: MyString
+  aid_type: MyString
+  aid_type_code: MyString
+  finance_type: MyString
+  finance_type_code: MyString
+  tied_status_code: MyString
+  disbursement_channel_code: MyString
+
+two:
+  activity_id: 1
+  value: MyString
+  value_date: MyString
+  value_currency: MyString
+  transaction_type: MyString
+  transaction_type_code: MyString
+  provider_org: MyString
+  provider_org_ref: MyString
+  provider_org_type: MyString
+  receiver_org: MyString
+  receiver_org_ref: MyString
+  receiver_org_type: MyString
+  description: MyString
+  transaction_date: MyString
+  transaction_date_iso: MyString
+  flow_type: MyString
+  flow_type_code: MyString
+  aid_type: MyString
+  aid_type_code: MyString
+  finance_type: MyString
+  finance_type_code: MyString
+  tied_status_code: MyString
+  disbursement_channel_code: MyString

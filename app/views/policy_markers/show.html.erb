@@ -1,0 +1,18 @@
+<p>
+  <b>Text:</b>
+  <%=h @policy_marker.text %>
+</p>
+
+<p>
+  <b>Vocab:</b>
+  <%=h @policy_marker.vocab %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%=h @policy_marker.code %>
+</p>
+
+
+<%= link_to 'Edit', edit_policy_marker_path(@policy_marker) %> |
+<%= link_to 'Back', policy_markers_path %>

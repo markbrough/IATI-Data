@@ -1,0 +1,26 @@
+<h1>Listing related_activities</h1>
+
+<table>
+  <tr>
+    <th>Activity</th>
+    <th>Text</th>
+    <th>Ref</th>
+    <th>Reltype</th>
+  </tr>
+
+<% @related_activities.each do |related_activity| %>
+  <tr>
+    <td><%=h related_activity.activity_id %></td>
+    <td><%=h related_activity.text %></td>
+    <td><%=h related_activity.ref %></td>
+    <td><%=h related_activity.reltype %></td>
+    <td><%= link_to 'Show', related_activity %></td>
+    <td><%= link_to 'Edit', edit_related_activity_path(related_activity) %></td>
+    <td><%= link_to 'Destroy', related_activity, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New related_activity', new_related_activity_path %>

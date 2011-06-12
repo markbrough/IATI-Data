@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  activity_id: 1
+  text: MyString
+  ref: MyString
+  reltype: MyString
+
+two:
+  activity_id: 1
+  text: MyString
+  ref: MyString
+  reltype: MyString

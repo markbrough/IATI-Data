@@ -1,0 +1,28 @@
+<h1>Editing related_activity</h1>
+
+<% form_for(@related_activity) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :activity_id %><br />
+    <%= f.text_field :activity_id %>
+  </p>
+  <p>
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </p>
+  <p>
+    <%= f.label :ref %><br />
+    <%= f.text_field :ref %>
+  </p>
+  <p>
+    <%= f.label :reltype %><br />
+    <%= f.text_field :reltype %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @related_activity %> |
+<%= link_to 'Back', related_activities_path %>

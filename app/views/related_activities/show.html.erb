@@ -1,0 +1,23 @@
+<p>
+  <b>Activity:</b>
+  <%=h @related_activity.activity_id %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%=h @related_activity.text %>
+</p>
+
+<p>
+  <b>Ref:</b>
+  <%=h @related_activity.ref %>
+</p>
+
+<p>
+  <b>Reltype:</b>
+  <%=h @related_activity.reltype %>
+</p>
+
+
+<%= link_to 'Edit', edit_related_activity_path(@related_activity) %> |
+<%= link_to 'Back', related_activities_path %>
