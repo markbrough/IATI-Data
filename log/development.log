@@ -31903,3 +31903,53 @@ Completed in 38ms (View: 28, DB: 2) | 200 OK [http://localhost/activities?page=3
   [4;36;1mSQL (76.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20110612141846')[0m
   [4;35;1mSQL (78.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20110612150036')[0m
   [4;36;1mSQL (77.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20110612145924')[0m
+
+
+Processing ActivitiesController#index (for 127.0.0.1 at 2011-06-13 00:09:43) [GET]
+  Parameters: {"page"=>"3"}
+  [4;35;1mActivity Load (0.8ms)[0m   [0mSELECT * FROM "activities" LIMIT 5 OFFSET 10[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "activities" [0m
+Rendering template within layouts/application
+Rendering activities/index
+Rendered _navigation (1.1ms)
+Completed in 12ms (View: 3, DB: 1) | 200 OK [http://localhost/activities?page=3]
+
+
+Processing ActivitiesController#index (for 127.0.0.1 at 2011-06-13 00:09:46) [GET]
+  [4;35;1mActivity Load (0.7ms)[0m   [0mSELECT * FROM "activities" LIMIT 5 OFFSET 0[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "activities" [0m
+Rendering template within layouts/application
+Rendering activities/index
+Rendered _navigation (0.6ms)
+Completed in 11ms (View: 3, DB: 1) | 200 OK [http://localhost/activities]
+
+
+Processing PackagesController#index (for 127.0.0.1 at 2011-06-13 00:09:47) [GET]
+  [4;35;1mPackage Load (0.8ms)[0m   [0mSELECT * FROM "packages" [0m
+Rendering template within layouts/application
+Rendering packages/index
+Rendered _navigation (0.6ms)
+Completed in 8ms (View: 3, DB: 1) | 200 OK [http://localhost/packages]
+
+
+Processing IatiregistryController#index (for 127.0.0.1 at 2011-06-13 00:09:47) [GET]
+  [4;36;1mPackage Load (0.2ms)[0m   [0;1mSELECT * FROM "packages" WHERE ("packages"."packageid" = '9aca73a8-c229-4fa1-8f39-ced49fa2415f') LIMIT 1[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mPackage Create (1.0ms)[0m   [0mINSERT INTO "packages" ("name", "groups", "ratings_average", "resources_packageid", "maintainer_email", "donors_type", "resources_hash", "created_at", "title", "author", "revisionid", "iati_preview", "activity_count", "country", "activity_period_to", "notes", "license", "groups_types", "resources_url", "updated_at", "url", "maintainer", "donors", "activity_period_from", "resourcesid", "resources_description", "packageid", "tags", "retrieved_date", "version", "donors_country", "download_url", "resources_position", "ckan_url", "author_email", "verified", "ratings_count", "resources_format", "licenseid", "state", "retrieved") VALUES('dfid-189', 'ea4de570-bd2c-4dee-a709-9197c4a8ebe9', 1.0, '9aca73a8-c229-4fa1-8f39-ced49fa2415f', NULL, 'bilateral', '', '2011-06-12 23:10:17', 'DFID Activity File North Africa Regional', NULL, '370eb1bc-24b4-4995-bf0c-823f536dc39c', '<table width="100%"><thead><tr><th class="activity-title">
+ Activity Title
+ </th><th class="activity-status">
+ Status
+ </th><th class="activity-dates">
+ Start and End Dates
+ </th></tr></thead><tbody><tr><td class="titlecased">NILE BASIN INITIATIVE</td><td class="activity-status">Implementation</td><td class="date">
+ &#8212;
+ </td></tr><tr><td class="titlecased">PROCOFSERVICES AND P0007 FOR NILE BASIN INITIATIVE</td><td class="activity-status">Implementation</td><td class="date">
+ &#8212;
+ </td></tr><tr><td class="titlecased">NILE BASIN DISCOURSE (NBD)</td><td class="activity-status">Post-completion</td><td class="date">
+ &#8212;
+ </td></tr><tr><td class="titlecased">CONSULTANCY FOR NILE BASIN DISCOURSE (NBD)</td><td class="activity-status">Post-completion</td><td class="date">
+ &#8212;
+ </td></tr><tr><td class="titlecased">NILE BASIN DISCOURSE (NBD)</td><td class="activity-status">Post-completion</td><td class="date">
+ &#8212;
+ </td></tr></tbody><tfoot><tr><th colspan="3"><span style="float: right;">(Listing at most 10 entries)</span></th></tr></tfoot></table>', '3', '189', '2013-06-01', NULL, NULL, 'Donor', 'http://projects.dfid.gov.uk/iati/Region/189', '2011-06-12 23:10:17', NULL, NULL, 'dfid', '2003-11-01', '4e1135fe-ad9e-4f3c-8a40-dbb48cd5086a', '', '9aca73a8-c229-4fa1-8f39-ced49fa2415f', NULL, NULL, NULL, 'UK', NULL, 0, 'http://iatiregistry.org/package/dfid-189', 'ppisupport@dfid.gov.uk', 'yes', 1, 'IATI-XML', NULL, 'active', NULL)[0m
+  [4;36;1mPackage Load (0.3ms)[0m   [0;1mSELECT * FROM "packages" WHERE ("packages"."packageid" = '39170239-5ec3-4ab0-b0bc-e2f445f00fae') LIMIT 1[0m
