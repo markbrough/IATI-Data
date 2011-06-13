@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20110612233633) do
     t.string   "default_finance_type_code"
     t.string   "iati_identifier"
     t.string   "title"
-    t.text     "description",                 :limit => 255
+    t.text     "description"
     t.date     "date_start_actual"
     t.date     "date_start_planned"
     t.date     "date_end_actual"

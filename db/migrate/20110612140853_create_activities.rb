@@ -32,7 +32,7 @@ class CreateActivities < ActiveRecord::Migration
       t.string :default_finance_type_code
       t.string :iati_identifier
       t.string :title
-      t.string :description
+      t.text :description
       t.date :date_start_actual
       t.date :date_start_planned
       t.date :date_end_actual
