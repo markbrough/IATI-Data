@@ -26,7 +26,6 @@ class ActivitiesController < ApplicationController
       @conditions[:id] = @sector
     end
     @activities = Activity.find(:all, :conditions=> @conditions, :limit => @limit, :offset=>pagemultiplier)
-    @messages = "Conditions: " + @conditions.to_s
     # get total number of rows
     @totalrows = Activity.find(:all, :conditions=>@conditions).count.to_f
     @numpages = (@totalrows / @limit)
