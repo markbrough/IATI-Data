@@ -108,9 +108,10 @@
 </table>
 
 <br />
-Page: <% @pagination.each do |p| %>
-
-<%= link_to p[:page].to_s, :page => p[:page].to_s 
-%>
-<% end %><br />
+<% if @pagination.count >0 %>
+	Page: <% @pagination.each do |p| %>
+	<%= link_to p[:page].to_s, :page => p[:page].to_s 
+	%>
+	<% end %><br />
+<% end %>
 <%= link_to 'New activity', new_activity_path %>

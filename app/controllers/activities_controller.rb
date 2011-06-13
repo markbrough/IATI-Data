@@ -25,7 +25,7 @@ class ActivitiesController < ApplicationController
     @activities = Activity.find(:all, :conditions=> conditions, :limit => @limit, :offset=>pagemultiplier)
 
     # get total number of rows
-    @totalrows = Activity.count.to_f
+    @totalrows = Activity.find(:all, :conditions=>conditions).count.to_f
     @numpages = (@totalrows / @limit)
     @pagination = []
 	for i in 1..@numpages
@@ -33,7 +33,8 @@ class ActivitiesController < ApplicationController
 		:page => i.to_s
 		}
         end
-	if ((@numpages.to_f - i.to_f) > 0)
+	
+	if ((@numpages.to_f - i.to_f) > 0) and i
 		@pagination << {
 			:page => (i+1).to_s
 		}
