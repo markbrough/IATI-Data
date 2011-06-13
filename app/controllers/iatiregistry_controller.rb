@@ -111,12 +111,14 @@ class IatiregistryController < ApplicationController
 			a[:date_start_planned] = ''
 			a[:date_end_actual] = ''
 			a[:date_end_planned] = ''
-			a[:date_start_actual] = ((activity.elements["activity-date"].text.chop! if @package.donors == 'dfid') if activity.elements["activity-date"].attributes["type"] == 'start-actual')
-			a[:date_start_planned] = ((activity.elements["activity-date"].text.chop! if @package.donors == 'dfid') if activity.elements["activity-date"].attributes["type"] == 'start-planned')
-			a[:date_end_actual] = ((activity.elements["activity-date"].text.chop! if @package.donors == 'dfid') if activity.elements["activity-date"].attributes["type"] == 'end-actual')
-			a[:date_end_planned] = ((activity.elements["activity-date"].text.chop! if @package.donors == 'dfid') if activity.elements["activity-date"].attributes["type"] == 'end-planned')
+			activity.elements.each('activity-date') do |d|
+				(a[:date_start_actual] = d.text) if d.attributes["type"] == 'start-actual'
+				(a[:date_start_planned] = d.text) if d.attributes["type"] == 'start-planned'
+				(a[:date_end_actual] = d.text) if d.attributes["type"] == 'end-actual'
+				(a[:date_end_planned] = d.text) if d.attributes["type"] == 'end-planned'
+			end
 
-			# correct for dfid (leaves dates with 'Z' on the end)	
+			# correct for dfid (leaves dates with 'Z' on the end)... think maybe this happens automatically??
 			#a[:date_start_actual].chop!; a[:date_start_planned].chop!; a[:date_end_actual].chop!; a[:date_end_planned].chop! if @package.donors == 'dfid'
 
 			a[:status_code] = activity.elements["activity-status"].attributes["code"] if activity.elements["activity-status"].attributes["code"]
