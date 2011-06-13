@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   # GET /activities.xml
   def index
 
-    @limit = 5.to_f
+    @limit = 10.to_f
     if params[:page]
       page = params[:page]
       page = page.to_f
@@ -12,20 +12,23 @@ class ActivitiesController < ApplicationController
       page = 0
     end
     pagemultiplier = @limit * page
-    conditions = {}
-    conditions[:implementing_org] = params[:implementing_org] unless params[:implementing_org].blank?
-    conditions[:recipient_country] = params[:recipient_country] unless params[:recipient_country].blank?
-    
+    @conditions = {}
+    @conditions[:hierarchy] = '1'
+    @conditions[:implementing_org] = params[:implementing_org] unless params[:implementing_org].blank?
+    @conditions[:recipient_country] = params[:recipient_country] unless params[:recipient_country].blank?
+    if @conditions[:recipient_country]
+	@conditions.delete(:hierarchy)
+    end
     if params[:sector]
       sector_conditions = {}
       sector_conditions[:sector_id] = params[:sector]
       @sector=SectorsActivity.find(:all, :conditions=>sector_conditions)
-      conditions[:id] = @sector
+      @conditions[:id] = @sector
     end
-    @activities = Activity.find(:all, :conditions=> conditions, :limit => @limit, :offset=>pagemultiplier)
-
+    @activities = Activity.find(:all, :conditions=> @conditions, :limit => @limit, :offset=>pagemultiplier)
+    @messages = "Conditions: " + @conditions.to_s
     # get total number of rows
-    @totalrows = Activity.find(:all, :conditions=>conditions).count.to_f
+    @totalrows = Activity.find(:all, :conditions=>@conditions).count.to_f
     @numpages = (@totalrows / @limit)
     @pagination = []
 	for i in 1..@numpages

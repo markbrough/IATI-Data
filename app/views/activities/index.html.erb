@@ -1,5 +1,5 @@
 <h1>Listing <%= @limit.to_i %> activities</h1>
-
+<%= @messages %>
 <table>
   <tr>
 <!--    <th>Package</th>
@@ -52,7 +52,7 @@
   </tr>
 
 <% @activities.each do |activity| %>
-  <tr>
+  <tr<% if @conditions[:hierarchy] %> class="hierarchy1"<% end %>>
 <!--    <td><%=h activity.package_id %></td>
     <td><%=h activity.activity_lang %></td>
     <td><%=h activity.default_currency %></td>
@@ -104,7 +104,39 @@
     <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
     <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
-<% end %>
+
+<%
+    @sub_conditions = @conditions
+    if @conditions[:hierarchy]
+	    @sub_conditions[:hierarchy] = '2'
+	    @sub_activities = Activity.find(:all, :conditions=> @sub_conditions)
+
+			@sub_activities.each do |subactivity| %>
+		<tr class="hierarchy2">
+		    <td><%=h subactivity.funding_org %></td>
+		    <td><%=h subactivity.extending_org %></td>
+		    <td><%=h subactivity.implementing_org %></td>
+		    <td><%=h subactivity.recipient_region %></td>
+		    <td><%=h subactivity.recipient_country %></td>
+		    <td><%=h subactivity.collaboration_type %></td>
+		    <td><%=h subactivity.default_flow_type %></td>
+		    <td><%=h subactivity.default_aid_type %></td>
+		    <td><%=h subactivity.default_finance_type %></td>
+		    <td><%=h subactivity.iati_identifier %></td>
+		    <td><%=h subactivity.title %></td>
+		    <td><%=h subactivity.date_start_actual %></td>
+		    <td><%=h subactivity.date_start_planned %></td>
+		    <td><%=h subactivity.date_end_actual %></td>
+		    <td><%=h subactivity.date_end_planned %></td>
+		    <td><%=h subactivity.status %></td>
+		    <td><%=h subactivity.default_tied_status %></td>
+		    <td><%= link_to 'Show', subactivity %></td>
+		    <td><%= link_to 'Edit', edit_activity_path(subactivity) %></td>
+		    <td><%= link_to 'Destroy', subactivity, :confirm => 'Are you sure?', :method => :delete %></td>
+		</tr>
+		<%	end
+	end
+ end %>
 </table>
 
 <br />
