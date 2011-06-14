@@ -121,7 +121,11 @@ end
 </table>
 
 <br />
-<% if @pagination.count >0 %>
+<% if @pagination.count >0 
+if params[:page]
+	params.delete("page")
+end
+%>
 	Page: <% @pagination.each do |p| %>
 	<%= link_to p[:page].to_s, :params => params, :page => p[:page].to_s 
 	%>
