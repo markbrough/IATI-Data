@@ -1,6 +1,15 @@
 
 <h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %><% if (@numcountries != '' and @numregions != '') %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %><% end %>.</h1>
 <%= @messages %>
+<% form_tag do %>
+   <p>
+      <label for="recipient_country">Recipient country:</label>
+      <%= select_tag(:recipient_country, 
+         options_from_collection_for_select(@countries, :recipient_country, :recipient_country)) %>
+   </p>
+   <%= submit_tag 'Filter Issues' %>
+<% end %>
+
 <table>
   <tr>
     <th>Title</th>
@@ -80,18 +89,18 @@
 			<% if (subactivity.date_start_actual > DateTime.now) 
 			# if the actual start date is after today, then say the planned start date
 			%>
-			    <td><%=h subactivity.date_start_planned %> <i>(Planned)</i> - 
+			    <td><%=h subactivity.date_start_planned if subactivity.date_start_planned %> <i>(Planned)</i> - 
 			<%
 			# if the activity has already started, then say the actual start date
 			 else %>
-			    <td><%=h subactivity.date_start_actual %> - 
+			    <td><%=h subactivity.date_start_actual if subactivity.date_start_actual %> - 
 			<% end %>
 			<%
 			# if the actual end date is later than now, then say the planned end date
 			 if (subactivity.date_end_actual > DateTime.now) %>
-			    <%=h subactivity.date_end_planned %> <i>(Planned)</i></td>
+			    <%=h subactivity.date_end_planned if subactivity.date_end_planned %> <i>(Planned)</i></td>
 			<% else %>
-			    <%=h subactivity.date_end_actual %></td>
+			    <%=h subactivity.date_end_actual if subactivity.date_end_actual %></td>
 			<% end %>
 			    <td><%=h subactivity.status %></td>
 			    <td><%
