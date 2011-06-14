@@ -4,6 +4,7 @@ class ActivitiesController < ApplicationController
   def index
     @numcountries = Activity.count(:recipient_country, :distinct=>true)
     @numregions = Activity.count(:recipient_region, :distinct=>true)
+    #@countries = Activity.all(:select => 'distinct(recipient_country)')
     @limit = 10.to_f
     if params[:page]
       @page = params[:page]
