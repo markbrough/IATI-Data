@@ -18,7 +18,7 @@
     <td><%=h activity.recipient_region %> <%=h activity.recipient_country %></td>
     <td><%=h activity.extending_org %><br />(<%=h activity.funding_org %>)</td>
     <td><%=h link_to activity.implementing_org, :implementing_org => activity.implementing_org %></td>
-	<% if (activity.date_start_actual > DateTime.now) 
+	<% if (activity.date_start_actual > DateTime.now) and activity.date_start_actual
 	# if the actual start date is after today, then say the planned start date
 	%>
 	    <td><%=h activity.date_start_planned %> <i>(Planned)</i> - 
@@ -29,7 +29,7 @@
 	<% end %>
 	<%
 	# if the actual end date is later than now, then say the planned end date
-	 if (activity.date_end_actual > DateTime.now) %>
+	 if ((activity.date_end_actual > DateTime.now) if activity.date_end_actual) %>
 	    <%=h activity.date_end_planned %> <i>(Planned)</i></td>
 	<% else %>
 	    <%=h activity.date_end_actual %></td>
