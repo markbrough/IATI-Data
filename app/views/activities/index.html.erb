@@ -49,7 +49,22 @@
 	<% else %>
 	    <%=h activity.date_end_actual %></td>
 	<% end %>
-    <td><%=h activity.status %></td><td> </td><!--
+    <td><%=h activity.status %></td>
+    <td><%
+	if activity.transactions.count >0
+	 	 @c_total = 0.to_f
+		 @d_total = 0.to_f
+		 activity.transactions.each do |t|
+			@c_total += t.value.to_f if t.transaction_type_code == 'C'
+			@d_total += t.value.to_f if t.transaction_type_code == 'D'
+		 end
+		 %>
+		 <b>Commitments:</b> <%= (activity.default_currency if activity.default_currency) + " " + number_with_delimiter(@c_total.to_i, :delimiter=> ',') %><br />
+		 <b>Disbursements:</b> <%= (activity.default_currency if activity.default_currency) + " " + number_with_delimiter(@d_total.to_i, :delimiter=>',') %>
+		<br /><%= link_to pluralize(activity.transactions.count, 'Transaction'), activity_transactions_url(activity) if activity.transactions %>
+		
+     <% end %></td>
+<!--
     <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
     <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>-->
   </tr>
