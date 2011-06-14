@@ -1,14 +1,17 @@
 
 <h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %><% if (@numcountries != '' and @numregions != '') %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %><% end %>.</h1>
 <%= @messages %>
-<% form_tag do %>
-   <p>
-      <label for="recipient_country">Recipient country:</label>
-      <%= select_tag(:recipient_country, 
-         options_from_collection_for_select(@countries, :recipient_country, :recipient_country)) %>
-   </p>
-   <%= submit_tag 'Filter Issues' %>
-<% end %>
+<!--<div class="form_options">
+	<% form_tag activities_path, :method => 'get' do %>
+	   <p>
+	      <label for="recipient_country">Recipient country:</label>
+	      <%= select_tag(:recipient_country,
+		 options_from_collection_for_select(@countries, :recipient_country, :recipient_country, 
+		:selected => params[:recipient_country]),
+		{:onchange => 'this.form.submit()'}) %>
+	   </p>
+	<% end %>
+</div>-->
 
 <table>
   <tr>
@@ -114,8 +117,8 @@
 					@d_total += t.value.to_f if t.transaction_type_code == 'D'
 				 end
 				 %>
-				 <b>Commitments:</b> <%= number_with_delimiter(@c_total.to_i, :delimiter=> ',') %><br />
-				 <b>Disbursements:</b> <%= number_with_delimiter(@d_total.to_i, :delimiter=>',') %>
+				 <b>Commitments:</b> <%= (subactivity.default_currency if subactivity.default_currency) + " " + number_with_delimiter(@c_total.to_i, :delimiter=> ',') %><br />
+				 <b>Disbursements:</b> <%= (subactivity.default_currency if subactivity.default_currency) + " " + number_with_delimiter(@d_total.to_i, :delimiter=>',') %>
 				</td>
 
 				<!--

@@ -82,7 +82,7 @@ h1.title {
 	border-bottom:3px solid #365e93;
 }
 span.policy_marker {
-	background-color:#01DF74;
+	background-color:green;
 	color:#ffffff;
 	border:1px solid #000000;
 	border-radius: 4px 4px 4px 4px;
@@ -92,9 +92,13 @@ span.policy_marker {
 }
 span.policy_marker a, span.policy_marker a:hover {
 	color:#ffffff;
-	background-color:#01DF74;
+	background-color:green;
 	text-decoration:none;
 }
 #packages {
 	float:right;
+}
+.form_options {
+	background-image: url("http://www.publishwhatyoufund.org/wp-content/themes/pwyf/bg3.png");
+	background-repeat: repeat-x;
 }
