@@ -3,6 +3,7 @@ class ActivitiesController < ApplicationController
   # GET /activities.xml
   def index
     @numcountries = Activity.count(:recipient_country, :distinct=>true)
+    @numregions = Activity.count(:recipient_region, :distinct=>true)
     @limit = 10.to_f
     if params[:page]
       @page = params[:page]
