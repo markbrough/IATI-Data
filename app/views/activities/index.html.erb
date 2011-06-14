@@ -10,6 +10,7 @@
 <!--    <th>Description</th>-->
     <th>Date</th>
     <th>Status</th>
+    <th>Amount</th>
   </tr>
 
 <% @activities.each do |activity| %>
@@ -40,6 +41,7 @@
   </tr>
 
 <%
+    #All of this needs to be moved to the controller... Just create a sub_activities hash? Which includes policy markers as a hash within?
     @policy_markers = PolicyMarker.find(:all)
     @ra_conditions = {}
     @ra_conditions[:activity_id] = activity.id
@@ -49,6 +51,7 @@
 		@sub_conditions[:iati_identifier] = ra.ref
 	  	    @sub_activities = Activity.find(:all, :conditions=> @sub_conditions)
 				@sub_activities.each do |subactivity| 
+					# Policy markers
 					@pma_conditions = {}
 					@pma_conditions[:activity_id] = subactivity.id
 					@pma_conditions[:significance] = '1'
@@ -89,7 +92,23 @@
 			<% else %>
 			    <%=h subactivity.date_end_actual %></td>
 			<% end %>
-			    <td><%=h subactivity.status %></td><!--
+			    <td><%=h subactivity.status %></td>
+			    <td><%
+				 @transaction_conditions = {}
+				 @transaction_conditions[:activity_id] = subactivity.id
+				 @transactions = Transaction.find(:all, :conditions=>@transaction_conditions)
+			 	 @c_total = 0.to_f
+				 @d_total = 0.to_f
+				 @transactions.each do |t| 
+					@c_total += t.value.to_f if t.transaction_type_code = 'C'
+					@d_total += t.value.to_f if t.transaction_type_code = 'D'
+				 end
+				 %>
+				 <p><b>Commitments:</b> <%= @c_total.to_i.to_s %></p>
+				 <p><b>Disbursements:</b> <%= @d_total.to_i.to_s %></p>
+				</td>
+
+				<!--
 			    <td><%= link_to 'Edit', edit_activity_path(subactivity) %></td>
 			    <td><%= link_to 'Destroy', subactivity, :confirm => 'Are you sure?', :method => :delete %></td>-->
 			</tr>

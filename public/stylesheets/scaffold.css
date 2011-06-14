@@ -95,3 +95,6 @@ span.policy_marker a, span.policy_marker a:hover {
 	background-color:#01DF74;
 	text-decoration:none;
 }
+#packages {
+	float:right;
+}
