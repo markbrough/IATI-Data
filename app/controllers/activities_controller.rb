@@ -16,6 +16,7 @@ class ActivitiesController < ApplicationController
     @conditions[:hierarchy] = '1' unless !(params[:implementing_org].blank? and params[:recipient_country].blank? and params[:iati_identifier].blank? and params[:recipient_region].blank? and params[:policy_marker].blank?)
     @conditions[:implementing_org] = params[:implementing_org] unless params[:implementing_org].blank?
     @conditions[:recipient_country] = params[:recipient_country] unless params[:recipient_country].blank?
+    @messages = (params[:recipient_country])
     @conditions[:recipient_region] = params[:recipient_region] unless params[:recipient_region].blank?
     @conditions[:iati_identifier] = params[:iati_identifier] unless params[:iati_identifier].blank?
     if @conditions[:recipient_country]

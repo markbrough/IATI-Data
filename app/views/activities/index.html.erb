@@ -105,8 +105,8 @@
 					@d_total += t.value.to_f if t.transaction_type_code == 'D'
 				 end
 				 %>
-				 <p><b>Commitments:</b> <%= @c_total.to_i.to_s %></p>
-				 <p><b>Disbursements:</b> <%= @d_total.to_i.to_s %></p>
+				 <b>Commitments:</b> <%= number_with_delimiter(@c_total.to_i, :delimiter=> ',') %><br />
+				 <b>Disbursements:</b> <%= number_with_delimiter(@d_total.to_i, :delimiter=>',') %>
 				</td>
 
 				<!--
