@@ -2,9 +2,6 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.xml
   def index
-    @numcountries = Activity.count(:recipient_country, :distinct=>true)
-    @numregions = Activity.count(:recipient_region, :distinct=>true)
-    #@countries = Activity.all(:select => 'distinct(recipient_country)')
     @limit = 10.to_f
     if params[:page]
       @page = params[:page]
@@ -18,7 +15,6 @@ class ActivitiesController < ApplicationController
     @conditions[:hierarchy] = '1' unless !(params[:implementing_org].blank? and params[:recipient_country].blank? and params[:iati_identifier].blank? and params[:recipient_region].blank? and params[:policy_marker].blank?)
     @conditions[:implementing_org] = params[:implementing_org] unless params[:implementing_org].blank?
     @conditions[:recipient_country] = params[:recipient_country] unless params[:recipient_country].blank?
-    @messages = (params[:recipient_country])
     @conditions[:recipient_region] = params[:recipient_region] unless params[:recipient_region].blank?
     @conditions[:iati_identifier] = params[:iati_identifier] unless params[:iati_identifier].blank?
     if @conditions[:recipient_country]
@@ -30,6 +26,12 @@ class ActivitiesController < ApplicationController
       @sector=SectorsActivity.find(:all, :conditions=>sector_conditions)
       @conditions[:id] = @sector
     end
+      @numcountries = Activity.count(:recipient_country, :distinct=>true)
+      @numregions = Activity.count(:recipient_region, :distinct=>true)
+    if @conditions[:hierarchy] != '1'
+      @numcountries = @numregions = ''
+    end
+    #@countries = Activity.all(:select => 'distinct(recipient_country)')
     @activities = Activity.find(:all, :conditions=> @conditions, :limit => @limit, :offset=>pagemultiplier)
     # get total number of rows
     @totalrows = Activity.find(:all, :conditions=>@conditions).count.to_f

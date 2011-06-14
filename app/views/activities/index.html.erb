@@ -1,5 +1,5 @@
 
-<h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %></h1>
+<h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %> <% if (@numcountries != '' and @numregions != '') %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %> <% end %></h1>
 <%= @messages %>
 <table>
   <tr>
