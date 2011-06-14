@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
     end
     pagemultiplier = @limit * @page
     @conditions = {}
-    @conditions[:hierarchy] = '1' unless !(params[:implementing_org].blank? and params[:recipient_country].blank? and params[:iati_identifier].blank? and params[:recipient_region].blank? and params[:policy_marker].blank?)
+    @conditions[:hierarchy] = '1' unless !(params[:implementing_org].blank? and params[:recipient_country].blank? and params[:iati_identifier].blank? and params[:recipient_region].blank? and params[:policy_marker].blank? and params[:sector].blank?)
     @conditions[:implementing_org] = params[:implementing_org] unless params[:implementing_org].blank?
     @conditions[:recipient_country] = [params[:recipient_country].titleize, params[:recipient_country].upcase] unless params[:recipient_country].blank?
     @conditions[:recipient_region] = params[:recipient_region] unless params[:recipient_region].blank?
@@ -20,11 +20,23 @@ class ActivitiesController < ApplicationController
     if @conditions[:recipient_country]
 	@conditions.delete(:hierarchy)
     end
+    if params[:policy_marker]
+      policy_marker_conditions = {}
+      policy_marker_conditions[:policy_marker_id] = params[:policy_marker]
+      @policymarker=PolicyMarkersActivity.find(:all, :conditions=>policy_marker_conditions)
+      @conditions[:id] = []
+	@policymarker.each do |policymarker|
+		@conditions[:id] << policymarker.activity_id
+	end
+    end
     if params[:sector]
       sector_conditions = {}
       sector_conditions[:sector_id] = params[:sector]
       @sector=SectorsActivity.find(:all, :conditions=>sector_conditions)
-      @conditions[:id] = @sector
+      @conditions[:id] = []
+	@sector.each do |sector|
+		@conditions[:id] << sector.activity_id
+	end
     end
       @numcountries = Activity.count(:recipient_country, :distinct=>true)
       @numregions = Activity.count(:recipient_region, :distinct=>true)

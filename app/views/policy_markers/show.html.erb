@@ -1,12 +1,11 @@
 <h1>Policy Marker: <%=h @policy_marker.text%> </h1>
-<p>
   <b>Vocab:</b>
   <%=h @policy_marker.vocab %>
-</p>
-<p>
+<br />
   <b>Code:</b>
   <%=h @policy_marker.code %>
-</p>
+<br />
+<p><%= link_to "View Activities", :controller => :activities, :policy_marker => @policy_marker.id %></p>
 
 
 <%= link_to 'Edit', edit_policy_marker_path(@policy_marker) %> |
