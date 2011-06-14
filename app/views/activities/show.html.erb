@@ -1,12 +1,23 @@
+<h1><%=h @activity.title %></h1>
+  <%=h @activity.description %>
+<p>
+  <b>Policy Markers:</b>
+<% @policymarkers.each do |pm| %>
+  <%= pm.text + ", " %>
+<% end %>
+
 <p>
   <b>Package:</b>
   <%=h @activity.package_id %>
-</p>
-
-<p>
+<br />
   <b>Activity lang:</b>
   <%=h @activity.activity_lang %>
-</p>
+<br />
+  <b>Last updated:</b>
+  <%=h @activity.last_updated %>
+<br />
+  <b>Reporting org:</b>
+  <%=h @activity.reporting_org %> (Ref: <%=h @activity.reporting_org_ref %>, Type: <%=h @activity.reporting_org_type %>)
 
 <p>
   <b>Default currency:</b>
@@ -19,38 +30,8 @@
 </p>
 
 <p>
-  <b>Last updated:</b>
-  <%=h @activity.last_updated %>
-</p>
-
-<p>
-  <b>Reporting org:</b>
-  <%=h @activity.reporting_org %>
-</p>
-
-<p>
-  <b>Reporting org ref:</b>
-  <%=h @activity.reporting_org_ref %>
-</p>
-
-<p>
-  <b>Reporting org type:</b>
-  <%=h @activity.reporting_org_type %>
-</p>
-
-<p>
   <b>Funding org:</b>
-  <%=h @activity.funding_org %>
-</p>
-
-<p>
-  <b>Funding org ref:</b>
-  <%=h @activity.funding_org_ref %>
-</p>
-
-<p>
-  <b>Funding org type:</b>
-  <%=h @activity.funding_org_type %>
+  <%=h @activity.funding_org %> (Ref: <%=h @activity.funding_org_ref %>, Type: <%=h @activity.funding_org_type %>)
 </p>
 
 <p>
@@ -154,8 +135,7 @@
 </p>
 
 <p>
-  <b>Description:</b>
-  <%=h @activity.description %>
+
 </p>
 
 <p>

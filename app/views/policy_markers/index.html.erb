@@ -16,7 +16,7 @@
 <% 
 pm_conditions = {}
 pm_conditions[:policy_marker_id] = policy_marker.id
-@policy_markers_activities = PolicyMarkersActivity.find(:all, :conditions => pm_conditions) %>
+@policy_markers_activities = ActivitiesPolicyMarker.find(:all, :conditions => pm_conditions) %>
 <td><%= link_to @policy_markers_activities.count.to_s + ' activities', :controller=>:activities, :policy_marker => policy_marker.id.to_s  %></td>
     <td><%= link_to 'Show', policy_marker %></td>
 <!--

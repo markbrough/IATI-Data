@@ -2,8 +2,7 @@ class PolicyMarkersController < ApplicationController
   # GET /policy_markers
   # GET /policy_markers.xml
   def index
-    @policy_markers = PolicyMarker.all
-		
+    @policy_markers = PolicyMarker.all	
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @policy_markers }
@@ -15,6 +14,7 @@ class PolicyMarkersController < ApplicationController
   def show
     @policy_marker = PolicyMarker.find(params[:id])
 
+    @activities = @policy_marker.activities
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @policy_marker }

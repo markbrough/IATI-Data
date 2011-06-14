@@ -1,6 +1,6 @@
-<h1>Editing transaction</h1>
+<h1>Editing transaction for <%=h @activity.title %></h1>
 
-<% form_for(@transaction) do |f| %>
+<% form_for([@activity, @transaction]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -100,5 +100,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @transaction %> |
-<%= link_to 'Back', transactions_path %>
+<%= link_to 'Show', [@activity, @transaction] %> |
+<%= link_to 'Back', activity_transactions_path %>

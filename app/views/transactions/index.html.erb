@@ -52,13 +52,13 @@
     <td><%=h transaction.finance_type_code %></td>
     <td><%=h transaction.tied_status_code %></td>
     <td><%=h transaction.disbursement_channel_code %></td>
-    <td><%= link_to 'Show', transaction %></td>
-    <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
-    <td><%= link_to 'Destroy', transaction, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', [@activity, transaction] %></td>
+    <td><%= link_to 'Edit', edit_activity_transaction_path(@activity, transaction) %></td>
+    <td><%= link_to 'Destroy', [@activity, transaction], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New transaction', new_transaction_path %>
+<%= link_to 'New transaction', new_activity_transaction_path(@activity) %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110613205942) do
+ActiveRecord::Schema.define(:version => 20110614212613) do
 
   create_table "activities", :force => true do |t|
     t.string   "package_id"
@@ -64,6 +64,22 @@ ActiveRecord::Schema.define(:version => 20110613205942) do
     t.text     "activity_website"
   end
 
+  create_table "activities_policy_markers", :force => true do |t|
+    t.integer  "activity_id"
+    t.integer  "policy_marker_id"
+    t.string   "significance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "activities_sectors", :force => true do |t|
+    t.integer  "activity_id"
+    t.integer  "sector_id"
+    t.float    "percentage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "packages", :force => true do |t|
     t.string   "packageid"
     t.string   "name"
@@ -116,14 +132,6 @@ ActiveRecord::Schema.define(:version => 20110613205942) do
     t.datetime "updated_at"
   end
 
-  create_table "policy_markers_activities", :force => true do |t|
-    t.integer  "activity_id"
-    t.integer  "policy_marker_id"
-    t.string   "significance"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "related_activities", :force => true do |t|
     t.integer  "activity_id"
     t.string   "text"
@@ -137,14 +145,6 @@ ActiveRecord::Schema.define(:version => 20110613205942) do
     t.string   "text"
     t.string   "vocab"
     t.string   "code"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "sectors_activities", :force => true do |t|
-    t.integer  "activity_id"
-    t.integer  "sector_id"
-    t.float    "percentage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,23 +1,18 @@
 ActionController::Routing::Routes.draw do |map|
+
+  map.resources :activities, :has_many => [:transactions]
+
   map.resources :packages
 
-  map.resources :activities
-
-  map.resources :policy_markers_activities
-
-  map.resources :sectors_activities
+  map.resources :activities_sector
 
   map.resources :related_activities
 
-  map.resources :policy_markers_activities
+  map.resources :activities_policy_marker
 
   map.resources :policy_markers
 
-  map.resources :sectors_activities
-
   map.resources :sectors
-
-  map.resources :transactions
 
   map.resources :country
 

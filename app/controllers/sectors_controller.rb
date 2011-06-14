@@ -3,7 +3,6 @@ class SectorsController < ApplicationController
   # GET /sectors.xml
   def index
     @sectors = Sector.find(:all, :order => :code)
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sectors }

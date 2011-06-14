@@ -1,0 +1,24 @@
+<h1>Listing sectors_activities</h1>
+
+<table>
+  <tr>
+    <th>Activity</th>
+    <th>Sector</th>
+    <th>Percentage</th>
+  </tr>
+
+<% @activities_sectors.each do |activities_sector| %>
+  <tr>
+    <td><%=h activities_sector.activity_id %></td>
+    <td><%=h activities_sector.sector_id %></td>
+    <td><%=h activities_sector.percentage %></td>
+    <td><%= link_to 'Show', activities_sector %></td>
+    <td><%= link_to 'Edit', edit_activities_sector_path(activities_sector) %></td>
+    <td><%= link_to 'Destroy', activities_sector, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New sectors_activity', new_activities_sector_path %>

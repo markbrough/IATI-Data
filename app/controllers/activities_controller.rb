@@ -12,10 +12,10 @@ class ActivitiesController < ApplicationController
     end
     pagemultiplier = @limit * @page
     @conditions = {}
-    @conditions[:hierarchy] = '1' unless !(params[:implementing_org].blank? and params[:recipient_country].blank? and params[:iati_identifier].blank? and params[:recipient_region].blank? and params[:policy_marker].blank? and params[:sector].blank?)
+    @conditions[:hierarchy] = '1' unless !(params[:implementing_org].blank? and params[:recipient_country_code].blank? and params[:iati_identifier].blank? and params[:recipient_region_code].blank? and params[:policy_marker].blank? and params[:sector].blank?)
     @conditions[:implementing_org] = params[:implementing_org] unless params[:implementing_org].blank?
-    @conditions[:recipient_country] = [params[:recipient_country].titleize, params[:recipient_country].upcase] unless params[:recipient_country].blank?
-    @conditions[:recipient_region] = params[:recipient_region] unless params[:recipient_region].blank?
+    @conditions[:recipient_country_code] = params[:recipient_country_code] unless params[:recipient_country_code].blank?
+    @conditions[:recipient_region_code] = params[:recipient_region_code] unless params[:recipient_region_code].blank?
     @conditions[:iati_identifier] = params[:iati_identifier] unless params[:iati_identifier].blank?
     if @conditions[:recipient_country]
 	@conditions.delete(:hierarchy)
@@ -23,7 +23,7 @@ class ActivitiesController < ApplicationController
     if params[:policy_marker]
       policy_marker_conditions = {}
       policy_marker_conditions[:policy_marker_id] = params[:policy_marker]
-      @policymarker=PolicyMarkersActivity.find(:all, :conditions=>policy_marker_conditions)
+      @policymarker=ActivitiesPolicyMarker.find(:all, :conditions=>policy_marker_conditions)
       @conditions[:id] = []
 	@policymarker.each do |policymarker|
 		@conditions[:id] << policymarker.activity_id
@@ -32,7 +32,7 @@ class ActivitiesController < ApplicationController
     if params[:sector]
       sector_conditions = {}
       sector_conditions[:sector_id] = params[:sector]
-      @sector=SectorsActivity.find(:all, :conditions=>sector_conditions)
+      @sector=ActivitiesSector.find(:all, :conditions=>sector_conditions)
       @conditions[:id] = []
 	@sector.each do |sector|
 		@conditions[:id] << sector.activity_id
@@ -72,7 +72,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/1.xml
   def show
     @activity = Activity.find(params[:id])
-
+    @policymarkers = @activity.policy_markers
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @activity }

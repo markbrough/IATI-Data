@@ -1,0 +1,16 @@
+<h1>Countries</h1>
+
+<table>
+  <tr>
+    <th>Country</th>
+    <th>Activities</th>
+  </tr>
+
+<% @countries.each do |country| %>
+<% if country.recipient_country.to_s != '' %>
+  <tr>
+    <td><%=h country.recipient_country %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>

@@ -222,7 +222,7 @@ class IatiregistryController < ApplicationController
 
 				sector_activities[:activity_id] = @activity.id.to_s
 
-				@sector_activities = SectorsActivity.new(sector_activities)
+				@sector_activities = ActivitiesSector.new(sector_activities)
 
 				  if @sector_activities.save
 				  else
@@ -251,7 +251,7 @@ class IatiregistryController < ApplicationController
 
 				if policy_markers_activities[:significance] == '1'
 					policy_markers_activities[:activity_id] = @activity.id.to_s
-					@pma = PolicyMarkersActivity.new(policy_markers_activities)
+					@pma = ActivitiesPolicyMarker.new(policy_markers_activities)
 					# only add relation if significance == '1'
 
 					  if @pma.save

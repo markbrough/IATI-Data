@@ -5,8 +5,8 @@
   <b>Code:</b>
   <%=h @policy_marker.code %>
 <br />
-<p><%= link_to "View Activities", :controller => :activities, :policy_marker => @policy_marker.id %></p>
 
+<p><%= link_to pluralize(@activities.count, "Activity"), :controller => :activities, :policy_marker => @policy_marker.id %></p>
 
 <%= link_to 'Edit', edit_policy_marker_path(@policy_marker) %> |
 <%= link_to 'Back', policy_markers_path %>

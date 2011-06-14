@@ -2,7 +2,8 @@
 <h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %><% if (@numcountries != '' and @numregions != '') %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %><% end %>.</h1>
 <%= @messages %>
 <!--<div class="form_options">
-	<% form_tag activities_path, :method => 'get' do %>
+	<% #form_tag activities_path(, :method => 'get' do 
+%>
 	   <p>
 	      <label for="recipient_country">Recipient country:</label>
 	      <%= select_tag(:recipient_country,
@@ -10,7 +11,8 @@
 		:selected => params[:recipient_country]),
 		{:onchange => 'this.form.submit()'}) %>
 	   </p>
-	<% end %>
+	<% # end 
+%>
 </div>-->
 
 <table>
@@ -54,7 +56,6 @@
 
 <%
     #All of this needs to be moved to the controller... Just create a sub_activities hash? Which includes policy markers as a hash within?
-    @policy_markers = PolicyMarker.find(:all)
     @ra_conditions = {}
     @ra_conditions[:activity_id] = activity.id
     @rel_activities = RelatedActivity.find(:all, :conditions=>@ra_conditions)
@@ -64,27 +65,21 @@
 		@sub_conditions[:iati_identifier] = ra.ref
 	  	    @sub_activities = Activity.find(:all, :conditions=> @sub_conditions)
 				@sub_activities.each do |subactivity| 
-					# Policy markers
-					@pma_conditions = {}
-					@pma_conditions[:activity_id] = subactivity.id
-					@pma_conditions[:significance] = '1'
-					@policy_markers_activity = PolicyMarkersActivity.find(:all, :conditions=>@pma_conditions)
+
 					%>
 			<tr class="hierarchy2">
 			    <td><%=h link_to subactivity.title, subactivity %><% 
 				if @policy_markers_activity %>
 				<br />
 				<% end 
-				@policy_markers_activity.each do |thispolicymarker|
-					@policy_markers.each do |policymarker|
-						if policymarker.id == thispolicymarker.policy_marker_id %>
-							<span class="policy_marker"><%= link_to policymarker.text, policymarker %></span>
-						<% end
-					end
+				subactivity.policy_markers.each do |thispolicymarker|
+				 %>
+				<span class="policy_marker"><%= link_to thispolicymarker.text, thispolicymarker %></span>
+						<% 
 				 end
 
 				%></td>
-			    <td><%=h link_to subactivity.recipient_region, :recipient_region => subactivity.recipient_region if subactivity.recipient_region %> <%=h link_to subactivity.recipient_country, :recipient_country => subactivity.recipient_country if subactivity.recipient_country %></td>
+			    <td><%=h link_to subactivity.recipient_region, :recipient_region_code => subactivity.recipient_region_code if subactivity.recipient_region_code %> <%=h link_to subactivity.recipient_country, :recipient_country_code => subactivity.recipient_country_code if subactivity.recipient_country_code %></td>
 			    <td><%=h subactivity.extending_org %><br />(<%=h subactivity.funding_org %>)</td>
 			    <td><%=h link_to subactivity.implementing_org, :implementing_org => subactivity.implementing_org %></td>
 

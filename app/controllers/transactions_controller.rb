@@ -1,8 +1,14 @@
 class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.xml
+
+  before_filter :get_activity
+  # :get_activity is defined at the bottom of the file,
+  # and takes the activity_id given by the routing and 
+  # converts it into an @activity object.
+
   def index
-    @transactions = Transaction.all
+    @transactions = @activity.transactions
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +19,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/1
   # GET /transactions/1.xml
   def show
-    @transaction = Transaction.find(params[:id])
+    @transaction = @activity.transactions.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +30,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   # GET /transactions/new.xml
   def new
-    @transaction = Transaction.new
+    @transaction = @activity.transactions.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +40,17 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1/edit
   def edit
-    @transaction = Transaction.find(params[:id])
+    @transaction = @activity.transactions.find(params[:id])
   end
 
   # POST /transactions
   # POST /transactions.xml
   def create
-    @transaction = Transaction.new(params[:transaction])
+    @transaction = @activity.transactions.build(params[:transaction])
 
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to(@transaction, :notice => 'Transaction was successfully created.') }
+        format.html { redirect_to([@activity, @transaction], :notice => 'Transaction was successfully created.') }
         format.xml  { render :xml => @transaction, :status => :created, :location => @transaction }
       else
         format.html { render :action => "new" }
@@ -56,11 +62,11 @@ class TransactionsController < ApplicationController
   # PUT /transactions/1
   # PUT /transactions/1.xml
   def update
-    @transaction = Transaction.find(params[:id])
+    @transaction = @activity.transactions.find(params[:id])
 
     respond_to do |format|
       if @transaction.update_attributes(params[:transaction])
-        format.html { redirect_to(@transaction, :notice => 'Transaction was successfully updated.') }
+        format.html { redirect_to([@activity, @transaction], :notice => 'Transaction was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -72,12 +78,17 @@ class TransactionsController < ApplicationController
   # DELETE /transactions/1
   # DELETE /transactions/1.xml
   def destroy
-    @transaction = Transaction.find(params[:id])
+    @transaction = @activity.transactions.find(params[:id])
     @transaction.destroy
 
     respond_to do |format|
-      format.html { redirect_to(transactions_url) }
+      format.html { redirect_to(activity_transactions_path(@activity)) }
       format.xml  { head :ok }
     end
+  end
+
+private
+  def get_activity
+    @activity = Activity.find(params[:activity_id])
   end
 end
