@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110612233633) do
+ActiveRecord::Schema.define(:version => 20110613205942) do
 
   create_table "activities", :force => true do |t|
     t.string   "package_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20110612233633) do
     t.string   "legacy_data_iati_equivalent"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "activity_website"
   end
 
   create_table "packages", :force => true do |t|

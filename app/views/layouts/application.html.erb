@@ -4,12 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>IATI Data: <%= controller.controller_name + " &raquo; " + controller.action_name %></title>
+  <title>IATI Data: <%= controller.controller_name.capitalize + " &raquo; " + controller.action_name.capitalize %></title>
 <%= render :partial => '/navigation' %>
   <%= stylesheet_link_tag 'scaffold' %>
+
 </head>
 <body>
-
+<h1 class="title">IATI Data</h1>
 <p style="color: green"><%= notice %></p>
 
 <%= yield %>

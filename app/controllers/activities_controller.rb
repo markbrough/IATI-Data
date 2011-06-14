@@ -5,17 +5,19 @@ class ActivitiesController < ApplicationController
 
     @limit = 10.to_f
     if params[:page]
-      page = params[:page]
-      page = page.to_f
-      page = page -1
+      @page = params[:page]
+      @page = @page.to_f
+      @page = @page -1
     else
-      page = 0
+      @page = 0
     end
-    pagemultiplier = @limit * page
+    pagemultiplier = @limit * @page
     @conditions = {}
-    @conditions[:hierarchy] = '1'
+    @conditions[:hierarchy] = '1' unless !(params[:implementing_org].blank? and params[:recipient_country].blank? and params[:iati_identifier].blank? and params[:recipient_region].blank?)
     @conditions[:implementing_org] = params[:implementing_org] unless params[:implementing_org].blank?
     @conditions[:recipient_country] = params[:recipient_country] unless params[:recipient_country].blank?
+    @conditions[:recipient_region] = params[:recipient_region] unless params[:recipient_region].blank?
+    @conditions[:iati_identifier] = params[:iati_identifier] unless params[:iati_identifier].blank?
     if @conditions[:recipient_country]
 	@conditions.delete(:hierarchy)
     end

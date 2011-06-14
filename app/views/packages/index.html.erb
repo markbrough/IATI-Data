@@ -1,4 +1,4 @@
-<h1>Listing packages</h1>
+<h1>Listing Packages</h1>
 <table>
   <tr>
 <!--    <th>Packageid</th>-->
@@ -9,7 +9,7 @@
     <th>Activity count</th>
     <th>Country</th>
     <th>Donors country</th>
-    <th>Resources format</th>
+    <th>Format</th>
 <!--    <th>Ckan url</th>
     <th>Download Url</th>-->
     <th>Retrieve</th>
@@ -29,7 +29,7 @@
 <!--    <td><%=h package.resources_url %></td>
     <td><%=h package.ckan_url %></td>-->
 <% if package.retrieved == 1 %>
-    <td>Retrieved on <%=h package.retrieved_date %></td>
+    <td>Retrieved <%=h time_ago_in_words(package.retrieved_date) %> ago</td>
 <% else %>
     <td><%= link_to 'Get Package', :controller=> :iatiregistry, :action=> :getPackage, :id=> package.id %></td>
 <% end %>

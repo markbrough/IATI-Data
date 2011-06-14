@@ -1,141 +1,101 @@
-<h1>Listing <%= @limit.to_i %> activities</h1>
+
+<h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %></h1>
 <%= @messages %>
 <table>
   <tr>
-<!--    <th>Package</th>
-    <th>Activity lang</th>
-    <th>Default currency</th>
-    <th>Hierarchy</th>
-    <th>Last updated</th>
-    <th>Reporting org</th>
-    <th>Reporting org ref</th>
-    <th>Reporting org type</th> -->
-    <th>Funding org</th>
-<!--    <th>Funding org ref</th>
-    <th>Funding org type</th>-->
-    <th>Extending org</th>
-<!--    <th>Extending org ref</th>
-    <th>Extending org type</th>-->
-    <th>Implementing org</th>
-<!--    <th>Implementing org ref</th>
-    <th>Implementing org type</th>-->
-    <th>Recipient region</th>
-<!--    <th>Recipient region code</th>-->
-    <th>Recipient country</th>
-<!--    <th>Recipient country code</th>-->
-    <th>Collaboration type</th>
-<!--    <th>Collaboration type code</th>-->
-    <th>Default flow type</th>
-<!--    <th>Default flow type code</th>-->
-    <th>Default aid type</th>
-<!--    <th>Default aid type code</th>-->
-    <th>Default finance type</th>
-<!--    <th>Default finance type code</th>-->
-    <th>Iati identifier</th>
     <th>Title</th>
+    <th>Location</th>
+    <th>Funder</th>
+    <th>Implementer</th>
 <!--    <th>Description</th>-->
-    <th>Date start actual</th>
-    <th>Date start planned</th>
-    <th>Date end actual</th>
-    <th>Date end planned</th>
-<!--   <th>Status code</th>-->
+    <th>Date</th>
     <th>Status</th>
-<!--    <th>Contact organisation</th>
-    <th>Contact telephone</th>
-    <th>Contact email</th>
-    <th>Contact mailing address</th>-->
-    <th>Default tied status</th>
-<!--    <th>Default tied status code</th>
-    <th>Legacy data name</th>
-    <th>Legacy data value</th>
-    <th>Legacy data iati equivalent</th>-->
   </tr>
 
 <% @activities.each do |activity| %>
   <tr<% if @conditions[:hierarchy] %> class="hierarchy1"<% end %>>
-<!--    <td><%=h activity.package_id %></td>
-    <td><%=h activity.activity_lang %></td>
-    <td><%=h activity.default_currency %></td>
-    <td><%=h activity.hierarchy %></td>
-    <td><%=h activity.last_updated %></td>
-    <td><%=h activity.reporting_org %></td>
-    <td><%=h activity.reporting_org_ref %></td>
-    <td><%=h activity.reporting_org_type %></td>-->
-    <td><%=h activity.funding_org %></td>
-<!--    <td><%=h activity.funding_org_ref %></td>
-    <td><%=h activity.funding_org_type %></td>-->
-    <td><%=h activity.extending_org %></td>
-<!--    <td><%=h activity.extending_org_ref %></td>
-    <td><%=h activity.extending_org_type %></td>-->
-    <td><%=h activity.implementing_org %></td>
-<!--    <td><%=h activity.implementing_org_ref %></td>
-    <td><%=h activity.implementing_org_type %></td>-->
-    <td><%=h activity.recipient_region %></td>
-<!--    <td><%=h activity.recipient_region_code %></td>-->
-    <td><%=h activity.recipient_country %></td>
-<!--    <td><%=h activity.recipient_country_code %></td>-->
-    <td><%=h activity.collaboration_type %></td>
-<!--    <td><%=h activity.collaboration_type_code %></td>-->
-    <td><%=h activity.default_flow_type %></td>
-<!--    <td><%=h activity.default_flow_type_code %></td>-->
-    <td><%=h activity.default_aid_type %></td>
-<!--    <td><%=h activity.default_aid_type_code %></td>-->
-    <td><%=h activity.default_finance_type %></td>
-<!--    <td><%=h activity.default_finance_type_code %></td>-->
-    <td><%=h activity.iati_identifier %></td>
-    <td><%=h activity.title %></td>
-<!--    <td><%=h activity.description %></td>-->
-    <td><%=h activity.date_start_actual %></td>
-    <td><%=h activity.date_start_planned %></td>
-    <td><%=h activity.date_end_actual %></td>
-    <td><%=h activity.date_end_planned %></td>
-<!--    <td><%=h activity.status_code %></td>-->
-    <td><%=h activity.status %></td>
-<!--    <td><%=h activity.contact_organisation %></td>
-    <td><%=h activity.contact_telephone %></td>
-    <td><%=h activity.contact_email %></td>
-    <td><%=h activity.contact_mailing_address %></td>-->
-    <td><%=h activity.default_tied_status %></td>
-<!--    <td><%=h activity.default_tied_status_code %></td>
-    <td><%=h activity.legacy_data_name %></td>
-    <td><%=h activity.legacy_data_value %></td>
-    <td><%=h activity.legacy_data_iati_equivalent %></td>-->
-    <td><%= link_to 'Show', activity %></td>
+    <td><span class="activity title"><%=h link_to activity.title, activity %></span><br /><span class="activity description"><%=h activity.description %></span></td>
+    <td><%=h activity.recipient_region %> <%=h activity.recipient_country %></td>
+    <td><%=h activity.extending_org %><br />(<%=h activity.funding_org %>)</td>
+    <td><%=h link_to activity.implementing_org, :implementing_org => activity.implementing_org %></td>
+	<% if (activity.date_start_actual > DateTime.now) 
+	# if the actual start date is after today, then say the planned start date
+	%>
+	    <td><%=h activity.date_start_planned %> <i>(Planned)</i> - 
+	<%
+	# if the activity has already started, then say the actual start date
+	 else %>
+	    <td><%=h activity.date_start_actual %> - 
+	<% end %>
+	<%
+	# if the actual end date is later than now, then say the planned end date
+	 if (activity.date_end_actual > DateTime.now) %>
+	    <%=h activity.date_end_planned %> <i>(Planned)</i></td>
+	<% else %>
+	    <%=h activity.date_end_actual %></td>
+	<% end %>
+    <td><%=h activity.status %></td><!--
     <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-    <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>-->
   </tr>
 
 <%
-    @sub_conditions = @conditions
-    if @conditions[:hierarchy]
-	    @sub_conditions[:hierarchy] = '2'
-	    @sub_activities = Activity.find(:all, :conditions=> @sub_conditions)
+    @policy_markers = PolicyMarker.find(:all)
+    @ra_conditions = {}
+    @ra_conditions[:activity_id] = activity.id
+    @rel_activities = RelatedActivity.find(:all, :conditions=>@ra_conditions)
+	    @sub_conditions = {}
+	    @rel_activities.each do |ra| 
+		@sub_conditions[:iati_identifier] = ra.ref
+	  	    @sub_activities = Activity.find(:all, :conditions=> @sub_conditions)
+				@sub_activities.each do |subactivity| 
+					@pma_conditions = {}
+					@pma_conditions[:activity_id] = subactivity.id
+					@pma_conditions[:significance] = '1'
+					@policy_markers_activity = PolicyMarkersActivity.find(:all, :conditions=>@pma_conditions)
+					%>
+			<tr class="hierarchy2">
+			    <td><%=h link_to subactivity.title, subactivity %><% 
+				if @policy_markers_activity %>
+				<br />
+				<% end 
+				@policy_markers_activity.each do |thispolicymarker|
+					@policy_markers.each do |policymarker|
+						if policymarker.id == thispolicymarker.policy_marker_id %>
+							<span class="policy_marker"><%= link_to policymarker.text, policymarker %></span>
+						<% end
+					end
+				 end
 
-			@sub_activities.each do |subactivity| %>
-		<tr class="hierarchy2">
-		    <td><%=h subactivity.funding_org %></td>
-		    <td><%=h subactivity.extending_org %></td>
-		    <td><%=h subactivity.implementing_org %></td>
-		    <td><%=h subactivity.recipient_region %></td>
-		    <td><%=h subactivity.recipient_country %></td>
-		    <td><%=h subactivity.collaboration_type %></td>
-		    <td><%=h subactivity.default_flow_type %></td>
-		    <td><%=h subactivity.default_aid_type %></td>
-		    <td><%=h subactivity.default_finance_type %></td>
-		    <td><%=h subactivity.iati_identifier %></td>
-		    <td><%=h subactivity.title %></td>
-		    <td><%=h subactivity.date_start_actual %></td>
-		    <td><%=h subactivity.date_start_planned %></td>
-		    <td><%=h subactivity.date_end_actual %></td>
-		    <td><%=h subactivity.date_end_planned %></td>
-		    <td><%=h subactivity.status %></td>
-		    <td><%=h subactivity.default_tied_status %></td>
-		    <td><%= link_to 'Show', subactivity %></td>
-		    <td><%= link_to 'Edit', edit_activity_path(subactivity) %></td>
-		    <td><%= link_to 'Destroy', subactivity, :confirm => 'Are you sure?', :method => :delete %></td>
-		</tr>
-		<%	end
+				%></td>
+			    <td><%=h link_to subactivity.recipient_region, :recipient_region => subactivity.recipient_region if subactivity.recipient_region %> <%=h link_to subactivity.recipient_country, :recipient_country => subactivity.recipient_country if subactivity.recipient_country %></td>
+			    <td><%=h subactivity.extending_org %><br />(<%=h subactivity.funding_org %>)</td>
+			    <td><%=h link_to subactivity.implementing_org, :implementing_org => subactivity.implementing_org %></td>
+
+
+			<% if (subactivity.date_start_actual > DateTime.now) 
+			# if the actual start date is after today, then say the planned start date
+			%>
+			    <td><%=h subactivity.date_start_planned %> <i>(Planned)</i> - 
+			<%
+			# if the activity has already started, then say the actual start date
+			 else %>
+			    <td><%=h subactivity.date_start_actual %> - 
+			<% end %>
+			<%
+			# if the actual end date is later than now, then say the planned end date
+			 if (subactivity.date_end_actual > DateTime.now) %>
+			    <%=h subactivity.date_end_planned %> <i>(Planned)</i></td>
+			<% else %>
+			    <%=h subactivity.date_end_actual %></td>
+			<% end %>
+			    <td><%=h subactivity.status %></td><!--
+			    <td><%= link_to 'Edit', edit_activity_path(subactivity) %></td>
+			    <td><%= link_to 'Destroy', subactivity, :confirm => 'Are you sure?', :method => :delete %></td>-->
+			</tr>
+			<%	end
 	end
+	
  end %>
 </table>
 

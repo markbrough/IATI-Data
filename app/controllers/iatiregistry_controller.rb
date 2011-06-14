@@ -22,9 +22,13 @@ class IatiregistryController < ApplicationController
 
 	# parse XML tree elements
 	@doc = REXML::Document.new(xml_data)
+	
+	@thetext += "<p>There are no activities in this package.</p>" unless @doc.elements['iati-activities']
 	@doc.elements.each('iati-activities') do |data|
 		version = data.attributes["version"]
 		generated_datetime = data.attributes["generated-datetime"]
+		
+		
 		data.elements.each('iati-activity') do |activity| 
 			a={}
 			a[:package_id] = @package.packageid
@@ -123,6 +127,7 @@ class IatiregistryController < ApplicationController
 
 			a[:status_code] = activity.elements["activity-status"].attributes["code"] if activity.elements["activity-status"].attributes["code"]
 			a[:status] = activity.elements["activity-status"].text if activity.elements["activity-status"]
+			a[:activity_website] = activity.elements["activity-website"].text if activity.elements["activity-website"]
 			
 			a[:contact_organisation] =''
 			a[:contact_telephone] = ''
@@ -147,9 +152,9 @@ class IatiregistryController < ApplicationController
 			@activity = Activity.new(a)
 
 			  if @activity.save
-				@thetext += "Saved package." + @activity.id.to_s
+				@thetext += "<p>Saved activity " + @activity.title + ".</p>"
 			  else
-				@thetext += "Couldn't save package."
+				@thetext += "<p>Couldn't save activity <b>" + @activity.title + "</b>.</p>"
 			  end
 
 			transactions = []
@@ -191,9 +196,9 @@ class IatiregistryController < ApplicationController
 				@transaction = Transaction.new(tr)
 
 				  if @transaction.save
-					@thetext += "Saved transaction." + @transaction.id.to_s
+
 				  else
-					@thetext += "Couldn't save transaction."
+					@thetext += "<p>Couldn't save transaction in activity <b>" + @activity.title + "</b></p>"
 				  end
 			end
 			sectors.each do |sr|
@@ -209,9 +214,8 @@ class IatiregistryController < ApplicationController
 				@sector = Sector.new(sr)
 
 				  if @sector.save
-					@thetext += "Saved sector." + @sector.id.to_s
 				  else
-					@thetext += "Couldn't save sector."
+					@thetext += "<p>Couldn't save sector in activity <b>" + @activity.title + "</b>.</p>"
 				  end
 				sector_activities[:sector_id] = @sector.id.to_s
 				end
@@ -221,9 +225,8 @@ class IatiregistryController < ApplicationController
 				@sector_activities = SectorsActivity.new(sector_activities)
 
 				  if @sector_activities.save
-					@thetext += "Saved sector." + @sector_activities.id.to_s
 				  else
-					@thetext += "Couldn't save sector."
+					@thetext += "<p>Couldn't save sector in activity <b>" + @activity.title + "</b>.</p>"
 				  end		
 			end
 			policy_markers.each do |pom|
@@ -240,30 +243,29 @@ class IatiregistryController < ApplicationController
 				@pm = PolicyMarker.new(pom)
 
 				  if @pm.save
-					@thetext += "Saved policy marker." + @pm.id.to_s
 				  else
-					@thetext += "Couldn't save policy marker."
+					@thetext += "<p>Couldn't save policy marker for activity <b>" + @activity.title + "</b>.</p>"
 				  end
 				policy_markers_activities[:policy_marker_id] = @pm.id.to_s
 				end
 
-				
-				policy_markers_activities[:activity_id] = @activity.id.to_s
-				@pma = PolicyMarkersActivity.new(policy_markers_activities)
+				if policy_markers_activities[:significance] == '1'
+					policy_markers_activities[:activity_id] = @activity.id.to_s
+					@pma = PolicyMarkersActivity.new(policy_markers_activities)
+					# only add relation if significance == '1'
 
-				  if @pma.save
-					@thetext += "Saved Policy Marker-Activity." + @pma.id.to_s
-				  else
-					@thetext += "Couldn't save Policy Marker-Activity."
-				  end		
+					  if @pma.save
+					  else
+						@thetext += "<p>Couldn't save Policy Marker-Activity relation for activity <b>" + @activity.title + "</b>.</p>"
+					  end
+				end
 			end
 			related_activity.each do |ra|
 				ra[:activity_id] = @activity.id.to_s
 				@ra = RelatedActivity.new(ra)
 				if @ra.save
-					@thetext += "Added activity relation " + @ra.id.to_s
 				else
-					@thetext += "Couldn't add activity relation " + @ra.id.to_s
+					@thetext += "<p>Couldn't add activity relation for activity <b>" + @activity.title + "</b>.</p>"
 				end
 			end
 
@@ -281,8 +283,14 @@ class IatiregistryController < ApplicationController
     result = Net::HTTP.get(URI(url))
     packages = ActiveSupport::JSON.decode(result)
     @showpackages = ''
-    @max = 5
+    if params[:max]
+        @max = params[:max].to_i
+    else
+    	@max = 5
+    end
     @count = 0
+    @catch_errors = 0
+    @package_count = 0
     #packages = packages.first(1)
     # check if package already has been downloaded
     packages.each do |x|
@@ -337,11 +345,22 @@ class IatiregistryController < ApplicationController
 
 		  if @package.save
 			@showpackages += "<font color=\"green\">Saved package.</font>"
+			@package_count = @package_count +1
 		  else
 			@showpackages += "<font color=\"red\">Couldn't save package.</font>"
+			@catcherrors = @catch_errors +1
 		  end
 	    end
         end
     end
+ # finished getting each package
+	if @catch_errors = 0
+	@msg = @template.pluralize(@package_count, 'more package')
+		respond_to do |format|
+			format.html { redirect_to(packages_url, :notice => 'Found ' + @msg + '.') }
+			format.xml  { head :ok }
+		end
+	end
+		
   end
 end

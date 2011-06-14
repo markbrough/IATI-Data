@@ -1,10 +1,11 @@
-<h1>Listing sectors</h1>
+<h1>Sectors</h1>
 
 <table>
   <tr>
-    <th>Text</th>
+    <th>Sector</th>
     <th>Vocab</th>
     <th>Code</th>
+    <th>Show Activities</th>
   </tr>
 
 <% @sectors.each do |sector| %>
@@ -18,8 +19,8 @@ sa_conditions[:sector_id] = sector.id
 @sector_activities = SectorsActivity.find(:all, :conditions => sa_conditions) %>
 <td><%= link_to @sector_activities.count.to_s + ' activities', :controller=>:activities, :sector => sector.id.to_s  %></td>
     <td><%= link_to 'Show', sector %></td>
-    <td><%= link_to 'Edit', edit_sector_path(sector) %></td>
-    <td><%= link_to 'Destroy', sector, :confirm => 'Are you sure?', :method => :delete %></td>
+<!--    <td><%= link_to 'Edit', edit_sector_path(sector) %></td>
+    <td><%= link_to 'Destroy', sector, :confirm => 'Are you sure?', :method => :delete %></td>-->
   </tr>
 <% end %>
 </table>
