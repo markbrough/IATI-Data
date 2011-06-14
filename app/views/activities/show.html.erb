@@ -12,7 +12,7 @@
 <% end %>
 
 <% if @activity.transactions %>
-  <h2><b><%= link_to pluralize(@activity.transactions.count, 'Transaction'), activity_transactions_url(@activity) %></h2>
+  <h2><b><%= link_to pluralize(@activity.transactions.count, 'Transaction'), activity_transactions_url(@activity) %></b></h2>
   <%  @activity.transactions.each do |t| %>
     <%= @activity.default_currency if @activity.default_currency %> <%= t.value if t.value %> (<%= t.transaction_type if t.transaction_type %><%= ", " + t.transaction_date if t.transaction_date %>)
   <br />
