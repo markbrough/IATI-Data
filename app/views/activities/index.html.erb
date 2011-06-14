@@ -100,8 +100,8 @@
 			 	 @c_total = 0.to_f
 				 @d_total = 0.to_f
 				 @transactions.each do |t| 
-					@c_total += t.value.to_f if t.transaction_type_code = 'C'
-					@d_total += t.value.to_f if t.transaction_type_code = 'D'
+					@c_total += t.value.to_f if t.transaction_type_code == 'C'
+					@d_total += t.value.to_f if t.transaction_type_code == 'D'
 				 end
 				 %>
 				 <p><b>Commitments:</b> <%= @c_total.to_i.to_s %></p>
