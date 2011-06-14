@@ -321,7 +321,7 @@ class IatiregistryController < ApplicationController
 		  newpackage[:donors_type] = package["extras"]["donors_type"][0] if package["extras"]["donors_type"][0]
 		  newpackage[:activity_count] = package["extras"]["activity_count"] if package["extras"]["activity_count"]
 		  newpackage[:country] = package["extras"]["country"] if package["extras"]["country"]
-		  newpackage[:donors_country] = package["extras"]["donors_country"][0] if package["extras"]["donors_country"][0]
+		  newpackage[:donors_country] = package["extras"]["donors_country"][0] if package["extras"]["donors_country"]
 		  newpackage[:activity_period_to] = package["extras"]["activity_period-to"] if package["extras"]["activity_period-to"]
 		  newpackage[:revisionid] = package["revision_id"] if package["revision_id"]
 		  newpackage.delete("revision_id")
