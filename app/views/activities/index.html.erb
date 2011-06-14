@@ -30,7 +30,7 @@
     <td><span class="activity title"><%=h link_to activity.title, activity %></span><br /><span class="activity description"><%=h activity.description %></span></td>
 			    <td><%=h link_to activity.recipient_region, :recipient_region => activity.recipient_region if activity.recipient_region %> <%=h link_to activity.recipient_country, :recipient_country => activity.recipient_country if activity.recipient_country %></td>
     <td><%=h activity.extending_org %><br />(<%=h activity.funding_org %>)</td>
-    <td><%=h link_to activity.implementing_org, :implementing_org => activity.implementing_org %></td>
+    <td><%=h (link_to activity.implementing_org, :implementing_org => activity.implementing_org) if activity.implementing_org %></td>
 	<% if (activity.date_start_actual > DateTime.now) and activity.date_start_actual
 	# if the actual start date is after today, then say the planned start date
 	%>
