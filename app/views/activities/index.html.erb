@@ -86,7 +86,7 @@
 			    <td><%=h link_to subactivity.implementing_org, :implementing_org => subactivity.implementing_org %></td>
 
 
-			<% if (subactivity.date_start_actual > DateTime.now) 
+			<% if (subactivity.date_start_actual > DateTime.now if subactivity.date_start_actual)
 			# if the actual start date is after today, then say the planned start date
 			%>
 			    <td><%=h subactivity.date_start_planned if subactivity.date_start_planned %> <i>(Planned)</i> - 
@@ -97,7 +97,7 @@
 			<% end %>
 			<%
 			# if the actual end date is later than now, then say the planned end date
-			 if (subactivity.date_end_actual > DateTime.now) %>
+			 if (subactivity.date_end_actual > DateTime.now if subactivity.date_end_actual) %>
 			    <%=h subactivity.date_end_planned if subactivity.date_end_planned %> <i>(Planned)</i></td>
 			<% else %>
 			    <%=h subactivity.date_end_actual if subactivity.date_end_actual %></td>
