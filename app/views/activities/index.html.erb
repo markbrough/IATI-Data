@@ -102,18 +102,16 @@
 			<% end %>
 			    <td><%=h subactivity.status %></td>
 			    <td><%
-				 @transaction_conditions = {}
-				 @transaction_conditions[:activity_id] = subactivity.id
-				 @transactions = Transaction.find(:all, :conditions=>@transaction_conditions)
 			 	 @c_total = 0.to_f
 				 @d_total = 0.to_f
-				 @transactions.each do |t| 
+				 subactivity.transactions.each do |t|
 					@c_total += t.value.to_f if t.transaction_type_code == 'C'
 					@d_total += t.value.to_f if t.transaction_type_code == 'D'
 				 end
 				 %>
 				 <b>Commitments:</b> <%= (subactivity.default_currency if subactivity.default_currency) + " " + number_with_delimiter(@c_total.to_i, :delimiter=> ',') %><br />
 				 <b>Disbursements:</b> <%= (subactivity.default_currency if subactivity.default_currency) + " " + number_with_delimiter(@d_total.to_i, :delimiter=>',') %>
+				<br /><%= link_to pluralize(subactivity.transactions.count, 'Transaction'), activity_transactions_url(subactivity) if subactivity.transactions %>
 				</td>
 
 				<!--

@@ -1,11 +1,24 @@
 <h1><%=h @activity.title %></h1>
   <%=h @activity.description %>
 <p>
-  <b>Policy Markers:</b>
+  <b>Policy Markers:</b><br />
 <% @policymarkers.each do |pm| %>
-  <%= pm.text + ", " %>
+  <span class="policy_marker"><%= link_to pm.text, pm %></span>
+<% end %>
+</p>
+<p><b>Sectors:</b><br />
+<% @sectors.each do |s| %>
+  <span class="sector"><%= link_to s.text, s %></span>
 <% end %>
 
+<% if @activity.transactions %>
+  <h2><b><%= link_to pluralize(@activity.transactions.count, 'Transaction'), activity_transactions_url(@activity) %></h2>
+  <%  @activity.transactions.each do |t| %>
+    <%= @activity.default_currency if @activity.default_currency %> <%= t.value if t.value %> (<%= t.transaction_type if t.transaction_type %><%= ", " + t.transaction_date if t.transaction_date %>)
+  <br />
+  <%  end %>
+<% end %>
+<hr />	
 <p>
   <b>Package:</b>
   <%=h @activity.package_id %>
@@ -18,15 +31,14 @@
 <br />
   <b>Reporting org:</b>
   <%=h @activity.reporting_org %> (Ref: <%=h @activity.reporting_org_ref %>, Type: <%=h @activity.reporting_org_type %>)
+<br />
+  <b>Hierarchy:</b>
+  <%=h @activity.hierarchy %>
+</p>
 
 <p>
   <b>Default currency:</b>
   <%=h @activity.default_currency %>
-</p>
-
-<p>
-  <b>Hierarchy:</b>
-  <%=h @activity.hierarchy %>
 </p>
 
 <p>
@@ -36,106 +48,47 @@
 
 <p>
   <b>Extending org:</b>
-  <%=h @activity.extending_org %>
-</p>
-
-<p>
-  <b>Extending org ref:</b>
-  <%=h @activity.extending_org_ref %>
-</p>
-
-<p>
-  <b>Extending org type:</b>
-  <%=h @activity.extending_org_type %>
+  <%=h @activity.extending_org %> (Ref: <%=h @activity.extending_org_ref %>, Type: <%=h @activity.extending_org_type %>)
 </p>
 
 <p>
   <b>Implementing org:</b>
-  <%=h @activity.implementing_org %>
-</p>
-
-<p>
-  <b>Implementing org ref:</b>
-  <%=h @activity.implementing_org_ref %>
-</p>
-
-<p>
-  <b>Implementing org type:</b>
-  <%=h @activity.implementing_org_type %>
+  <%=h @activity.implementing_org %> (Ref: <%=h @activity.implementing_org_ref %>, Type: <%=h @activity.implementing_org_type %>)
 </p>
 
 <p>
   <b>Recipient region:</b>
-  <%=h @activity.recipient_region %>
-</p>
-
-<p>
-  <b>Recipient region code:</b>
-  <%=h @activity.recipient_region_code %>
+  <%=h @activity.recipient_region %> (<%=h @activity.recipient_region_code %>)
 </p>
 
 <p>
   <b>Recipient country:</b>
-  <%=h @activity.recipient_country %>
-</p>
-
-<p>
-  <b>Recipient country code:</b>
-  <%=h @activity.recipient_country_code %>
+  <%=h @activity.recipient_country %> (<%=h @activity.recipient_country_code %>)
 </p>
 
 <p>
   <b>Collaboration type:</b>
-  <%=h @activity.collaboration_type %>
-</p>
-
-<p>
-  <b>Collaboration type code:</b>
-  <%=h @activity.collaboration_type_code %>
+  <%=h @activity.collaboration_type %> (Code: <%=h @activity.collaboration_type_code %>)
 </p>
 
 <p>
   <b>Default flow type:</b>
-  <%=h @activity.default_flow_type %>
-</p>
-
-<p>
-  <b>Default flow type code:</b>
-  <%=h @activity.default_flow_type_code %>
+  <%=h @activity.default_flow_type %> (Code: <%=h @activity.default_flow_type_code %>)
 </p>
 
 <p>
   <b>Default aid type:</b>
-  <%=h @activity.default_aid_type %>
-</p>
-
-<p>
-  <b>Default aid type code:</b>
-  <%=h @activity.default_aid_type_code %>
+  <%=h @activity.default_aid_type %> (Code: <%=h @activity.default_aid_type_code %>)
 </p>
 
 <p>
   <b>Default finance type:</b>
-  <%=h @activity.default_finance_type %>
-</p>
-
-<p>
-  <b>Default finance type code:</b>
-  <%=h @activity.default_finance_type_code %>
+  <%=h @activity.default_finance_type %> (Code: <%=h @activity.default_finance_type_code %>)
 </p>
 
 <p>
   <b>Iati identifier:</b>
   <%=h @activity.iati_identifier %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%=h @activity.title %>
-</p>
-
-<p>
-
 </p>
 
 <p>
@@ -159,43 +112,23 @@
 </p>
 
 <p>
-  <b>Status code:</b>
-  <%=h @activity.status_code %>
-</p>
-
-<p>
   <b>Status:</b>
-  <%=h @activity.status %>
+  <%=h @activity.status %> (Code: <%=h @activity.status_code %>)
 </p>
 
 <p>
-  <b>Contact organisation:</b>
-  <%=h @activity.contact_organisation %>
-</p>
-
-<p>
-  <b>Contact telephone:</b>
-  <%=h @activity.contact_telephone %>
-</p>
-
-<p>
-  <b>Contact email:</b>
+  <b>Contact Details:</b><br />
+  <%=h @activity.contact_organisation %><br />
+  <%=h @activity.contact_mailing_address %><br />
+  <b>Telephone:</b>
+  <%=h @activity.contact_telephone %><br />
+  <b>Email:</b>
   <%=h @activity.contact_email %>
 </p>
 
 <p>
-  <b>Contact mailing address:</b>
-  <%=h @activity.contact_mailing_address %>
-</p>
-
-<p>
   <b>Default tied status:</b>
-  <%=h @activity.default_tied_status %>
-</p>
-
-<p>
-  <b>Default tied status code:</b>
-  <%=h @activity.default_tied_status_code %>
+  <%=h @activity.default_tied_status %> (Code: <%=h @activity.default_tied_status_code %>)
 </p>
 
 <p>

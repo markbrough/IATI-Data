@@ -1,18 +1,13 @@
 <p>
-  <b>Text:</b>
-  <%=h @sector.text %>
-</p>
-
-<p>
-  <b>Vocab:</b>
-  <%=h @sector.vocab %>
-</p>
-
-<p>
+  <b>Sector Name:</b>
+  <%=h @sector.text %><br />
+  <b>Vocabulary:</b>
+  <%=h @sector.vocab %><br />
   <b>Code:</b>
-  <%=h @sector.code %>
+  <%=h @sector.code %><br />
+  <b>Activities:</b> 
+  <%= link_to pluralize(@sector.activities.count, "Activity"), :controller=> :activities, :sector => @sector.id %>
 </p>
-
 
 <%= link_to 'Edit', edit_sector_path(@sector) %> |
 <%= link_to 'Back', sectors_path %>

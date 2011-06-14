@@ -73,6 +73,7 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:id])
     @policymarkers = @activity.policy_markers
+    @sectors = @activity.sectors
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @activity }
