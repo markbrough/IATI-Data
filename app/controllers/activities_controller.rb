@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.xml
   def index
-    @numcountries = Activity.find(:all, :group=>'recipient_country').count
+    @numcountries = Activity.count(:group=>'recipient_country')
     @limit = 10.to_f
     if params[:page]
       @page = params[:page]
