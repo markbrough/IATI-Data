@@ -16,7 +16,7 @@
 <% @activities.each do |activity| %>
   <tr<% if @conditions[:hierarchy] %> class="hierarchy1"<% end %>>
     <td><span class="activity title"><%=h link_to activity.title, activity %></span><br /><span class="activity description"><%=h activity.description %></span></td>
-    <td><%=h activity.recipient_region %> <%=h activity.recipient_country %></td>
+			    <td><%=h link_to activity.recipient_region, :recipient_region => activity.recipient_region if activity.recipient_region %> <%=h link_to activity.recipient_country, :recipient_country => activity.recipient_country if activity.recipient_country %></td>
     <td><%=h activity.extending_org %><br />(<%=h activity.funding_org %>)</td>
     <td><%=h link_to activity.implementing_org, :implementing_org => activity.implementing_org %></td>
 	<% if (activity.date_start_actual > DateTime.now) and activity.date_start_actual
@@ -47,7 +47,8 @@
     @ra_conditions[:activity_id] = activity.id
     @rel_activities = RelatedActivity.find(:all, :conditions=>@ra_conditions)
 	    @sub_conditions = {}
-	    @rel_activities.each do |ra| 
+	    if @conditions[:hierarchy]
+	    @rel_activities.each do |ra|
 		@sub_conditions[:iati_identifier] = ra.ref
 	  	    @sub_activities = Activity.find(:all, :conditions=> @sub_conditions)
 				@sub_activities.each do |subactivity| 
@@ -114,6 +115,7 @@
 			</tr>
 			<%	end
 	end
+end
 	
  end %>
 </table>
