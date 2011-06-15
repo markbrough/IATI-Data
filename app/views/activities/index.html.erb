@@ -1,19 +1,29 @@
-
+<% if params[:page]
+	params.delete("page")
+end
+%>
 <h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %><% if (@numcountries != '' and @numregions != '') %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %><% end %>.</h1>
 <%= @messages %>
-<!--<div class="form_options">
-	<% #form_tag activities_path(, :method => 'get' do 
-%>
-	   <p>
-	      <label for="recipient_country">Recipient country:</label>
-	      <%= select_tag(:recipient_country,
-		 options_from_collection_for_select(@countries, :recipient_country, :recipient_country, 
-		:selected => params[:recipient_country]),
-		{:onchange => 'this.form.submit()'}) %>
-	   </p>
-	<% # end 
-%>
-</div>-->
+<% @counter = 0
+   if @conditions
+	@conditions.each do |condition|
+		unless condition[0].to_s == 'hierarchy'
+			if @counter == 0 
+				%>
+				<div class="form_options">Filters (click to remove): 
+				<% @counter = @counter +1
+			end
+ 
+			@nicecondition = condition[0].to_s
+			@nicevalue = condition[1].to_s
+	%>	<span class="form_option"><%= link_to "[x] " + 	@nicecondition + ": " + @nicevalue, params.except(condition[0]) %></span>
+		<%
+		end
+	 end
+end %>
+<% if @counter > 0 %>
+</div>
+<% end %>
 
 <table>
   <tr>
@@ -30,9 +40,9 @@
 <% @activities.each do |activity| %>
   <tr<% if @conditions[:hierarchy] %> class="hierarchy1"<% end %>>
     <td><span class="activity title"><%=h link_to activity.title, activity %></span><br /><span class="activity description"><%=h activity.description %></span></td>
-			    <td><%=h link_to activity.recipient_region, :recipient_region => activity.recipient_region if activity.recipient_region %> <%=h link_to activity.recipient_country, :recipient_country => activity.recipient_country if activity.recipient_country %></td>
+			    <td><%=h link_to activity.recipient_region, :params=>params, :recipient_region_code => activity.recipient_region_code if activity.recipient_region_code %> <%=h link_to activity.recipient_country, :params=>params, :recipient_country => activity.recipient_country if activity.recipient_country %></td>
     <td><%=h activity.extending_org %><br />(<%=h activity.funding_org %>)</td>
-    <td><%=h (link_to activity.implementing_org, :implementing_org => activity.implementing_org) if activity.implementing_org %></td>
+    <td><%=h (link_to activity.implementing_org, :params=>params, :implementing_org => activity.implementing_org) if activity.implementing_org %></td>
 	<% if (activity.date_start_actual > DateTime.now) and activity.date_start_actual
 	# if the actual start date is after today, then say the planned start date
 	%>
@@ -49,7 +59,7 @@
 	<% else %>
 	    <%=h activity.date_end_actual %></td>
 	<% end %>
-    <td><%=h activity.status %></td>
+    <td><%=h link_to activity.status, :params=>params, :status_code=>activity.status_code if activity.status %></td>
     <td><%
 	if activity.transactions.count >0
 	 	 @c_total = 0.to_f
@@ -115,7 +125,7 @@
 			<% else %>
 			    <%=h subactivity.date_end_actual if subactivity.date_end_actual %></td>
 			<% end %>
-			    <td><%=h subactivity.status %></td>
+			        <td><%=h link_to subactivity.status, :status_code=>subactivity.status_code if subactivity.status %></td>
 			    <td><%
 			 	 @c_total = 0.to_f
 				 @d_total = 0.to_f
@@ -142,9 +152,6 @@ end
 
 <br />
 <% if @pagination.count >0 
-if params[:page]
-	params.delete("page")
-end
 %>
 	Page: <% @pagination.each do |p| %>
 	<%= link_to p[:page].to_s, :params => params, :page => p[:page].to_s 

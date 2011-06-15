@@ -116,3 +116,20 @@ span.sector a, span.sector a:hover {
 	background-image: url("images/bg3.png");
 	background-repeat: repeat-x;
 }
+div.form_options {
+	margin-bottom:5px;
+}
+span.form_option {
+	background-color:white;
+	color:black;
+	border:1px solid black;
+	border-radius: 4px 4px 4px 4px;
+	padding: 0px 4px 0px 4px;
+	font-size:10px;
+	font-weight:bold;
+}
+span.form_option a, span.form_option a:hover {
+	color:black;
+	background-color:white;
+	text-decoration:none;
+}
