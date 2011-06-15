@@ -9,7 +9,7 @@
 <% @countries.each do |country| %>
 <% if country.recipient_country.to_s != '' %>
   <tr>
-    <td><%=h country.recipient_country %></td>
+    <td><%= link_to country.recipient_country, :controller=>:activities, :recipient_country_code=>country.recipient_country_code %></td>
   </tr>
 <% end %>
 <% end %>

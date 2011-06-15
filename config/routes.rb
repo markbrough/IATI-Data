@@ -16,6 +16,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :country
 
+  map.resources :organisation
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
