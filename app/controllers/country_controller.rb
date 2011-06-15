@@ -1,6 +1,6 @@
 class CountryController < ApplicationController
 	def index
-	    @countries = Activity.all(:select => 'distinct(recipient_country), recipient_country_code')
+	    @countries = Activity.all(:select => 'distinct(recipient_country_code), recipient_country')
 
 	    respond_to do |format|
 	      format.html # index.html.erb

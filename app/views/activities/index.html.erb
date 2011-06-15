@@ -40,7 +40,7 @@ end %>
 <% @activities.each do |activity| %>
   <tr<% if @conditions[:hierarchy] %> class="hierarchy1"<% end %>>
     <td><span class="activity title"><%=h link_to activity.title, activity %></span><br /><span class="activity description"><%=h activity.description %></span></td>
-			    <td><%=h link_to activity.recipient_region, :params=>params, :recipient_region_code => activity.recipient_region_code if activity.recipient_region_code %> <%=h link_to activity.recipient_country, :params=>params, :recipient_country => activity.recipient_country if activity.recipient_country %></td>
+			    <td><%=h link_to activity.recipient_region, :params=>params, :recipient_region_code => activity.recipient_region_code if activity.recipient_region_code %> <%=h link_to activity.recipient_country, :params=>params, :recipient_country_code => activity.recipient_country_code if activity.recipient_country_code %></td>
     <td><%=h activity.extending_org %><br />(<%=h activity.funding_org %>)</td>
     <td><%=h (link_to activity.implementing_org, :params=>params, :implementing_org => activity.implementing_org) if activity.implementing_org %></td>
 	<% if (activity.date_start_actual > DateTime.now) and activity.date_start_actual
