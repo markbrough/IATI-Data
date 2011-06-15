@@ -1,0 +1,2 @@
+module IsocodeHelper
+end

@@ -8,11 +8,35 @@
 <%= render :partial => '/navigation' %>
   <%= stylesheet_link_tag 'style' %>
 
+<style>
+#map_canvas {
+    height: 400px;
+    position: relative;
+    width: 1100px;
+}
+</style>
+   <script type="text/javascript">
+	//<![CDATA[	
+		var openaid = {};
+        openaid.afterLoadCallbacks = [];
+		
+    //]]>
+    </script>
+
 </head>
 <body>
+	<script type="text/javascript">
+		// <![CDATA[
+			// add classes to body to indicate JavaScript availabiliy
+			if (document.body.className == '') {
+				document.body.className = 'js';
+			} else {
+				document.body.className += ' js';
+			}
+		// ]]>
+	</script>
 <h1 class="title">IATI Data</h1>
 <p style="color: green"><%= notice %></p>
-
 <%= yield %>
 
 </body>

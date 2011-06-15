@@ -7,9 +7,21 @@
   </tr>
 
 <% @countries.each do |country| %>
-<% if country.recipient_country.to_s != '' %>
+<% if country.recipient_country_code.to_s != '' %>
   <tr>
-    <td><%= link_to country.recipient_country, :controller=>:activities, :recipient_country_code=>country.recipient_country_code %></td>
+	<% 
+	@conditions = {}
+	@limit = 1
+	@conditions[:recipient_country_code] = country.recipient_country_code
+	@activity = Activity.find(:all, 
+		:select=>'recipient_country_code, recipient_country',
+		:conditions=>@conditions, 
+		:limit=>@limit)
+	@activity_conditions = {}
+	@activity_conditions[:recipient_country_code] = country.recipient_country_code
+	@num_activities = Activity.count(:all, :conditions=>@activity_conditions)
+	%>
+	<td><%= @activity[0][:recipient_country].capitalize %></td><td><%= link_to(pluralize(@num_activities, 'Activity'), :controller => :activities, :recipient_country_code => @activity[0][:recipient_country_code]) %></td>	
   </tr>
 <% end %>
 <% end %>

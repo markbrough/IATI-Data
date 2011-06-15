@@ -18,6 +18,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :organisation
 
+  map.resources :isocode
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

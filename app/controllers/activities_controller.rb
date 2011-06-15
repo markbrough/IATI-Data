@@ -39,8 +39,8 @@ class ActivitiesController < ApplicationController
 		@conditions[:id] << sector.activity_id
 	end
     end
-      @numcountries = Activity.count(:recipient_country, :distinct=>true)
-      @numregions = Activity.count(:recipient_region, :distinct=>true)
+      @numcountries = Activity.count(:recipient_country_code, :distinct=>true)
+      @numregions = Activity.count(:recipient_region_code, :distinct=>true)
     if @conditions[:hierarchy] != '1'
       @numcountries = @numregions = ''
     end
