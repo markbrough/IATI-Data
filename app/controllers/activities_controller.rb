@@ -44,6 +44,7 @@ class ActivitiesController < ApplicationController
     if @conditions[:hierarchy] != '1'
       @numcountries = @numregions = ''
     end
+
     @countries = Activity.all(:select => 'distinct(recipient_country)')
     @countries.delete("")
     @activities = Activity.find(:all, :conditions=> @conditions, :limit => @limit, :offset=>pagemultiplier)

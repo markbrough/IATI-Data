@@ -79,8 +79,13 @@ tr.hierarchy2 td {
 }
 h1.title {
 	color:#365e93;
-	font-size:28px;	
-	border-bottom:3px solid #365e93;
+	font-size:28px;
+	margin-bottom:0px;
+}
+hr.title {
+	background-color:#365e93;
+	color:#365e93;
+	height:3px;
 }
 span.policy_marker {
 	background-color:green;
@@ -152,6 +157,7 @@ span.form_option a, span.form_option a:hover {
     padding:4px;
     text-align:center;
     margin-bottom:10px;
+    font-weight:bold;
 }
 #credits {
     background-color:#dddddd;
@@ -159,3 +165,4 @@ span.form_option a, span.form_option a:hover {
     margin-top:10px;
     margin-bottom:0;
 }
+
