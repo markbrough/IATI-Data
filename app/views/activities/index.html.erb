@@ -8,7 +8,7 @@ end
 # create values...
 
 @conditions_countries = {}
-@conditions_activity_map = @conditions
+@conditions_activity_map = @conditions.dup
 @conditions_activity_map.delete(:hierarchy)
 @countries = Activity.all(:select => 'distinct(recipient_country_code)', :conditions=>@conditions_activity_map)
 
