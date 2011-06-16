@@ -308,7 +308,8 @@ end %>}}};
 <% end %>
 <%= @messages %>
 <% @counter = 0
-   if @conditions : @conditions.each do |condition|
+   if @conditions
+	@conditions.each do |condition|
 		unless condition[0].to_s == 'hierarchy'
 			if @counter == 0 
 				%>
