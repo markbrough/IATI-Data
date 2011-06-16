@@ -80,7 +80,8 @@ end %>];
 	@conditions_countries_transactions[:activity_id] = []
 	
 	@thiscountry_activities.each do |tc|
-		@conditions_countries_transactions[:activity_id] << tc
+		@theid = tc.id
+		@conditions_countries_transactions[:activity_id] << @theid.to_i
 	end	
 	@thiscountry_value += Transaction.sum('value', :conditions=>@conditions_countries_transactions)
 
