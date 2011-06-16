@@ -83,8 +83,8 @@ end %>];
 		@theid = tc.id
 		@conditions_countries_transactions[:activity_id] << @theid.to_i
 	end	
-	@thiscountry_value += Transaction.sum(:value)
-
+#	@thiscountry_value += Transaction.all(:conditions=>@conditions_countries_transactions)
+	@thiscountry_value = '120000000'
 
 %><%
 
