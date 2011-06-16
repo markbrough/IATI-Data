@@ -5,16 +5,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>IATI Data: <%= controller.controller_name.capitalize + " &raquo; " + controller.action_name.capitalize %></title>
-<%= render :partial => '/navigation' %>
   <%= stylesheet_link_tag 'style' %>
-
-<style>
-#map_canvas {
-    height: 400px;
-    position: relative;
-    width: 1100px;
-}
-</style>
    <script type="text/javascript">
 	//<![CDATA[	
 		var openaid = {};
@@ -35,9 +26,14 @@
 			}
 		// ]]>
 	</script>
-<h1 class="title">IATI Data</h1>
-<p style="color: green"><%= notice %></p>
-<%= yield %>
+<div id="page-wrapper">
+<div id="beta">Still in very early development and likely to change substantially and frequently. Please do not rely on this data.</div>
 
+<%= render :partial => '/navigation' %>
+	<h1 class="title">IATI Data</h1>
+	<p style="color: green"><%= notice %></p>
+	<%= yield %>
+<div id="credits"><%= link_to 'Source code', 'https://github.com/markbrough/IATI-Data' %>. License: <%= link_to 'Affero GPL v3', 'http://www.gnu.org/licenses/agpl-3.0.html' %>. Thanks to DFID, the World Bank and the Hewlett Foundation for publishing to IATI.</div>
+</div>
 </body>
 </html>

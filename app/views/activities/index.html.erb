@@ -3,7 +3,7 @@
 end
 %>
 <h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %><% if (@numcountries != '' and @numregions != '') %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %><% end %>.</h1>
-<% if params[:show_map] == '1'
+<% if params[:hide_map] != '1'
 
 # create values...
 

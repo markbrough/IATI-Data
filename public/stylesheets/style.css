@@ -5,6 +5,7 @@ body, p, ol, ul, td {
   font-size:   13px;
   line-height: 18px;
   vertical-align:top;	
+  margin: 0 0 0 0;
 }
 
 pre {
@@ -132,4 +133,29 @@ span.form_option a, span.form_option a:hover {
 	color:black;
 	background-color:white;
 	text-decoration:none;
+}
+#page {
+	width:100%;
+}
+#page-wrapper {
+	width:1000px;
+	margin: 0 auto 0 auto;
+}
+#map_canvas {
+    height: 400px;
+    position: relative;
+    width: 100%;
+}
+#beta {
+    background-color:#ff0000;
+    color:#ffffff;
+    padding:4px;
+    text-align:center;
+    margin-bottom:10px;
+}
+#credits {
+    background-color:#dddddd;
+    padding:4px;
+    margin-top:10px;
+    margin-bottom:0;
 }
