@@ -83,11 +83,10 @@ end %>];
 		@theid = tc.id
 		@conditions_countries_transactions[:activity_id] << @theid.to_i
 	end	
-	@thiscountry_value += Transaction.sum(:value, :conditions=>@conditions_countries_transactions)
+	@thiscountry_value += Transaction.sum(:value)
 
 
 %><%
-#@thiscountry_activities_transactions = Transaction.sum('value', :conditions=> @thiscountry_activities_conditions)
 
 @isocodes.each do |isocode| 
 %><%= "," if @count_countries > 0 %>"<%= isocode.country %>":{"payment":<%= @thiscountry_value.to_s %>,"contributions":<%= @thiscountry_activities.count %>,"order":121}<% 
