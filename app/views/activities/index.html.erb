@@ -389,9 +389,9 @@ end %>
 				 end
 
 				%></td>
-			    <td><%=h link_to subactivity.recipient_region, :recipient_region_code => subactivity.recipient_region_code if subactivity.recipient_region_code %> <%=h link_to subactivity.recipient_country, :recipient_country_code => subactivity.recipient_country_code if subactivity.recipient_country_code %></td>
+			    <td><%=h link_to subactivity.recipient_region, :params=>params, :recipient_region_code => subactivity.recipient_region_code if subactivity.recipient_region_code %> <%=h link_to subactivity.recipient_country, :params=>params, :recipient_country_code => subactivity.recipient_country_code if subactivity.recipient_country_code %></td>
 			    <td><%=h subactivity.extending_org %><br />(<%=h subactivity.funding_org %>)</td>
-			    <td><%=h link_to subactivity.implementing_org, :implementing_org => subactivity.implementing_org %></td>
+			    <td><%=h link_to subactivity.implementing_org, :params=>params, :implementing_org => subactivity.implementing_org %></td>
 
 
 			<% if (subactivity.date_start_actual > DateTime.now if subactivity.date_start_actual)
@@ -410,7 +410,7 @@ end %>
 			<% else %>
 			    <%=h subactivity.date_end_actual if subactivity.date_end_actual %></td>
 			<% end %>
-			        <td><%=h link_to subactivity.status, :status_code=>subactivity.status_code if subactivity.status %></td>
+			        <td><%=h link_to subactivity.status, :params=>params,  :status_code=>subactivity.status_code if subactivity.status %></td>
 			    <td><%
 			 	 @c_total = 0.to_f
 				 @d_total = 0.to_f
