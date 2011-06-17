@@ -2,6 +2,9 @@
 
 This is an app to show aid information from the IATI Registry.
 
+License: Affero GPL v3.0 (http://www.gnu.org/licenses/agpl-3.0.html)
+
+
 == Lots of work needs doing
 
 This is a very early commit and I'm pretty new to Rails so my code is:

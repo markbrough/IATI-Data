@@ -165,4 +165,6 @@ span.form_option a, span.form_option a:hover {
     margin-top:10px;
     margin-bottom:0;
 }
-
+span #map-toggler {
+    float:right;
+}
