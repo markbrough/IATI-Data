@@ -6,9 +6,11 @@ end
 <h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %><% if (@numcountries != '' and @numregions != '') %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %><% end %>.</h1>
 <% if params[:hide_map] == '1'
  %>
-<span id="map_toggler"><%=link_to 'Show map', :controller=>:activities, :params=>params.except(:hide_map) %></span>
+<span class="map_toggler"><%=link_to 'Show map', :controller=>:activities, :params=>params.except(:hide_map) %></span>
+<div class="clearer"> </div>
 <% else %>
-<span id="map_toggler"><%=link_to 'Hide map', :controller=>:activities, :params=>params, :hide_map=>'1' %></span>
+<span class="map_toggler"><%=link_to 'Hide map', :controller=>:activities, :params=>params, :hide_map=>'1' %></span>
+<div class="clearer"> </div>
 <%
 
 # create values...
@@ -71,20 +73,19 @@ end %>];
 	%><%
 	@conditions_countries[:country] = country.recipient_country_code
 	@isocodes = Isocode.find(:all, :conditions=>@conditions_countries)
-@conditions_countries_codes={}
-@conditions_countries_codes[:recipient_country_code] = @conditions_countries[:country]
-@thiscountry_activities = Activity.all(:select=>'id', :conditions=>@conditions_countries_codes)
-@thiscountry_value = 0
-# each id
-	@conditions_countries_transactions={}
-	@conditions_countries_transactions[:activity_id] = []
-	
-	@thiscountry_activities.each do |tc|
-		@theid = tc.id
-		@conditions_countries_transactions[:activity_id] << @theid.to_i
-	end	
-#	@thiscountry_value += Transaction.all(:conditions=>@conditions_countries_transactions)
-	@thiscountry_value = '120000000'
+	@conditions_countries_codes=@conditions.dup
+	@conditions_countries_codes.delete(:hierarchy)
+	@conditions_countries_codes[:recipient_country_code] = @conditions_countries[:country]
+	@thiscountry_activities = Activity.all(:conditions=>@conditions_countries_codes)
+	@thiscountry_value = 0
+
+	#@thiscountry_value = @activities.transaction.sum(:value)
+	#@thiscountry_value = Transaction.find_by_activity_id(@activities.map(&:id)).find(:all)
+	#@thiscountry_value = @thiscountry_activities.transactions.sum(:value)
+
+@thiscountry_activities.each do |a|
+	@thiscountry_value = @thiscountry_value + a.transactions.sum(:value)
+end
 
 %><%
 

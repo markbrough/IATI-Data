@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110615221551) do
+ActiveRecord::Schema.define(:version => 20110617101723) do
 
   create_table "activities", :force => true do |t|
     t.string    "package_id"
@@ -158,31 +158,31 @@ ActiveRecord::Schema.define(:version => 20110615221551) do
   end
 
   create_table "transactions", :force => true do |t|
-    t.integer   "activity_id"
-    t.string    "value"
-    t.string    "value_date"
-    t.string    "value_currency"
-    t.string    "transaction_type"
-    t.string    "transaction_type_code"
-    t.string    "provider_org"
-    t.string    "provider_org_ref"
-    t.string    "provider_org_type"
-    t.string    "receiver_org"
-    t.string    "receiver_org_ref"
-    t.string    "receiver_org_type"
-    t.string    "description"
-    t.string    "transaction_date"
-    t.string    "transaction_date_iso"
-    t.string    "flow_type"
-    t.string    "flow_type_code"
-    t.string    "aid_type"
-    t.string    "aid_type_code"
-    t.string    "finance_type"
-    t.string    "finance_type_code"
-    t.string    "tied_status_code"
-    t.string    "disbursement_channel_code"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.integer  "activity_id"
+    t.float    "value"
+    t.string   "value_date"
+    t.string   "value_currency"
+    t.string   "transaction_type"
+    t.string   "transaction_type_code"
+    t.string   "provider_org"
+    t.string   "provider_org_ref"
+    t.string   "provider_org_type"
+    t.string   "receiver_org"
+    t.string   "receiver_org_ref"
+    t.string   "receiver_org_type"
+    t.string   "description"
+    t.string   "transaction_date"
+    t.string   "transaction_date_iso"
+    t.string   "flow_type"
+    t.string   "flow_type_code"
+    t.string   "aid_type"
+    t.string   "aid_type_code"
+    t.string   "finance_type"
+    t.string   "finance_type_code"
+    t.string   "tied_status_code"
+    t.string   "disbursement_channel_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
