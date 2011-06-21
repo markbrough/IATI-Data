@@ -173,3 +173,10 @@ span.map_toggler {
     clear:both;
     height:2px;
 }
+.filter a {
+    text-decoration: none;
+    background-color:#365e93;
+    color:#ffffff;
+    padding:0px 1px 0px 1px;
+    margin: 0px 2px 0px 2px;
+}

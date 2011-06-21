@@ -1,0 +1,15 @@
+<h1>Location: <%=h @countryregion.country_name %></h1>
+
+	<p><b>Country Code:</b> <%= @countryregion.dac_country_code %></p>
+	<p><b>ISO2:</b> <%= @countryregion.iso2 %></p>
+	<p><b>ISO3:</b> <%= @countryregion.iso3 %></p>
+	<p><b>Region Name:</b> <%= @countryregion.dac_region_name %></p>
+	<p><b>Region Code:</b> <%= @countryregion.dac_region_code %></p>
+	<p><b>Country/Region:</b> <%= @countryregion.item_type %></p>
+	<p><b>Latitude:</b> <%= @countryregion.latitude %></p>
+	<p><b>Longitude:</b> <%= @countryregion.longitude %></p>
+	
+
+<p><b>Activities:</b> <%= link_to pluralize(@countryregion.activities.count, 'Activity'), :controller=>:activities, :countryregion=>@countryregion.id %>.</p>
+
+<p><%= link_to 'Back', organisations_path %></p>

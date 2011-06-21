@@ -12,11 +12,11 @@ class ActivitiesController < ApplicationController
     end
     pagemultiplier = @limit * @page
     @conditions = {}
-    @conditions[:hierarchy] = '1' unless !(params[:implementing_org].blank? and params[:recipient_country_code].blank? and params[:iati_identifier].blank? and params[:recipient_region_code].blank? and params[:policy_marker].blank? and params[:sector].blank? and params[:status_code].blank?)
+    #@conditions[:hierarchy] = '0' unless !(params[:implementing_org].blank? and params[:recipient_country_code].blank? and params[:iati_identifier].blank? and params[:recipient_region_code].blank? and params[:policy_marker].blank? and params[:sector].blank? and params[:status_code].blank?)
+
     @conditions[:implementing_org] = params[:implementing_org] unless params[:implementing_org].blank?
     @conditions[:status_code] = params[:status_code] unless params[:status_code].blank?
-    @conditions[:recipient_country_code] = params[:recipient_country_code] unless params[:recipient_country_code].blank?
-    @conditions[:recipient_region_code] = params[:recipient_region_code] unless params[:recipient_region_code].blank?
+    @conditions[:countryregion_id] = params[:countryregion] unless params[:countryregion].blank?
     @conditions[:iati_identifier] = params[:iati_identifier] unless params[:iati_identifier].blank?
     if @conditions[:recipient_country]
 	@conditions.delete(:hierarchy)
@@ -28,6 +28,15 @@ class ActivitiesController < ApplicationController
       @conditions[:id] = []
 	@policymarker.each do |policymarker|
 		@conditions[:id] << policymarker.activity_id
+	end
+    end
+    if params[:organisations]
+      organisation_conditions = {}
+      organisation_conditions[:organisation_id] = params[:organisations]
+      @org=ActivitiesOrganisation.find(:all, :conditions=>organisation_conditions)
+      @conditions[:id] = []
+	@org.each do |org|
+		@conditions[:id] << org.activity_id
 	end
     end
     if params[:sector]
@@ -47,7 +56,9 @@ class ActivitiesController < ApplicationController
 
     @countries = Activity.all(:select => 'distinct(recipient_country)')
     @countries.delete("")
-    @activities = Activity.find(:all, :conditions=> @conditions, :limit => @limit, :offset=>pagemultiplier)
+    @activities = Activity.find(:all, :conditions=> @conditions, :limit => @limit, :offset=>pagemultiplier, :order=>'id DESC')
+
+
     # get total number of rows
     @totalrows = Activity.find(:all, :conditions=>@conditions).count.to_f
     @numpages = (@totalrows / @limit)

@@ -4,20 +4,20 @@
 end
 %>
 <h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %><% if (@numcountries != '' and @numregions != '') %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %><% end %>.</h1>
-<% if params[:hide_map] == '1'
+<% #if params[:show_map] != '1'
  %>
-<span class="map_toggler"><%=link_to 'Show map', :controller=>:activities, :params=>params.except(:hide_map) %></span>
-<div class="clearer"> </div>
-<% else %>
+<!--<span class="map_toggler"><%=link_to 'Show map', :controller=>:activities, :params=>params.except(:hide_map) %></span>
+<div class="clearer"> </div>-->
+<% if params[:show_map] == '1' %>
 <span class="map_toggler"><%=link_to 'Hide map', :controller=>:activities, :params=>params, :hide_map=>'1' %></span>
 <div class="clearer"> </div>
 <%
 
 # create values...
-
 @country_conditions = @conditions.dup
 @country_conditions = @country_conditions.delete('hierarchy') if @conditions[:hierarchy] == '1'
-@countries = Activity.all(:select => 'distinct(recipient_country_code)', :conditions=>@country_conditions)
+#@countries = Activity.all(:select => 'distinct(recipient_country_code)', :conditions=>@country_conditions)
+@countries = Countryregion.all(:limit=>2)
 
  %>
 <!-- Code for map from OpenAid.se (Google Maps, Raphael, and a custom function). Thanks! -->
@@ -39,13 +39,14 @@ position:absolute !important; right:5px !important; text-indent:-999em; top:4px;
 				openaid.map.geo_data = {};
 				openaid.map.geo_data = [<% @count_countries = 0
 @countries.each do |country|
-	@conditions_countries = {}
-	@conditions_countries[:country] = country.recipient_country_code
-	@isocodes = Isocode.find(:all, :conditions=>@conditions_countries)
+	#@conditions_countries = {}
+	#@conditions_countries[:country] = country.recipient_country_code
+	#@isocodes = Isocode.find(:all, :conditions=>@conditions_countries)
 
-@isocodes.each do |isocode| %><%= ", " if @count_countries > 0 %>{"location":{"lng":"<%= isocode.longitude %>","lat":"<%= isocode.latitude %>","bounds":null},"id":"<%= isocode.country %>","openaid_name":"<%= isocode.country %>","region":false}<% 
+#@isocodes.each do |isocode| 
+%><%= ", " if @count_countries > 0 %>{"location":{"lng":"<%= country.longitude %>","lat":"<%= country.latitude %>","bounds":null},"id":"<%= country.country_name %>","openaid_name":"<%= country.iso2 %>","region":false}<% 
 @count_countries = @count_countries +1
-end
+#end
 end %>]; 
 			//]]>
 		</script>
@@ -71,26 +72,29 @@ end %>];
 		openaid.year_data = {"2010":{"total_contributions":<%= @activities.count %>,"total":30695101485.0,"data":{<% @count_countries = 0
 @countries.each do |country|
 	%><%
-	@conditions_countries[:country] = country.recipient_country_code
-	@isocodes = Isocode.find(:all, :conditions=>@conditions_countries)
-	@conditions_countries_codes=@conditions.dup
-	@conditions_countries_codes.delete(:hierarchy)
-	@conditions_countries_codes[:recipient_country_code] = @conditions_countries[:country]
-	@thiscountry_activities = Activity.all(:conditions=>@conditions_countries_codes)
+#	@conditions_countries[:country] = country.recipient_country_code
+#	@isocodes = Isocode.find(:all, :conditions=>@conditions_countries)
+#	@conditions_countries_codes=@conditions.dup
+#	@conditions_countries_codes.delete(:hierarchy)
+#	@conditions_countries_codes = {}
+#	@conditions_countries_codes[:recipient_country_code] = @conditions_countries[:country]
+	# get only activity id
+#	@thiscountry_activities = Activity.all(:select=>'id', :conditions=>@conditions_countries_codes)
 	@thiscountry_value = 0
 
 	#@thiscountry_value = @activities.transaction.sum(:value)
 	#@thiscountry_value = Transaction.find_by_activity_id(@activities.map(&:id)).find(:all)
 	#@thiscountry_value = @thiscountry_activities.transactions.sum(:value)
 
-@thiscountry_activities.each do |a|
+country.activities.each do |a|
 	@thiscountry_value = @thiscountry_value + a.transactions.sum(:value)
 end
 
+
 %><%
 
-@isocodes.each do |isocode| 
-%><%= "," if @count_countries > 0 %>"<%= isocode.country %>":{"payment":<%= @thiscountry_value.to_s %>,"contributions":<%= @thiscountry_activities.count %>,"order":121}<% 
+@countries.each do |country| 
+%><%= "," if @count_countries > 0 %>"<%= country.country_name %>":{"payment":<%= @thiscountry_value.to_s %>,"contributions":<%= country.activities.count %>,"order":121}<% 
 @count_countries = @count_countries +1
 end
 end %>}}};
@@ -310,17 +314,22 @@ end %>}}};
 <%= @messages %>
 <% @counter = 0
    if @conditions
-	@conditions.each do |condition|
-		unless condition[0].to_s == 'hierarchy'
+	@params = params.each do |condition|
+		unless ((condition[0] == 'action') or (condition[0] == 'controller') or (condition[0] == 'hierarchy'))
 			if @counter == 0 
 				%>
 				<div class="form_options">Filters (click to remove): 
 				<% @counter = @counter +1
 			end
- 
-			@nicecondition = condition[0].to_s
-			@nicevalue = condition[1].to_s
-	%>	<span class="form_option"><%= link_to "[x] " + 	@nicecondition + ": " + @nicevalue, params.except(condition[0]) %></span>
+			
+ 			@condition = condition[0]
+			if @condition == ''
+			  
+			end
+			@nicecondition = @condition.to_s
+			@value = condition[1]
+			@nicevalue = @value.to_s
+	%>	<span class="form_option"><%= link_to "[x] " + 	@nicecondition + ": " + @nicevalue, :params=>params.except(@condition) %></span>
 		<%
 		end
 	 end
@@ -343,10 +352,14 @@ end %>
 <% @activities.each do |activity| %>
   <tr<% if @conditions[:hierarchy] %> class="hierarchy1"<% end %>>
     <td><span class="activity title"><%=h link_to activity.title, activity %></span><br /><span class="activity description"><%=h activity.description %></span></td>
-    <td><%=h link_to activity.recipient_region, :params=>params, :recipient_region_code => activity.recipient_region_code if activity.recipient_region_code %> <%=h link_to activity.recipient_country, :params=>params, :recipient_country_code => activity.recipient_country_code if activity.recipient_country_code %></td>
-    <td><%=h activity.extending_org %><br />(<%=h activity.funding_org %>)</td>
-    <td><%=h (link_to activity.implementing_org, :params=>params, :implementing_org => activity.implementing_org) if activity.implementing_org %></td>
-	<% if (activity.date_start_actual > DateTime.now) and activity.date_start_actual
+    <td><% if activity.countryregion %><%=h link_to activity.countryregion.country_name, countryregion_url(activity.countryregion.id) %><span class="filter"><%=h link_to '+', :params=>params, :countryregion=>activity.countryregion.id %></span><% end %></td>
+			    <td><% activity.extending_organisations.each do |z| %>
+<%= link_to z.name, organisation_url(z.id.to_s) %><span class="filter"><%=h link_to '+', :params=>params, :organisations=>z.id %></span>
+<% end %><br /><% if activity.funding_organisations %>(<% activity.funding_organisations.each do |z| %><%= link_to z.name, organisation_url(z.id.to_s) %><span class="filter"><%=h link_to '+', :params=>params, :organisations=>z.id %></span><% end %>)<% end %></td>
+			    <td><% activity.implementing_organisations.each do |z| %>
+<%= link_to z.name, organisation_url(z.id.to_s) %><span class="filter"><%=h link_to '+', :params=>params, :organisations=>z.id %></span>
+<% end %></td>
+	<% if ((activity.date_start_actual > DateTime.now) if activity.date_start_actual)
 	# if the actual start date is after today, then say the planned start date
 	%>
 	    <td><%=h activity.date_start_planned %> <i>(Planned)</i> - 
@@ -362,7 +375,7 @@ end %>
 	<% else %>
 	    <%=h activity.date_end_actual %></td>
 	<% end %>
-    <td><%=h link_to activity.status, :params=>params, :status_code=>activity.status_code if activity.status %></td>
+    <td><% if activity.status %><%=h activity.status %><span class="filter"><%=h link_to '+', :params=>params, :status_code=>activity.status_code %></span><% end %></td>
     <td><%
 	if activity.transactions.count >0
 	 	 @c_total = 0.to_f
@@ -407,9 +420,13 @@ end %>
 				 end
 
 				%></td>
-			    <td><%=h link_to subactivity.recipient_region, :params=>params, :recipient_region_code => subactivity.recipient_region_code if subactivity.recipient_region_code %> <%=h link_to subactivity.recipient_country, :params=>params, :recipient_country_code => subactivity.recipient_country_code if subactivity.recipient_country_code %></td>
-			    <td><%=h subactivity.extending_org %><br />(<%=h subactivity.funding_org %>)</td>
-			    <td><%=h link_to subactivity.implementing_org, :params=>params, :implementing_org => subactivity.implementing_org %></td>
+			    <td><%=h link_to subactivity.countryregion.country_name, :params=>params, :countryregion => subactivity.countryregion.id if subactivity.countryregion %></td>
+			    <td><% subactivity.extending_organisations.each do |z| %>
+<%= link_to z.name, organisation_url(z.id.to_s) %>
+<% end %><br /><% if subactivity.funding_organisations %>(<% subactivity.funding_organisations.each do |z| %><%= link_to z.name, organisation_url(z.id.to_s) %><% end %>)<% end %></td>
+			    <td><% subactivity.implementing_organisations.each do |z| %>
+<%= link_to z.name, organisation_url(z.id.to_s) %>
+<% end %></td>
 
 
 			<% if (subactivity.date_start_actual > DateTime.now if subactivity.date_start_actual)

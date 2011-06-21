@@ -1,7 +1,7 @@
 class ActivitiesDescription < ActiveRecord::Migration
   def self.up
 	change_table :activities do |t|
-  	  t.change :description, :text
+  	  t.change :value_date, :date
 	end
   end
 

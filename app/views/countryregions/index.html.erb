@@ -1,0 +1,35 @@
+<h1>Countries</h1>
+<!--
+<p><%= link_to 'Import CSV', :controller=>:countryregions, :action=>:csv_import, :id=>'all' %> (CSV must be called countriesregions.csv and placed in /public)</p>
+<p><%= link_to 'Export CSV', :controller=>:countryregions, :action=>:csv_export, :id=>'all' %></p>
+-->
+<table>
+<tr>
+  <th>Country Name</th>
+  <th>Country Code</th>
+  <th>ISO2</th>
+  <th>ISO3</th>
+  <th>Region Name</th>
+  <th>Region Code</th>
+  <th>Type</th>
+  <th>Latitude</th>
+  <th>Longitude</th>
+  <th>Activities</th>
+</tr>
+<% @countryregions.each do |countryregion| 
+%>
+<tr>
+	<td><%= countryregion.country_name %></td>
+	<td><%= countryregion.dac_country_code %></td>
+	<td><%= countryregion.iso2 %></td>
+	<td><%= countryregion.iso3 %></td>
+	<td><%= countryregion.dac_region_name %></td>
+	<td><%= countryregion.dac_region_code %></td>
+	<td><%= countryregion.item_type %></td>
+	<td><%= countryregion.latitude %></td>
+	<td><%= countryregion.longitude %></td>
+	<td><% if countryregion.activities.count > 0 %><%= link_to pluralize(countryregion.activities.count, 'Activity'), :controller=>:activities, :countryregion=>countryregion.id %><% end %></td>
+	<td><%= link_to 'Show', countryregion_url(countryregion.id) %></td>
+</tr>
+<% end %>
+</table>

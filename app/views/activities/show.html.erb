@@ -55,7 +55,24 @@
   <b>Implementing org:</b>
   <%=h @activity.implementing_org %> (Ref: <%=h @activity.implementing_org_ref %>, Type: <%=h @activity.implementing_org_type %>)
 </p>
-
+<p><b>Real implementing org:</b>
+<% @activity.implementing_organisations.each do |z| %>
+<%= link_to z.name, organisation_url(z.id.to_s) %>
+<% end %>
+<p><b>Real funding org:</b>
+<% @activity.funding_organisations.each do |z| %>
+<%= link_to z.name, organisation_url(z.id.to_s) %>
+<% end %>
+<p><b>Real extending org:</b>
+<% @activity.extending_organisations.each do |z| %>
+<%= link_to z.name, organisation_url(z.id.to_s) %>
+<% end %>
+<% if @activity.countryregion %>
+<p>
+	<b>Recipient countryregion:</b>
+	<%= @activity.countryregion.country_name %> (<%= @activity.countryregion.dac_region_name %>)
+</p>
+<% end %>
 <p>
   <b>Recipient region:</b>
   <%=h @activity.recipient_region %> (<%=h @activity.recipient_region_code %>)

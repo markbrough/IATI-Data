@@ -1,0 +1,24 @@
+<h1>Listing activities_organisation</h1>
+
+<table>
+  <tr>
+    <th>Activity</th>
+    <th>Organisation</th>
+    <th>Relationship type</th>
+  </tr>
+
+<% @activityorganisations.each do |ao| %>
+  <tr>
+    <td><%=h ao.activity_id %></td>
+    <td><%=h ao.organisation_id %></td>
+    <td><%=h ao.rel_type %></td>
+    <td><%= link_to 'Show', ao %></td>
+    <td><%= link_to 'Edit', edit_activities_organisation_path(ao) %></td>
+    <td><%= link_to 'Destroy', ao, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New activities_policy_marker', new_activities_organisation_path %>

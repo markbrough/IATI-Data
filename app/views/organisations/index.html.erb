@@ -1,0 +1,44 @@
+<h1>Organisations</h1>
+
+<table>
+  <tr>
+    <th>Organisations</th>
+    <th>Activities</th>
+    <th>Type</th>
+    <th>Ref</th>
+    <th>Role</th>
+    <th>Show</th>
+  </tr>
+
+<% @organisations.each do |organisation| %>
+<% if organisation %>
+  <tr>
+    <td><% 
+#link_to organisation.implementing_org, :controller=>:activities, :implementing_org=>organisation.implementing_org 
+%><%=
+	organisation.name
+%></td>
+   
+<td><%= link_to(pluralize(organisation.activities.count, 'Activity'), :controller => :activities, :organisations => organisation.id) %></td>
+<td><%= organisation.orgtype %></td>
+<td><%= organisation.ref %></td>
+<%
+ @conditions = {}
+ @conditions[:organisation_id] = organisation.id
+ @reltype = ActivitiesOrganisation.all(:conditions=>@conditions, :group=>:rel_type)%>
+
+<td><% @reltype.each do |r| %>
+<% if r.rel_type == 1 %>
+Funding 
+<% elsif r.rel_type == 2 %>
+Extending 
+<% elsif r.rel_type == 3 %>
+Implementing 
+<% end %>
+<% end %></td>
+<td><%= link_to 'Show', organisation_url(organisation) %></td>
+  </tr>
+<% end %>
+<% end %>
+
+</table>

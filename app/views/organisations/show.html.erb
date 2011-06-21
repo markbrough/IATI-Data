@@ -1,0 +1,8 @@
+<h1>Organisation: <%=h @organisation.name %></h1>
+<p><b>Type:</b> <%=h @organisation.orgtype %></p>
+<p><b>Ref:</b> <%=h @organisation.ref %></p>
+<p><b>Funds:</b> <%= link_to pluralize(@organisation.funds.count, 'Activity'), :controller=>:activities, :funding_org=>@organisation.id %>.</p>
+<p><b>Extends:</b> <%= link_to pluralize(@organisation.extends.count, 'Activity'), :controller=>:activities, :extending_org=>@organisation.id %>.</p>
+<p><b>Implements:</b> <%= link_to pluralize(@organisation.implements.count, 'Activity'), :controller=>:activities, :implementing_org=>@organisation.id %>.</p>
+
+<%= link_to 'Back', organisations_path %>
