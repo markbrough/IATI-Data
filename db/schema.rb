@@ -190,7 +190,7 @@ ActiveRecord::Schema.define(:version => 20110621151533) do
 
   create_table "transactions", :force => true do |t|
     t.integer  "activity_id"
-    t.float    "value",                     :limit => 255
+    t.float    "value"
     t.string   "value_date"
     t.string   "value_currency"
     t.string   "transaction_type"
