@@ -8,7 +8,7 @@ class IatiregistryController < ApplicationController
 
     # check if this package is already in db
     @thetext ='';
-    #@activity_exists = Activity.find_by_package_id(@package.packageid)
+    @activity_exists = Activity.find_by_package_id(@package.packageid)
     if @activity_exists
 	@thetext += "<p>The package <b>" + @package.name + "</b> (" + @package.title + ") has already been downloaded.</p>"
     else
