@@ -1,261 +1,261 @@
-"country_name";"dac_country_code";"iso2";"iso3";"dac_region_name";"dac_region_code";"item_type";"latitude";"longitude"
-"Afghanistan";625;"AF";"AFG";689;"South & Central Asia, regional";"Country";33;65
-"Africa, regional/multi-country";298;;"QMA";298;"Africa, regional";"Region";;
-"Albania";71;"AL";"ALB";89;"Europe, regional";"Country";41;20
-"Algeria";130;"DZ";"DZA";189;"North of Sahara, regional";"Country";28;3
-"America, regional/multi-country";498;;"QNA";498;"America, regional";"Region";;
-"Angola";225;"AO";"AGO";289;"South of Sahara, regional";"Country";-12.5;18.5
-"Anguilla";376;"AI";"AIA";389;"North & Central America, regional";"Country";18.25;-63.1667
-"Antigua & Barbuda";377;"AG";"ATG";389;"North & Central America, regional";"Country";17.05;-61.8
-"Argentina";425;"AR";"ARG";489;"South America, regional";"Country";-34;-64
-"Armenia";610;"AM";"ARM";689;"South & Central Asia, regional";"Country";40;45
-"Asia, regional/multi-country";798;;"QRA";798;"Asia, regional";"Region";;
-"Azerbaijan";611;"AZ";"AZE";689;"South & Central Asia, regional";"Country";40.5;47.5
-"Bangladesh";666;"BD";"BGD";689;"South & Central Asia, regional";"Country";24;90
-"Barbados";329;"BB";"BRB";389;"North & Central America, regional";"Country";13.1667;-59.5333
-"Belarus";86;"BY";"BLR";89;"Europe, regional";"Country";53;28
-"Belize";352;"BZ";"BLZ";389;"North & Central America, regional";"Country";17.25;-88.75
-"Benin";236;"BJ";"BEN";289;"South of Sahara, regional";"Country";9.5;2.25
-"Bhutan";630;"BT";"BTN";689;"South & Central Asia, regional";"Country";27.5;90.5
-"Bolivia";428;"BO";"BOL";489;"South America, regional";"Country";-17;-65
-"Bosnia-Herzegovina";64;"BA";"BIH";89;"Europe, regional";"Country";44;18
-"Botswana";227;"BW";"BWA";289;"South of Sahara, regional";"Country";-22;24
-"Brazil";431;"BR";"BRA";489;"South America, regional";"Country";-10;-55
-"Burkina Faso";287;"BF";"BFA";289;"South of Sahara, regional";"Country";13;-2
-"Burundi";228;"BI";"BDI";289;"South of Sahara, regional";"Country";-3.5;30
-"Cambodia";728;"KH";"KHM";789;"Far East Asia, regional";"Country";13;105
-"Cameroon";229;"CM";"CMR";289;"South of Sahara, regional";"Country";6;12
-"Cape Verde";230;"CV";"CPV";289;"South of Sahara, regional";"Country";16;-24
-"Central African Republic";231;"CF";"CAF";289;"South of Sahara, regional";"Country";7;21
-"Central Asia, regional/multi-country";619;;"QRS";619;"Central Asia, regional";"Region";;
-"Chad";232;"TD";"TCD";289;"South of Sahara, regional";"Country";15;19
-"Chile";434;"CL";"CHL";489;"South America, regional";"Country";-30;-71
-"China";730;"CN";"CHN";789;"Far East Asia, regional";"Country";35;105
-"Colombia";437;"CO";"COL";489;"South America, regional";"Country";4;-72
-"Comoros";233;"KM";"COM";289;"South of Sahara, regional";"Country";-12.1667;44.25
-"Congo, Dem. Rep.";235;"CD";"COD";289;"South of Sahara, regional";"Country";0;25
-"Congo, Rep.";234;"CG";"COG";289;"South of Sahara, regional";"Country";-1;15
-"Cook  Islands";831;"CK";"COK";889;"Oceania, regional";"Country";-21.2333;-159.7667
-"Costa Rica";336;"CR";"CRI";389;"North & Central America, regional";"Country";10;-84
-"C";247;"CI";"CIV";289;"South of Sahara, regional";"Country";8;-5
-"Croatia";62;"HR";"HRV";89;"Europe, regional";"Country";45.1667;15.5
-"Cuba";338;"CU";"CUB";389;"North & Central America, regional";"Country";21.5;-80
-"Developing countries unspecified";998;;"QZA";998;"Bilateral, unspecified";"Region";;
-"Djibouti";274;"DJ";"DJI";289;"South of Sahara, regional";"Country";11.5;43
-"Dominica";378;"DM";"DMA";389;"North & Central America, regional";"Country";15.4167;-61.3333
-"Dominican Republic";340;"DO";"DOM";389;"North & Central America, regional";"Country";19;-70.6667
-"Ecuador";440;"EC";"ECU";489;"South America, regional";"Country";-2;-77.5
-"Egypt";142;"EG";"EGY";189;"North of Sahara, regional";"Country";27;30
-"El Salvador";342;"SV";"SLV";389;"North & Central America, regional";"Country";13.8333;-88.9167
-"Equatorial Guinea ";245;"GQ";"GNQ";289;"South of Sahara, regional";"Country";2;10
-"Eritrea";271;"ER";"ERI";289;"South of Sahara, regional";"Country";15;39
-"Ethiopia";238;"ET";"ETH";289;"South of Sahara, regional";"Country";8;38
-"Europe, regional/multi-country";89;;"QSA";89;"Europe, regional";"Region";;
-"Far East Asia, regional/multi-country";789;;"QRB";789;"Far East Asia, regional";"Region";;
-"Fiji";832;"FJ";"FJI";889;"Oceania, regional";"Country";-18;175
-"Gabon";239;"GA";"GAB";289;"South of Sahara, regional";"Country";-1;11.75
-"Gambia";240;"GM";"GMB";289;"South of Sahara, regional";"Country";13.4667;-16.5667
-"Georgia";612;"GE";"GEO";689;"South & Central Asia, regional";"Country";42;43.5
-"Ghana";241;"GH";"GHA";289;"South of Sahara, regional";"Country";8;-2
-"Grenada";381;"GD";"GRD";389;"North & Central America, regional";"Country";12.1167;-61.6667
-"Guatemala";347;"GT";"GTM";389;"North & Central America, regional";"Country";15.5;-90.25
-"Guinea";243;"GN";"GIN";289;"South of Sahara, regional";"Country";11;-10
-"Guinea-Bissau";244;"GW";"GNB";289;"South of Sahara, regional";"Country";12;-15
-"Guyana";446;"GY";"GUY";489;"South America, regional";"Country";5;-59
-"Haiti";349;"HT";"HTI";389;"North & Central America, regional";"Country";19;-72.4167
-"Honduras";351;"HN";"HND";389;"North & Central America, regional";"Country";15;-86.5
-"India ";645;"IN";"IND";689;"South & Central Asia, regional";"Country";20;77
-"Indonesia";738;"ID";"IDN";789;"Far East Asia, regional";"Country";-5;120
-"Iran";540;"IR";"IRN";589;"Middle East, regional";"Country";32;53
-"Iraq";543;"IQ";"IRQ";589;"Middle East, regional";"Country";33;44
-"Jamaica";354;"JM";"JAM";389;"North & Central America, regional";"Country";18.25;-77.5
-"Jordan";549;"JO";"JOR";589;"Middle East, regional";"Country";31;36
-"Kazakhstan";613;"KZ";"KAZ";689;"South & Central Asia, regional";"Country";48;68
-"Kenya ";248;"KE";"KEN";289;"South of Sahara, regional";"Country";1;38
-"Kiribati";836;"KI";"KIR";889;"Oceania, regional";"Country";1.4167;173
-"Korea, Dem.";740;"KP";"PRK";789;"Far East Asia, regional";"Country";40;127
-"Kosovo";57;;;89;"Europe, regional";"Country";;
-"Kyrgyz Rep.";614;"KG";"KGZ";689;"South & Central Asia, regional";"Country";41;75
-"Laos";745;"LA";"LAO";789;"Far East Asia, regional";"Country";18;105
-"Lebanon";555;"LB";"LBN";589;"Middle East, regional";"Country";33.8333;35.8333
-"Lesotho";249;"LS";"LSO";289;"South of Sahara, regional";"Country";-29.5;28.5
-"Liberia";251;"LR";"LBR";289;"South of Sahara, regional";"Country";6.5;-9.5
-"Libya";133;"LY";"LBY";189;"North of Sahara, regional";"Country";25;17
-"Macedonia, FYR";66;"MK";"MKD";89;"Europe, regional";"Country";41.8333;22
-"Madagascar";252;"MG";"MDG";289;"South of Sahara, regional";"Country";-20;47
-"Malawi";253;"MW";"MWI";289;"South of Sahara, regional";"Country";-13.5;34
-"Malaysia";751;"MY";"MYS";789;"Far East Asia, regional";"Country";2.5;112.5
-"Maldives";655;"MV";"MDV";689;"South & Central Asia, regional";"Country";3.25;73
-"Mali";255;"ML";"MLI";289;"South of Sahara, regional";"Country";17;-4
-"Marshall Islands";859;"MH";"MHL";889;"Oceania, regional";"Country";9;168
-"Mauritania";256;"MR";"MRT";289;"South of Sahara, regional";"Country";20;-12
-"Mauritius";257;"MU";"MUS";289;"South of Sahara, regional";"Country";-20.2833;57.55
-"Mayotte";258;"KM";"COM";289;"South of Sahara, regional";"Country";;
-"Mexico";358;"MX";"MEX";389;"North & Central America, regional";"Country";23;-102
-"Micronesia, Fed. Sts.";860;"FM";"FSM";889;"Oceania, regional";"Country";6.9167;158.25
-"Middle East, regional/multi-country";589;;"QRE";589;"Middle East, regional";"Region";;
-"Moldova";93;"MD";"MDA";89;"Europe, regional";"Country";47;29
-"Mongolia";753;"MN";"MNG";789;"Far East Asia, regional";"Country";46;105
-"Montenegro";65;"ME";"MNE";89;"Europe, regional";"Country";42;19
-"Montserrat";385;"MS";"MSR";389;"North & Central America, regional";"Country";16.75;-62.2
-"Morocco";136;"MA";"MAR";189;"North of Sahara, regional";"Country";32;-5
-"Mozambique";259;"MZ";"MOZ";289;"South of Sahara, regional";"Country";-18.25;35
-"Myanmar (Burma)";635;"MM";"MMR";689;"South & Central Asia, regional";"Country";22;98
-"N.&C. America, regional/multi-country";389;;"QNC";389;"North & Central America, regional";"Region";;
-"Namibia";275;"NA";"NAM";289;"South of Sahara, regional";"Country";-22;17
-"Nauru";845;"NR";"NRU";889;"Oceania, regional";"Country";-0.5333;166.9167
-"Nepal";660;"NP";"NPL";689;"South & Central Asia, regional";"Country";28;84
-"Nicaragua";364;"NI";"NIC";389;"North & Central America, regional";"Country";13;-85
-"Niger";260;"NE";"NER";289;"South of Sahara, regional";"Country";16;8
-"Nigeria";261;"NG";"NGA";289;"South of Sahara, regional";"Country";10;8
-"Niue";856;"NU";"NIU";889;"Oceania, regional";"Country";-19.0333;-169.8667
-"North of Sahara, regional/multi-country";189;;"QMD";189;"North of Sahara, regional";"Region";;
-"Oceania, regional/multi-country";889;;"QTA";889;"Oceania, regional";"Region";;
-"Oman";558;"OM";"OMN";589;"Middle East, regional";"Country";21;57
-"Pakistan";665;"PK";"PAK";689;"South & Central Asia, regional";"Country";30;70
-"Palau";861;"PW";"PLW";889;"Oceania, regional";"Country";7.5;134.5
-"Palestinian admin. Areas";550;"PS";"PSE";589;"Middle East, regional";"Country";32;35.25
-"Panama";366;"PA";"PAN";389;"North & Central America, regional";"Country";9;-80
-"Papua New Guinea";862;"PG";"PNG";889;"Oceania, regional";"Country";-6;147
-"Paraguay";451;"PY";"PRY";489;"South America, regional";"Country";-23;-58
-"Peru";454;"PE";"PER";489;"South America, regional";"Country";-10;-76
-"Philippines";755;"PH";"PHL";789;"Far East Asia, regional";"Country";13;122
-"Rwanda";266;"RW";"RWA";289;"South of Sahara, regional";"Country";-2;30
-"Samoa";880;"WS";"WSM";889;"Oceania, regional";"Country";-13.5833;-172.3333
-"Sao Tome & Principe";268;"ST";"STP";289;"South of Sahara, regional";"Country";1;7
-"Senegal";269;"SN";"SEN";289;"South of Sahara, regional";"Country";14;-14
-"Serbia";63;"RS";"SRB";89;"Europe, regional";"Country";44;21
-"Seychelles";270;"SC";"SYC";289;"South of Sahara, regional";"Country";-4.5833;55.6667
-"Sierra Leone";272;"SL";"SLE";289;"South of Sahara, regional";"Country";8.5;-11.5
-"Solomon Islands";866;"SB";"SLB";889;"Oceania, regional";"Country";-8;159
-"Somalia";273;"SO";"SOM";289;"South of Sahara, regional";"Country";10;49
-"South & Central Asia, regional/multi-country";689;;"QRD";689;"South & Central Asia, regional";"Region";;
-"South Africa";218;"ZA";"ZAF";289;"South of Sahara, regional";"Country";-29;24
-"South America, regional/multi-country";489;;"QNE";489;"South America, regional";"Region";;
-"South Asia, regional/multi-country";679;;"QRC";679;"South Asia, regional";"Region";;
-"South of Sahara, regional/multi-country";289;;"QME";289;"South of Sahara, regional";"Region";;
-"Sri Lanka";640;"LK";"LKA";689;"South & Central Asia, regional";"Country";7;81
-"St.Helena";276;"SH";"SHN";289;"South of Sahara, regional";"Country";-15.9333;-5.7
-"St.Kitts-Nevis";382;"KN";"KNA";389;"North & Central America, regional";"Country";17.3333;-62.75
-"St.Lucia";383;"LC";"LCA";389;"North & Central America, regional";"Country";13.8833;-61.1333
-"St.Vincent & Grenadines";384;"VC";"VCT";389;"North & Central America, regional";"Country";13.25;-61.2
-"States of ex-Yugoslavia unspecified";88;;"QYU";89;"Europe, regional";"Region";;
-"Sudan";278;"SD";"SDN";289;"South of Sahara, regional";"Country";15;30
-"Suriname";457;"SR";"SUR";489;"South America, regional";"Country";4;-56
-"Swaziland";280;"SZ";"SWZ";289;"South of Sahara, regional";"Country";-26.5;31.5
-"Syria";573;"SY";"SYR";589;"Middle East, regional";"Country";35;38
-"Tajikistan";615;"TJ";"TJK";689;"South & Central Asia, regional";"Country";39;71
-"Tanzania";282;"TZ";"TZA";289;"South of Sahara, regional";"Country";-6;35
-"Thailand";764;"TH";"THA";789;"Far East Asia, regional";"Country";15;100
-"Timor Leste";765;"TL";"TLS";789;"Far East Asia, regional";"Country";;
-"Togo";283;"TG";"TGO";289;"South of Sahara, regional";"Country";8;1.1667
-"Tokelau";868;"TK";"TKL";889;"Oceania, regional";"Country";-9;-172
-"Tonga";870;"TO";"TON";889;"Oceania, regional";"Country";-20;-175
-"Trinidad & Tobago";375;"TT";"TTO";389;"North & Central America, regional";"Country";11;-61
-"Tunisia";139;"TN";"TUN";189;"North of Sahara, regional";"Country";34;9
-"Turkey  ";55;"TR";"TUR";89;"Europe, regional";"Country";39;35
-"Turkmenistan";616;"TM";"TKM";689;"South & Central Asia, regional";"Country";40;60
-"Tuvalu";872;"TV";"TUV";889;"Oceania, regional";"Country";-8;178
-"Uganda";285;"UG";"UGA";289;"South of Sahara, regional";"Country";1;32
-"Ukraine";85;"UA";"UKR";89;"Europe, regional";"Country";49;32
-"Uruguay";460;"UY";"URY";489;"South America, regional";"Country";-33;-56
-"Uzbekistan";617;"UZ";"UZB";689;"South & Central Asia, regional";"Country";41;64
-"Vanuatu";854;"VU";"VUT";889;"Oceania, regional";"Country";-16;167
-"Venezuela";463;"VE";"VEN";489;"South America, regional";"Country";8;-66
-"Viet Nam";769;"VN";"VNM";789;"Far East Asia, regional";"Country";16;106
-"Wallis & Futuna";876;"WF";"WLF";889;"Oceania, regional";"Country";-13.3;-176.2
-"West Indies, regional/multi-country";380;;"QNB";380;"West Indies, regional";"Region";;
-"Yemen";580;"YE";"YEM";589;"Middle East, regional";"Country";15;48
-"Zambia";288;"ZM";"ZMB";289;"South of Sahara, regional";"Country";-15;30
-"Zimbabwe";265;"ZW";"ZWE";289;"South of Sahara, regional";"Country";-20;30
-"Andorra";;"AD";;;;;42.5;1.5
-"United Arab Emirates";;"AE";;;;;24;54
-"Netherlands Antilles";;"AN";;;;;12.25;-68.75
-;;"AP";;;;;35;105
-"Antarctica";;"AQ";;;;;-90;0
-"American Samoa";;"AS";;;;;-14.3333;-170
-"Austria";;"AT";;;;;47.3333;13.3333
-"Australia";;"AU";;;;;-27;133
-"Aruba";;"AW";;;;;12.5;-69.9667
-"Belgium";;"BE";;;;;50.8333;4
-"Bulgaria";;"BG";;;;;43;25
-"Bahrain";;"BH";;;;;26;50.55
-"Bermuda";;"BM";;;;;32.3333;-64.75
-"Brunei Darussalam";;"BN";;;;;4.5;114.6667
-"Bahamas";;"BS";;;;;24.25;-76
-"Bouvet Island";;"BV";;;;;-54.4333;3.4
-"Canada";;"CA";;;;;60;-95
-"Cocos (Keeling) Islands";;"CC";;;;;-12.5;96.8333
-"Switzerland";;"CH";;;;;47;8
-"Christmas Island";;"CX";;;;;-10.5;105.6667
-"Cyprus";;"CY";;;;;35;33
-"Czech Republic";;"CZ";;;;;49.75;15.5
-"Germany";;"DE";;;;;51;9
-"Denmark";;"DK";;;;;56;10
-"Estonia";;"EE";;;;;59;26
-"Western Sahara";;"EH";;;;;24.5;-13
-"Spain";;"ES";;;;;40;-4
-;;"EU";;;;;47;8
-"Finland";;"FI";;;;;64;26
-"Falkland Islands (Malvinas)";;"FK";;;;;-51.75;-59
-"Faroe Islands";;"FO";;;;;62;-7
-"France";;"FR";;;;;46;2
-"United Kingdom";;"GB";;;;;54;-2
-"French Guiana";;"GF";;;;;4;-53
-"Gibraltar";;"GI";;;;;36.1833;-5.3667
-"Greenland";;"GL";;;;;72;-40
-"Guadeloupe";;"GP";;;;;16.25;-61.5833
-"Greece";;"GR";;;;;39;22
-"South Georgia and the South Sandwich Islands";;"GS";;;;;-54.5;-37
-"Guam";;"GU";;;;;13.4667;144.7833
-"Hong Kong";;"HK";;;;;22.25;114.1667
-"Heard Island and McDonald Islands";;"HM";;;;;-53.1;72.5167
-"Hungary";;"HU";;;;;47;20
-"Ireland";;"IE";;;;;53;-8
-"Israel";;"IL";;;;;31.5;34.75
-"British Indian Ocean Territory";;"IO";;;;;-6;71.5
-"Iceland";;"IS";;;;;65;-18
-"Italy";;"IT";;;;;42.8333;12.8333
-"Japan";;"JP";;;;;36;138
-"Korea, Republic of";;"KR";;;;;37;127.5
-"Kuwait";;"KW";;;;;29.3375;47.6581
-"Cayman Islands";;"KY";;;;;19.5;-80.5
-"Liechtenstein";;"LI";;;;;47.1667;9.5333
-"Lithuania";;"LT";;;;;56;24
-"Luxembourg";;"LU";;;;;49.75;6.1667
-"Latvia";;"LV";;;;;57;25
-"Monaco";;"MC";;;;;43.7333;7.4
-"Macao";;"MO";;;;;22.1667;113.55
-"Northern Mariana Islands";;"MP";;;;;15.2;145.75
-"Martinique";;"MQ";;;;;14.6667;-61
-"Malta";;"MT";;;;;35.8333;14.5833
-"New Caledonia";;"NC";;;;;-21.5;165.5
-"Norfolk Island";;"NF";;;;;-29.0333;167.95
-"Netherlands";;"NL";;;;;52.5;5.75
-"Norway";;"NO";;;;;62;10
-"New Zealand";;"NZ";;;;;-41;174
-"French Polynesia";;"PF";;;;;-15;-140
-"Poland";;"PL";;;;;52;20
-"Saint Pierre and Miquelon";;"PM";;;;;46.8333;-56.3333
-"Puerto Rico";;"PR";;;;;18.25;-66.5
-"Portugal";;"PT";;;;;39.5;-8
-"Qatar";;"QA";;;;;25.5;51.25
-"Réunion";;"RE";;;;;-21.1;55.6
-"Romania";;"RO";;;;;46;25
-"Russian Federation";;"RU";;;;;60;100
-"Saudi Arabia";;"SA";;;;;25;45
-"Sweden";;"SE";;;;;62;15
-"Singapore";;"SG";;;;;1.3667;103.8
-"Slovenia";;"SI";;;;;46;15
-"Svalbard and Jan Mayen";;"SJ";;;;;78;20
-"Slovakia";;"SK";;;;;48.6667;19.5
-"San Marino";;"SM";;;;;43.7667;12.4167
-"Turks and Caicos Islands";;"TC";;;;;21.75;-71.5833
-"French Southern Territories";;"TF";;;;;-43;67
-"Taiwan";;"TW";;;;;23.5;121
-"United States Minor Outlying Islands";;"UM";;;;;19.2833;166.6
-"United States";;"US";;;;;38;-97
-"Holy See (Vatican City State)";;"VA";;;;;41.9;12.45
-"Virgin Islands, British";;"VG";;;;;18.5;-64.5
-"Virgin Islands, U.S.";;"VI";;;;;18.3333;-64.8333
-"Mayotte";;"YT";;;;;-12.8333;45.1667
+"country_name","dac_country_code","iso2","iso3","dac_region_name","dac_region_code","item_type","latitude","longitude"
+"Afghanistan",625,"AF","AFG",689,"South & Central Asia, regional","Country",33,65
+"Africa, regional/multi-country",298,,"QMA",298,"Africa, regional","Region",,
+"Albania",71,"AL","ALB",89,"Europe, regional","Country",41,20
+"Algeria",130,"DZ","DZA",189,"North of Sahara, regional","Country",28,3
+"America, regional/multi-country",498,,"QNA",498,"America, regional","Region",,
+"Angola",225,"AO","AGO",289,"South of Sahara, regional","Country",-12.5,18.5
+"Anguilla",376,"AI","AIA",389,"North & Central America, regional","Country",18.25,-63.1667
+"Antigua & Barbuda",377,"AG","ATG",389,"North & Central America, regional","Country",17.05,-61.8
+"Argentina",425,"AR","ARG",489,"South America, regional","Country",-34,-64
+"Armenia",610,"AM","ARM",689,"South & Central Asia, regional","Country",40,45
+"Asia, regional/multi-country",798,,"QRA",798,"Asia, regional","Region",,
+"Azerbaijan",611,"AZ","AZE",689,"South & Central Asia, regional","Country",40.5,47.5
+"Bangladesh",666,"BD","BGD",689,"South & Central Asia, regional","Country",24,90
+"Barbados",329,"BB","BRB",389,"North & Central America, regional","Country",13.1667,-59.5333
+"Belarus",86,"BY","BLR",89,"Europe, regional","Country",53,28
+"Belize",352,"BZ","BLZ",389,"North & Central America, regional","Country",17.25,-88.75
+"Benin",236,"BJ","BEN",289,"South of Sahara, regional","Country",9.5,2.25
+"Bhutan",630,"BT","BTN",689,"South & Central Asia, regional","Country",27.5,90.5
+"Bolivia",428,"BO","BOL",489,"South America, regional","Country",-17,-65
+"Bosnia-Herzegovina",64,"BA","BIH",89,"Europe, regional","Country",44,18
+"Botswana",227,"BW","BWA",289,"South of Sahara, regional","Country",-22,24
+"Brazil",431,"BR","BRA",489,"South America, regional","Country",-10,-55
+"Burkina Faso",287,"BF","BFA",289,"South of Sahara, regional","Country",13,-2
+"Burundi",228,"BI","BDI",289,"South of Sahara, regional","Country",-3.5,30
+"Cambodia",728,"KH","KHM",789,"Far East Asia, regional","Country",13,105
+"Cameroon",229,"CM","CMR",289,"South of Sahara, regional","Country",6,12
+"Cape Verde",230,"CV","CPV",289,"South of Sahara, regional","Country",16,-24
+"Central African Republic",231,"CF","CAF",289,"South of Sahara, regional","Country",7,21
+"Central Asia, regional/multi-country",619,,"QRS",619,"Central Asia, regional","Region",,
+"Chad",232,"TD","TCD",289,"South of Sahara, regional","Country",15,19
+"Chile",434,"CL","CHL",489,"South America, regional","Country",-30,-71
+"China",730,"CN","CHN",789,"Far East Asia, regional","Country",35,105
+"Colombia",437,"CO","COL",489,"South America, regional","Country",4,-72
+"Comoros",233,"KM","COM",289,"South of Sahara, regional","Country",-12.1667,44.25
+"Congo, Dem. Rep.",235,"CD","COD",289,"South of Sahara, regional","Country",0,25
+"Congo, Rep.",234,"CG","COG",289,"South of Sahara, regional","Country",-1,15
+"Cook  Islands",831,"CK","COK",889,"Oceania, regional","Country",-21.2333,-159.7667
+"Costa Rica",336,"CR","CRI",389,"North & Central America, regional","Country",10,-84
+"C",247,"CI","CIV",289,"South of Sahara, regional","Country",8,-5
+"Croatia",62,"HR","HRV",89,"Europe, regional","Country",45.1667,15.5
+"Cuba",338,"CU","CUB",389,"North & Central America, regional","Country",21.5,-80
+"Developing countries unspecified",998,,"QZA",998,"Bilateral, unspecified","Region",,
+"Djibouti",274,"DJ","DJI",289,"South of Sahara, regional","Country",11.5,43
+"Dominica",378,"DM","DMA",389,"North & Central America, regional","Country",15.4167,-61.3333
+"Dominican Republic",340,"DO","DOM",389,"North & Central America, regional","Country",19,-70.6667
+"Ecuador",440,"EC","ECU",489,"South America, regional","Country",-2,-77.5
+"Egypt",142,"EG","EGY",189,"North of Sahara, regional","Country",27,30
+"El Salvador",342,"SV","SLV",389,"North & Central America, regional","Country",13.8333,-88.9167
+"Equatorial Guinea ",245,"GQ","GNQ",289,"South of Sahara, regional","Country",2,10
+"Eritrea",271,"ER","ERI",289,"South of Sahara, regional","Country",15,39
+"Ethiopia",238,"ET","ETH",289,"South of Sahara, regional","Country",8,38
+"Europe, regional/multi-country",89,,"QSA",89,"Europe, regional","Region",,
+"Far East Asia, regional/multi-country",789,,"QRB",789,"Far East Asia, regional","Region",,
+"Fiji",832,"FJ","FJI",889,"Oceania, regional","Country",-18,175
+"Gabon",239,"GA","GAB",289,"South of Sahara, regional","Country",-1,11.75
+"Gambia",240,"GM","GMB",289,"South of Sahara, regional","Country",13.4667,-16.5667
+"Georgia",612,"GE","GEO",689,"South & Central Asia, regional","Country",42,43.5
+"Ghana",241,"GH","GHA",289,"South of Sahara, regional","Country",8,-2
+"Grenada",381,"GD","GRD",389,"North & Central America, regional","Country",12.1167,-61.6667
+"Guatemala",347,"GT","GTM",389,"North & Central America, regional","Country",15.5,-90.25
+"Guinea",243,"GN","GIN",289,"South of Sahara, regional","Country",11,-10
+"Guinea-Bissau",244,"GW","GNB",289,"South of Sahara, regional","Country",12,-15
+"Guyana",446,"GY","GUY",489,"South America, regional","Country",5,-59
+"Haiti",349,"HT","HTI",389,"North & Central America, regional","Country",19,-72.4167
+"Honduras",351,"HN","HND",389,"North & Central America, regional","Country",15,-86.5
+"India ",645,"IN","IND",689,"South & Central Asia, regional","Country",20,77
+"Indonesia",738,"ID","IDN",789,"Far East Asia, regional","Country",-5,120
+"Iran",540,"IR","IRN",589,"Middle East, regional","Country",32,53
+"Iraq",543,"IQ","IRQ",589,"Middle East, regional","Country",33,44
+"Jamaica",354,"JM","JAM",389,"North & Central America, regional","Country",18.25,-77.5
+"Jordan",549,"JO","JOR",589,"Middle East, regional","Country",31,36
+"Kazakhstan",613,"KZ","KAZ",689,"South & Central Asia, regional","Country",48,68
+"Kenya ",248,"KE","KEN",289,"South of Sahara, regional","Country",1,38
+"Kiribati",836,"KI","KIR",889,"Oceania, regional","Country",1.4167,173
+"Korea, Dem.",740,"KP","PRK",789,"Far East Asia, regional","Country",40,127
+"Kosovo",57,,,89,"Europe, regional","Country",,
+"Kyrgyz Rep.",614,"KG","KGZ",689,"South & Central Asia, regional","Country",41,75
+"Laos",745,"LA","LAO",789,"Far East Asia, regional","Country",18,105
+"Lebanon",555,"LB","LBN",589,"Middle East, regional","Country",33.8333,35.8333
+"Lesotho",249,"LS","LSO",289,"South of Sahara, regional","Country",-29.5,28.5
+"Liberia",251,"LR","LBR",289,"South of Sahara, regional","Country",6.5,-9.5
+"Libya",133,"LY","LBY",189,"North of Sahara, regional","Country",25,17
+"Macedonia, FYR",66,"MK","MKD",89,"Europe, regional","Country",41.8333,22
+"Madagascar",252,"MG","MDG",289,"South of Sahara, regional","Country",-20,47
+"Malawi",253,"MW","MWI",289,"South of Sahara, regional","Country",-13.5,34
+"Malaysia",751,"MY","MYS",789,"Far East Asia, regional","Country",2.5,112.5
+"Maldives",655,"MV","MDV",689,"South & Central Asia, regional","Country",3.25,73
+"Mali",255,"ML","MLI",289,"South of Sahara, regional","Country",17,-4
+"Marshall Islands",859,"MH","MHL",889,"Oceania, regional","Country",9,168
+"Mauritania",256,"MR","MRT",289,"South of Sahara, regional","Country",20,-12
+"Mauritius",257,"MU","MUS",289,"South of Sahara, regional","Country",-20.2833,57.55
+"Mayotte",258,"KM","COM",289,"South of Sahara, regional","Country",,
+"Mexico",358,"MX","MEX",389,"North & Central America, regional","Country",23,-102
+"Micronesia, Fed. Sts.",860,"FM","FSM",889,"Oceania, regional","Country",6.9167,158.25
+"Middle East, regional/multi-country",589,,"QRE",589,"Middle East, regional","Region",,
+"Moldova",93,"MD","MDA",89,"Europe, regional","Country",47,29
+"Mongolia",753,"MN","MNG",789,"Far East Asia, regional","Country",46,105
+"Montenegro",65,"ME","MNE",89,"Europe, regional","Country",42,19
+"Montserrat",385,"MS","MSR",389,"North & Central America, regional","Country",16.75,-62.2
+"Morocco",136,"MA","MAR",189,"North of Sahara, regional","Country",32,-5
+"Mozambique",259,"MZ","MOZ",289,"South of Sahara, regional","Country",-18.25,35
+"Myanmar (Burma)",635,"MM","MMR",689,"South & Central Asia, regional","Country",22,98
+"N.&C. America, regional/multi-country",389,,"QNC",389,"North & Central America, regional","Region",,
+"Namibia",275,"NA","NAM",289,"South of Sahara, regional","Country",-22,17
+"Nauru",845,"NR","NRU",889,"Oceania, regional","Country",-0.5333,166.9167
+"Nepal",660,"NP","NPL",689,"South & Central Asia, regional","Country",28,84
+"Nicaragua",364,"NI","NIC",389,"North & Central America, regional","Country",13,-85
+"Niger",260,"NE","NER",289,"South of Sahara, regional","Country",16,8
+"Nigeria",261,"NG","NGA",289,"South of Sahara, regional","Country",10,8
+"Niue",856,"NU","NIU",889,"Oceania, regional","Country",-19.0333,-169.8667
+"North of Sahara, regional/multi-country",189,,"QMD",189,"North of Sahara, regional","Region",,
+"Oceania, regional/multi-country",889,,"QTA",889,"Oceania, regional","Region",,
+"Oman",558,"OM","OMN",589,"Middle East, regional","Country",21,57
+"Pakistan",665,"PK","PAK",689,"South & Central Asia, regional","Country",30,70
+"Palau",861,"PW","PLW",889,"Oceania, regional","Country",7.5,134.5
+"Palestinian admin. Areas",550,"PS","PSE",589,"Middle East, regional","Country",32,35.25
+"Panama",366,"PA","PAN",389,"North & Central America, regional","Country",9,-80
+"Papua New Guinea",862,"PG","PNG",889,"Oceania, regional","Country",-6,147
+"Paraguay",451,"PY","PRY",489,"South America, regional","Country",-23,-58
+"Peru",454,"PE","PER",489,"South America, regional","Country",-10,-76
+"Philippines",755,"PH","PHL",789,"Far East Asia, regional","Country",13,122
+"Rwanda",266,"RW","RWA",289,"South of Sahara, regional","Country",-2,30
+"Samoa",880,"WS","WSM",889,"Oceania, regional","Country",-13.5833,-172.3333
+"Sao Tome & Principe",268,"ST","STP",289,"South of Sahara, regional","Country",1,7
+"Senegal",269,"SN","SEN",289,"South of Sahara, regional","Country",14,-14
+"Serbia",63,"RS","SRB",89,"Europe, regional","Country",44,21
+"Seychelles",270,"SC","SYC",289,"South of Sahara, regional","Country",-4.5833,55.6667
+"Sierra Leone",272,"SL","SLE",289,"South of Sahara, regional","Country",8.5,-11.5
+"Solomon Islands",866,"SB","SLB",889,"Oceania, regional","Country",-8,159
+"Somalia",273,"SO","SOM",289,"South of Sahara, regional","Country",10,49
+"South & Central Asia, regional/multi-country",689,,"QRD",689,"South & Central Asia, regional","Region",,
+"South Africa",218,"ZA","ZAF",289,"South of Sahara, regional","Country",-29,24
+"South America, regional/multi-country",489,,"QNE",489,"South America, regional","Region",,
+"South Asia, regional/multi-country",679,,"QRC",679,"South Asia, regional","Region",,
+"South of Sahara, regional/multi-country",289,,"QME",289,"South of Sahara, regional","Region",,
+"Sri Lanka",640,"LK","LKA",689,"South & Central Asia, regional","Country",7,81
+"St.Helena",276,"SH","SHN",289,"South of Sahara, regional","Country",-15.9333,-5.7
+"St.Kitts-Nevis",382,"KN","KNA",389,"North & Central America, regional","Country",17.3333,-62.75
+"St.Lucia",383,"LC","LCA",389,"North & Central America, regional","Country",13.8833,-61.1333
+"St.Vincent & Grenadines",384,"VC","VCT",389,"North & Central America, regional","Country",13.25,-61.2
+"States of ex-Yugoslavia unspecified",88,,"QYU",89,"Europe, regional","Region",,
+"Sudan",278,"SD","SDN",289,"South of Sahara, regional","Country",15,30
+"Suriname",457,"SR","SUR",489,"South America, regional","Country",4,-56
+"Swaziland",280,"SZ","SWZ",289,"South of Sahara, regional","Country",-26.5,31.5
+"Syria",573,"SY","SYR",589,"Middle East, regional","Country",35,38
+"Tajikistan",615,"TJ","TJK",689,"South & Central Asia, regional","Country",39,71
+"Tanzania",282,"TZ","TZA",289,"South of Sahara, regional","Country",-6,35
+"Thailand",764,"TH","THA",789,"Far East Asia, regional","Country",15,100
+"Timor Leste",765,"TL","TLS",789,"Far East Asia, regional","Country",,
+"Togo",283,"TG","TGO",289,"South of Sahara, regional","Country",8,1.1667
+"Tokelau",868,"TK","TKL",889,"Oceania, regional","Country",-9,-172
+"Tonga",870,"TO","TON",889,"Oceania, regional","Country",-20,-175
+"Trinidad & Tobago",375,"TT","TTO",389,"North & Central America, regional","Country",11,-61
+"Tunisia",139,"TN","TUN",189,"North of Sahara, regional","Country",34,9
+"Turkey  ",55,"TR","TUR",89,"Europe, regional","Country",39,35
+"Turkmenistan",616,"TM","TKM",689,"South & Central Asia, regional","Country",40,60
+"Tuvalu",872,"TV","TUV",889,"Oceania, regional","Country",-8,178
+"Uganda",285,"UG","UGA",289,"South of Sahara, regional","Country",1,32
+"Ukraine",85,"UA","UKR",89,"Europe, regional","Country",49,32
+"Uruguay",460,"UY","URY",489,"South America, regional","Country",-33,-56
+"Uzbekistan",617,"UZ","UZB",689,"South & Central Asia, regional","Country",41,64
+"Vanuatu",854,"VU","VUT",889,"Oceania, regional","Country",-16,167
+"Venezuela",463,"VE","VEN",489,"South America, regional","Country",8,-66
+"Viet Nam",769,"VN","VNM",789,"Far East Asia, regional","Country",16,106
+"Wallis & Futuna",876,"WF","WLF",889,"Oceania, regional","Country",-13.3,-176.2
+"West Indies, regional/multi-country",380,,"QNB",380,"West Indies, regional","Region",,
+"Yemen",580,"YE","YEM",589,"Middle East, regional","Country",15,48
+"Zambia",288,"ZM","ZMB",289,"South of Sahara, regional","Country",-15,30
+"Zimbabwe",265,"ZW","ZWE",289,"South of Sahara, regional","Country",-20,30
+"Andorra",,"AD",,,,,42.5,1.5
+"United Arab Emirates",,"AE",,,,,24,54
+"Netherlands Antilles",,"AN",,,,,12.25,-68.75
+,,"AP",,,,,35,105
+"Antarctica",,"AQ",,,,,-90,0
+"American Samoa",,"AS",,,,,-14.3333,-170
+"Austria",,"AT",,,,,47.3333,13.3333
+"Australia",,"AU",,,,,-27,133
+"Aruba",,"AW",,,,,12.5,-69.9667
+"Belgium",,"BE",,,,,50.8333,4
+"Bulgaria",,"BG",,,,,43,25
+"Bahrain",,"BH",,,,,26,50.55
+"Bermuda",,"BM",,,,,32.3333,-64.75
+"Brunei Darussalam",,"BN",,,,,4.5,114.6667
+"Bahamas",,"BS",,,,,24.25,-76
+"Bouvet Island",,"BV",,,,,-54.4333,3.4
+"Canada",,"CA",,,,,60,-95
+"Cocos (Keeling) Islands",,"CC",,,,,-12.5,96.8333
+"Switzerland",,"CH",,,,,47,8
+"Christmas Island",,"CX",,,,,-10.5,105.6667
+"Cyprus",,"CY",,,,,35,33
+"Czech Republic",,"CZ",,,,,49.75,15.5
+"Germany",,"DE",,,,,51,9
+"Denmark",,"DK",,,,,56,10
+"Estonia",,"EE",,,,,59,26
+"Western Sahara",,"EH",,,,,24.5,-13
+"Spain",,"ES",,,,,40,-4
+,,"EU",,,,,47,8
+"Finland",,"FI",,,,,64,26
+"Falkland Islands (Malvinas)",,"FK",,,,,-51.75,-59
+"Faroe Islands",,"FO",,,,,62,-7
+"France",,"FR",,,,,46,2
+"United Kingdom",,"GB",,,,,54,-2
+"French Guiana",,"GF",,,,,4,-53
+"Gibraltar",,"GI",,,,,36.1833,-5.3667
+"Greenland",,"GL",,,,,72,-40
+"Guadeloupe",,"GP",,,,,16.25,-61.5833
+"Greece",,"GR",,,,,39,22
+"South Georgia and the South Sandwich Islands",,"GS",,,,,-54.5,-37
+"Guam",,"GU",,,,,13.4667,144.7833
+"Hong Kong",,"HK",,,,,22.25,114.1667
+"Heard Island and McDonald Islands",,"HM",,,,,-53.1,72.5167
+"Hungary",,"HU",,,,,47,20
+"Ireland",,"IE",,,,,53,-8
+"Israel",,"IL",,,,,31.5,34.75
+"British Indian Ocean Territory",,"IO",,,,,-6,71.5
+"Iceland",,"IS",,,,,65,-18
+"Italy",,"IT",,,,,42.8333,12.8333
+"Japan",,"JP",,,,,36,138
+"Korea, Republic of",,"KR",,,,,37,127.5
+"Kuwait",,"KW",,,,,29.3375,47.6581
+"Cayman Islands",,"KY",,,,,19.5,-80.5
+"Liechtenstein",,"LI",,,,,47.1667,9.5333
+"Lithuania",,"LT",,,,,56,24
+"Luxembourg",,"LU",,,,,49.75,6.1667
+"Latvia",,"LV",,,,,57,25
+"Monaco",,"MC",,,,,43.7333,7.4
+"Macao",,"MO",,,,,22.1667,113.55
+"Northern Mariana Islands",,"MP",,,,,15.2,145.75
+"Martinique",,"MQ",,,,,14.6667,-61
+"Malta",,"MT",,,,,35.8333,14.5833
+"New Caledonia",,"NC",,,,,-21.5,165.5
+"Norfolk Island",,"NF",,,,,-29.0333,167.95
+"Netherlands",,"NL",,,,,52.5,5.75
+"Norway",,"NO",,,,,62,10
+"New Zealand",,"NZ",,,,,-41,174
+"French Polynesia",,"PF",,,,,-15,-140
+"Poland",,"PL",,,,,52,20
+"Saint Pierre and Miquelon",,"PM",,,,,46.8333,-56.3333
+"Puerto Rico",,"PR",,,,,18.25,-66.5
+"Portugal",,"PT",,,,,39.5,-8
+"Qatar",,"QA",,,,,25.5,51.25
+"Réunion",,"RE",,,,,-21.1,55.6
+"Romania",,"RO",,,,,46,25
+"Russian Federation",,"RU",,,,,60,100
+"Saudi Arabia",,"SA",,,,,25,45
+"Sweden",,"SE",,,,,62,15
+"Singapore",,"SG",,,,,1.3667,103.8
+"Slovenia",,"SI",,,,,46,15
+"Svalbard and Jan Mayen",,"SJ",,,,,78,20
+"Slovakia",,"SK",,,,,48.6667,19.5
+"San Marino",,"SM",,,,,43.7667,12.4167
+"Turks and Caicos Islands",,"TC",,,,,21.75,-71.5833
+"French Southern Territories",,"TF",,,,,-43,67
+"Taiwan",,"TW",,,,,23.5,121
+"United States Minor Outlying Islands",,"UM",,,,,19.2833,166.6
+"United States",,"US",,,,,38,-97
+"Holy See (Vatican City State)",,"VA",,,,,41.9,12.45
+"Virgin Islands, British",,"VG",,,,,18.5,-64.5
+"Virgin Islands, U.S.",,"VI",,,,,18.3333,-64.8333
+"Mayotte",,"YT",,,,,-12.8333,45.1667
