@@ -1,6 +1,6 @@
 class OrganisationsController < ApplicationController
 	def index
-	    @organisations = Organisation.all
+	    @organisations = Organisation.find(:all, :order=>"name")
 
 	    respond_to do |format|
 	      format.html # index.html.erb
