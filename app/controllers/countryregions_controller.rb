@@ -6,7 +6,7 @@ class CountryregionsController < ApplicationController
 		input = File.open("public/countriesregions.csv")
 		input.each { |line|    
 #		    elements = CSV::parse_line(line, ';')
-		    elements = CSV.parse(line, :col_sep => ";")
+		    elements = CSV.parse(line)
 		    if elements.size == 0
 			@message += "Error on row: " + line + "<br />"
 		
