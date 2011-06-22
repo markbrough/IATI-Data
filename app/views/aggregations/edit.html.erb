@@ -1,0 +1,40 @@
+<h1>Editing aggregation</h1>
+
+<% form_for(@aggregation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.label :contribs %><br />
+    <%= f.text_field :contribs %>
+  </p>
+  <p>
+    <%= f.label :thecontroller %><br />
+    <%= f.text_field :thecontroller %>
+  </p>
+  <p>
+    <%= f.label :theid %><br />
+    <%= f.text_field :theid %>
+  </p>
+  <p>
+    <%= f.label :group %><br />
+    <%= f.text_field :group %>
+  </p>
+  <p>
+    <%= f.label :man_link %><br />
+    <%= f.text_area :man_link %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @aggregation %> |
+<%= link_to 'Back', aggregations_path %>

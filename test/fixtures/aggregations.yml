@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  value: 1.5
+  contribs: 1
+  thecontroller: MyString
+  theid: 1
+  group: MyString
+  man_link: MyText
+
+two:
+  name: MyString
+  value: 1.5
+  contribs: 1
+  thecontroller: MyString
+  theid: 1
+  group: MyString
+  man_link: MyText

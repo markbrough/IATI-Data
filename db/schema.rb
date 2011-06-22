@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110621151533) do
+ActiveRecord::Schema.define(:version => 20110622211639) do
 
   create_table "activities", :force => true do |t|
     t.string   "package_id"
@@ -74,19 +74,31 @@ ActiveRecord::Schema.define(:version => 20110621151533) do
   end
 
   create_table "activities_policy_markers", :force => true do |t|
-    t.integer   "activity_id"
-    t.integer   "policy_marker_id"
-    t.string    "significance"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.integer  "activity_id"
+    t.integer  "policy_marker_id"
+    t.string   "significance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "activities_sectors", :force => true do |t|
-    t.integer   "activity_id"
-    t.integer   "sector_id"
-    t.float     "percentage"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.integer  "activity_id"
+    t.integer  "sector_id"
+    t.float    "percentage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "aggregations", :force => true do |t|
+    t.string   "name"
+    t.float    "value"
+    t.integer  "contribs"
+    t.string   "thecontroller"
+    t.integer  "theid"
+    t.string   "group"
+    t.text     "man_link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "countryregions", :force => true do |t|
@@ -120,77 +132,77 @@ ActiveRecord::Schema.define(:version => 20110621151533) do
   end
 
   create_table "packages", :force => true do |t|
-    t.string    "packageid"
-    t.string    "name"
-    t.string    "title"
-    t.string    "version"
-    t.string    "url"
-    t.string    "author"
-    t.string    "author_email"
-    t.string    "maintainer"
-    t.string    "maintainer_email"
-    t.string    "notes"
-    t.string    "licenseid"
-    t.string    "state"
-    t.string    "revisionid"
-    t.string    "license"
-    t.string    "tags"
-    t.string    "groups"
-    t.string    "groups_types"
-    t.string    "donors"
-    t.date      "activity_period_from"
-    t.string    "verified"
-    t.text      "iati_preview"
-    t.string    "donors_type"
-    t.string    "activity_count"
-    t.string    "country"
-    t.string    "donors_country"
-    t.date      "activity_period_to"
-    t.string    "ratings_average"
-    t.string    "ratings_count"
-    t.string    "resourcesid"
-    t.string    "resources_packageid"
-    t.string    "resources_url"
-    t.string    "resources_format"
-    t.text      "resources_description"
-    t.string    "resources_hash"
-    t.string    "resources_position"
-    t.text      "ckan_url"
-    t.text      "download_url"
-    t.integer   "retrieved"
-    t.date      "retrieved_date"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "packageid"
+    t.string   "name"
+    t.string   "title"
+    t.string   "version"
+    t.string   "url"
+    t.string   "author"
+    t.string   "author_email"
+    t.string   "maintainer"
+    t.string   "maintainer_email"
+    t.string   "notes"
+    t.string   "licenseid"
+    t.string   "state"
+    t.string   "revisionid"
+    t.string   "license"
+    t.string   "tags"
+    t.string   "groups"
+    t.string   "groups_types"
+    t.string   "donors"
+    t.date     "activity_period_from"
+    t.string   "verified"
+    t.text     "iati_preview"
+    t.string   "donors_type"
+    t.string   "activity_count"
+    t.string   "country"
+    t.string   "donors_country"
+    t.date     "activity_period_to"
+    t.string   "ratings_average"
+    t.string   "ratings_count"
+    t.string   "resourcesid"
+    t.string   "resources_packageid"
+    t.string   "resources_url"
+    t.string   "resources_format"
+    t.text     "resources_description"
+    t.string   "resources_hash"
+    t.string   "resources_position"
+    t.text     "ckan_url"
+    t.text     "download_url"
+    t.integer  "retrieved"
+    t.date     "retrieved_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "policy_markers", :force => true do |t|
-    t.string    "text"
-    t.string    "vocab"
-    t.string    "code"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "text"
+    t.string   "vocab"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "related_activities", :force => true do |t|
-    t.integer   "activity_id"
-    t.string    "text"
-    t.string    "ref"
-    t.string    "reltype"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.integer  "activity_id"
+    t.string   "text"
+    t.string   "ref"
+    t.string   "reltype"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sectors", :force => true do |t|
-    t.string    "text"
-    t.string    "vocab"
-    t.string    "code"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "text"
+    t.string   "vocab"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "transactions", :force => true do |t|
     t.integer  "activity_id"
-    t.float    "value"
+    t.float    "value",                     :limit => 255
     t.string   "value_date"
     t.string   "value_currency"
     t.string   "transaction_type"

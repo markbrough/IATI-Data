@@ -1,0 +1,32 @@
+<h1>Listing aggregations</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Value</th>
+    <th>Contribs</th>
+    <th>Thecontroller</th>
+    <th>Theid</th>
+    <th>Group</th>
+    <th>Man link</th>
+  </tr>
+
+<% @aggregations.each do |aggregation| %>
+  <tr>
+    <td><%=h aggregation.name %></td>
+    <td><%=h aggregation.value %></td>
+    <td><%=h aggregation.contribs %></td>
+    <td><%=h aggregation.thecontroller %></td>
+    <td><%=h aggregation.theid %></td>
+    <td><%=h aggregation.group %></td>
+    <td><%=h aggregation.man_link %></td>
+    <td><%= link_to 'Show', aggregation %></td>
+    <td><%= link_to 'Edit', edit_aggregation_path(aggregation) %></td>
+    <td><%= link_to 'Destroy', aggregation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New aggregation', new_aggregation_path %>

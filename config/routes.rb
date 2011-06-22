@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :aggregations
+
 
   map.resources :activities, :has_many => [:transactions]
 
