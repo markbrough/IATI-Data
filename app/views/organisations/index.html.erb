@@ -25,7 +25,7 @@
 <%
  @conditions = {}
  @conditions[:organisation_id] = organisation.id
- @reltype = ActivitiesOrganisation.all(:conditions=>@conditions, :group=>:rel_type)%>
+ @reltype = ActivitiesOrganisation.all(:select => 'distinct(rel_type)', :conditions=>@conditions)%>
 
 <td><% @reltype.each do |r| %>
 <% if r.rel_type == 1 %>
