@@ -4,9 +4,10 @@ class CountryregionsController < ApplicationController
 		require 'pp'
 		@message = ''
 		input = File.open("public/countriesregions.csv")
+		
 		input.each { |line|    
 #		    elements = CSV::parse_line(line, ';')
-		    elements = CSV.parse(line)
+		    elements = CSV.parse_line(line)
 		    if elements.size == 0
 			@message += "Error on row: " + line + "<br />"
 		
