@@ -72,7 +72,7 @@ end %>];
 
 	openaid.afterLoadCallbacks.push(function () {
 		
-		openaid.year_data = {"2010":{"total_contributions":<%= @activities.count %>,"total":30695101485.0,"data":{<% @count_countries = 0
+		openaid.year_data = {"2010":{"total_contributions":<%= @activities.count %>,"total":"<%= Aggregation.sum(:value) %>","data":{<% @count_countries = 0
 @countries.each do |country|
 	%><%
 #	@conditions_countries[:country] = country.recipient_country_code
