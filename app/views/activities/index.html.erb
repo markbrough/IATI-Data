@@ -3,7 +3,7 @@
 	params.delete("page")
 end
 %>
-<h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %><% unless (params[:countryregion] != '') %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %>, Totalling £<%= Transaction.sum(:value) %><% end %>.</h1>
+<h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %><% unless ((params[:countryregion]) and (params[:countryregion] != '')) %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %>, Totalling £<%= Transaction.sum(:value) %><% end %>.</h1>
 <% if params[:countryregion] %>
 
 <% elsif params[:hide_map] == '1'
