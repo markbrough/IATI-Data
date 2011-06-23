@@ -393,7 +393,7 @@ InfoBox.prototype.createElement = function() {
 		closeButton.innerHTML = htmlData.locales.close;
 		closeButton.className = 'close';
 		countryLink = document.createElement("a");
-		countryLink.setAttribute('href', '?recipient_country_code=' + openaidData.countryId + htmlData.coutryLinkPath);
+		countryLink.setAttribute('href', '?countryregion=' + openaidData.countryId + htmlData.coutryLinkPath);
 		countryLink.innerHTML = openaidData.countryName;
 		dataList = document.createElement("ul");
 		
