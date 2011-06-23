@@ -20,7 +20,7 @@ function SpotOverlay(markers, map, initCallback) {
 	smallestSize = 20, 
 	mid = 100,
 	high = 150,
-	spotOutcomeMultiplier = 0.00333,
+	spotOutcomeMultiplier = 0.00233,
 	invisibleScale = 0.00001;
 	
 
