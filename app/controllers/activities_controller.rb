@@ -14,7 +14,6 @@ class ActivitiesController < ApplicationController
     @conditions = {}
     #@conditions[:hierarchy] = '0' unless !(params[:implementing_org].blank? and params[:recipient_country_code].blank? and params[:iati_identifier].blank? and params[:recipient_region_code].blank? and params[:policy_marker].blank? and params[:sector].blank? and params[:status_code].blank?)
 
-    @conditions[:implementing_org] = params[:implementing_org] unless params[:implementing_org].blank?
     @conditions[:status_code] = params[:status_code] unless params[:status_code].blank?
     @conditions[:countryregion_id] = params[:countryregion] unless params[:countryregion].blank?
     @conditions[:iati_identifier] = params[:iati_identifier] unless params[:iati_identifier].blank?
@@ -39,6 +38,42 @@ class ActivitiesController < ApplicationController
 		@conditions[:id] << org.activity_id
 	end
     end
+
+    if params[:funding_org]
+      organisation_conditions = {}
+      organisation_conditions[:organisation_id] = params[:funding_org]
+      organisation_conditions[:rel_type] = '1'
+      @org=ActivitiesOrganisation.find(:all, :conditions=>organisation_conditions)
+      @conditions[:id] = []
+	@org.each do |org|
+		@conditions[:id] << org.activity_id
+	end
+    end
+
+    if params[:extending_org]
+      organisation_conditions = {}
+      organisation_conditions[:organisation_id] = params[:extending_org]
+      organisation_conditions[:rel_type] = '2'
+      @org=ActivitiesOrganisation.find(:all, :conditions=>organisation_conditions)
+      @conditions[:id] = []
+	@org.each do |org|
+		@conditions[:id] << org.activity_id
+	end
+    end
+
+
+
+    if params[:implementing_org]
+      organisation_conditions = {}
+      organisation_conditions[:organisation_id] = params[:implementing_org]
+      organisation_conditions[:rel_type] = '3'
+      @org=ActivitiesOrganisation.find(:all, :conditions=>organisation_conditions)
+      @conditions[:id] = []
+	@org.each do |org|
+		@conditions[:id] << org.activity_id
+	end
+    end
+
     if params[:sector]
       sector_conditions = {}
       sector_conditions[:sector_id] = params[:sector]

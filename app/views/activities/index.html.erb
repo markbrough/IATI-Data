@@ -4,7 +4,9 @@
 end
 %>
 <h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %><% if (@numcountries != '' and @numregions != '') %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %><% end %>.</h1>
-<% if params[:hide_map] == '1'
+<% if params[:countryregion] %>
+
+<% elsif params[:hide_map] == '1'
  %>
 <span class="map_toggler"><%=link_to 'Show map', :controller=>:activities, :params=>params.except(:hide_map) %></span>
 <div class="clearer"> </div>
@@ -45,7 +47,7 @@ position:absolute !important; right:5px !important; text-indent:-999em; top:4px;
 	#@isocodes = Isocode.find(:all, :conditions=>@conditions_countries)
 	#@isocodes.each do |isocode| 
 
-%><%= ", " if @count_countries > 0 %>{"location":{"lng":"<%= aggregation.longitude %>","lat":"<%= aggregation.latitude %>","bounds":null},"id":"<%= aggregation.id %>","openaid_name":"<%= aggregation.name %>","region":false}<% 
+%><%= ", " if @count_countries > 0 %>{"location":{"lng":"<%= aggregation.longitude %>","lat":"<%= aggregation.latitude %>","bounds":null},"id":"<%= aggregation.theid %>","openaid_name":"<%= aggregation.name %>","region":false}<% 
 @count_countries = @count_countries +1
 #end
 end %>]; 
@@ -205,7 +207,7 @@ end %>}}};
 					infoBox.setMap(null);	
 				}
 				infoBox = new InfoBox(map, marker, { 
-						coutryLinkPath: '<% params.each do |param| unless ((param[0] == 'controller') or (param[0] == 'action') or (param[0] == 'recipient_country_code')) %>&<%= param[0] %>=<%= param[1] %><% end end %>',	
+						coutryLinkPath: '<% params.each do |param| unless ((param[0] == 'controller') or (param[0] == 'action') or (param[0] == 'countryregion')) %>&<%= param[0] %>=<%= param[1] %><% end end %>',	
 						locales: { 
 							million_kr : 'GBP', 
 							contributions: 'contributions',
@@ -330,6 +332,13 @@ end %>}}};
 			@nicecondition = @condition.to_s
 			@value = condition[1]
 			@nicevalue = @value.to_s
+
+			if @nicecondition == 'countryregion'
+			  @nicecondition = 'Country/Region'
+			  @thiscountry = Countryregion.find(@nicevalue)
+			  @nicevalue = @thiscountry.country_name
+			end
+
 	%>	<span class="form_option"><%= link_to "[x] " + 	@nicecondition + ": " + @nicevalue, :params=>params.except(@condition) %></span>
 		<%
 		end
