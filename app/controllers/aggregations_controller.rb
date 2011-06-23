@@ -57,6 +57,8 @@ class AggregationsController < ApplicationController
 	aggregation[:thecontroller] = "Countries"
 	aggregation[:theid] = country.id
 	aggregation[:group] = 'countries'
+	aggregation[:longitude] = country.longitude
+	aggregation[:latitude] = country.latitude
 	if (aggregation[:value] > 0)
 		@aggregation = Aggregation.new(aggregation)
 		@aggregation.save

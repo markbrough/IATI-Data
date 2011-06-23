@@ -9,6 +9,8 @@
     <th>Theid</th>
     <th>Group</th>
     <th>Man link</th>
+    <th>Longitude</th>
+    <th>Latitude</th>
   </tr>
 
 <% @aggregations.each do |aggregation| %>
@@ -20,6 +22,8 @@
     <td><%=h aggregation.theid %></td>
     <td><%=h aggregation.group %></td>
     <td><%=h aggregation.man_link %></td>
+    <td><%=h aggregation.longitude %></td>
+    <td><%=h aggregation.latitude %></td>
     <td><%= link_to 'Show', aggregation %></td>
     <td><%= link_to 'Edit', edit_aggregation_path(aggregation) %></td>
     <td><%= link_to 'Destroy', aggregation, :confirm => 'Are you sure?', :method => :delete %></td>

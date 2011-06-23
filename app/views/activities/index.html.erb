@@ -4,11 +4,11 @@
 end
 %>
 <h1>Found <%= pluralize(@totalrows.to_i, 'Activity') %><% if (@numcountries != '' and @numregions != '') %> in <%= pluralize(@numcountries, 'Country') %> and <%= pluralize(@numregions, 'Region') %><% end %>.</h1>
-<% #if params[:show_map] != '1'
+<% if params[:hide_map] == '1'
  %>
-<!--<span class="map_toggler"><%=link_to 'Show map', :controller=>:activities, :params=>params.except(:hide_map) %></span>
-<div class="clearer"> </div>-->
-<% if params[:show_map] == '1' %>
+<span class="map_toggler"><%=link_to 'Show map', :controller=>:activities, :params=>params.except(:hide_map) %></span>
+<div class="clearer"> </div>
+<% else %>
 <span class="map_toggler"><%=link_to 'Hide map', :controller=>:activities, :params=>params, :hide_map=>'1' %></span>
 <div class="clearer"> </div>
 <%
@@ -38,13 +38,14 @@ position:absolute !important; right:5px !important; text-indent:-999em; top:4px;
 				openaid.map = openaid.map || {};
 				openaid.map.geo_data = {};
 				openaid.map.geo_data = [<% @count_countries = 0
-@countries.each do |country|
+@aggregations = Aggregation.all
+@aggregations.each do |aggregation|
 	#@conditions_countries = {}
 	#@conditions_countries[:country] = country.recipient_country_code
 	#@isocodes = Isocode.find(:all, :conditions=>@conditions_countries)
+	#@isocodes.each do |isocode| 
 
-#@isocodes.each do |isocode| 
-%><%= ", " if @count_countries > 0 %>{"location":{"lng":"<%= country.longitude %>","lat":"<%= country.latitude %>","bounds":null},"id":"<%= country.country_name %>","openaid_name":"<%= country.iso2 %>","region":false}<% 
+%><%= ", " if @count_countries > 0 %>{"location":{"lng":"<%= aggregation.longitude %>","lat":"<%= aggregation.latitude %>","bounds":null},"id":"<%= aggregation.id %>","openaid_name":"<%= aggregation.name %>","region":false}<% 
 @count_countries = @count_countries +1
 #end
 end %>]; 
@@ -86,15 +87,15 @@ end %>];
 	#@thiscountry_value = Transaction.find_by_activity_id(@activities.map(&:id)).find(:all)
 	#@thiscountry_value = @thiscountry_activities.transactions.sum(:value)
 
-country.activities.each do |a|
-	@thiscountry_value = @thiscountry_value + a.transactions.sum(:value)
-end
+#country.activities.each do |a|
+#	@thiscountry_value = @thiscountry_value + a.transactions.sum(:value)
+#end
 
 
 %><%
-
-@countries.each do |country| 
-%><%= "," if @count_countries > 0 %>"<%= country.country_name %>":{"payment":<%= @thiscountry_value.to_s %>,"contributions":<%= country.activities.count %>,"order":121}<% 
+@aggregations = Aggregation.all
+@aggregations.each do |aggregation|
+%><%= "," if @count_countries > 0 %>"<%= aggregation.name %>":{"payment":<%= aggregation.value.to_s %>,"contributions":<%= aggregation.contribs %>,"order":121}<% 
 @count_countries = @count_countries +1
 end
 end %>}}};
