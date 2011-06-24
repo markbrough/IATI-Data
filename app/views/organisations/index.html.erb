@@ -1,5 +1,13 @@
 <h1>Organisations</h1>
 
+<% if @pagination.count >0 
+%>
+	<p>Page: <% @pagination.each do |p| %>
+	<%= link_to p[:page].to_s, :params => params, :page => p[:page].to_s 
+	%>
+	<% end %></p>
+<% end %>
+
 <table>
   <tr>
     <th>Organisations</th>
@@ -40,5 +48,4 @@ Implementing
   </tr>
 <% end %>
 <% end %>
-
 </table>
