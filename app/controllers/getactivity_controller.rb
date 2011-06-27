@@ -54,7 +54,7 @@ class GetactivityController < ApplicationController
 		:a_recipient_region=>@activity.recipient_region,
 		:a_recipient_region_code=>@activity.recipient_region_code,
 		:a_recipient_country=>@activity.recipient_country,
-		:a_recipient_country_code=>@activity.recipient_country_code
+		:a_recipient_country_code=>@activity.recipient_country_code,
 		:a_collaboration_type=>@activity.collaboration_type,
 		:a_collaboration_type_code=>@activity.collaboration_type_code,
 		:a_default_flow_type=>@activity.default_flow_type,
