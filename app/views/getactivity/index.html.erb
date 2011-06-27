@@ -76,6 +76,10 @@
 		<th>a_legacy_data_iati_equivalent</th>
 		<th>a_activity_website</th>
 		<th>a_countryregion_id</th>
+		<th>r_id</th>
+		<th>r_iati_identifier</th>
+		<th>r_title</th>
+		<th>r_description</th>
 
 </tr>
 <% @t.each do |t| %>
@@ -153,7 +157,10 @@
 		<td><%= t[:a_legacy_data_iati_equivalent] %></td>
 		<td><%= t[:a_activity_website] %></td>
 		<td><%= t[:a_countryregion_id] %></td>
-
+		<td><%= t[:r_id] %></td>
+		<td><%= t[:r_iati_identifier] %></td>
+		<td><%= t[:r_title] %></td>
+		<td><%= t[:r_description] %></td>
 </tr>
 <% end %>
 </table>

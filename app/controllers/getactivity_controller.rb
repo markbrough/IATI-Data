@@ -87,7 +87,11 @@ class GetactivityController < ApplicationController
 		:a_legacy_data_value=>@activity.legacy_data_value,
 		:a_legacy_data_iati_equivalent=>@activity.legacy_data_iati_equivalent,
 		:a_activity_website=>@activity.activity_website,
-		:a_countryregion_id=>@activity.countryregion_id
+		:a_countryregion_id=>@activity.countryregion_id,
+		:r_id=>@related_activity_details.id,
+		:r_iati_identifier=>@related_activity_details.iati_identifier,
+		:r_title=>@related_activity_details.title,
+		:r_description=>@related_activity_details.description
 		}
 	  end
 	end
