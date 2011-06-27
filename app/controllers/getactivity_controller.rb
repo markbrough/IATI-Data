@@ -37,7 +37,7 @@ class GetactivityController < ApplicationController
 		:a_id => @activity.id,
 		:a_package_id=>@activity.package_id,
 		:a_activity_lang=>@activity.activity_lang,
-		:a_default_currency=>@acitivty.default_currency,
+		:a_default_currency=>@activity.default_currency,
 		:a_hierarchy=>@activity.hierarchy,
 		:a_last_updated=>@activity.last_updated,
 		:a_reporting_org=>@activity.reporting_org,
