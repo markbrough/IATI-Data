@@ -2,12 +2,59 @@
 
 <table>
 <tr>
-<th>Transaction</th>
-<th>Activity</th>
+<th>T id</th>
+<th>T value</th>
+<th>T value_date</th>
+<th>T value_currency</th>
+<th>T transaction_type</th>
+<th>T transaction_type_code</th>
+<th>T provider_org</th>
+<th>T provider_org_ref</th>
+<th>T provider_org_type</th>
+<th>T receiver_org</th>
+<th>T receiver_org_ref</th>
+<th>T receiver_org_type</th>
+<th>T description</th>
+<th>T transaction_date</th>
+<th>T transaction_date_iso</th>
+<th>T flow_type</th>
+<th>T flow_type_code</th>
+<th>T aid_type</th>
+<th>T aid_type_code</th>
+<th>T finance_type</th>
+<th>T finance_type_code</th>
+<th>T tied_status_code</th>
+<th>T disbursement_channel_code</th>
+<th>A_id</th>
 </tr>
-<% @t.each do |transaction| %>
+<% @t.each do |t| %>
 <tr>
-	<td><%= transaction[:transaction_id] %></td><td><%= transaction[:activity_id] %></td>
+	<td><%= t[:t_id] %></td>
+	<td><%= t[:a_id] %></td>
+	<td><%= t[:value]</td>
+<td><%= t[:value_date] %></td>
+<td><%= t[:value_currency] %></td>
+<td><%= t[:transaction_type] %></td>
+<td><%= t[:transaction_type_code] %></td>
+<td><%= t[:provider_org] %></td>
+<td><%= t[:provider_org_ref] %></td>
+<td><%= t[:provider_org_type] %></td>
+<td><%= t[:receiver_org] %></td>
+<td><%= t[:receiver_org_ref] %></td>
+<td><%= t[:receiver_org_type] %></td>
+<td><%= t[:description] %></td>
+<td><%= t[:transaction_date] %></td>
+<td><%= t[:transaction_date_iso] %></td>
+<td><%= t[:flow_type] %></td>
+<td><%= t[:flow_type_code] %></td>
+<td><%= t[:aid_type] %></td>
+<td><%= t[:aid_type_code] %></td>
+<td><%= t[:finance_type] %></td>
+<td><%= t[:finance_type_code] %></td>
+<td><%= t[:tied_status_code] %></td>
+<td><%= t[:disbursement_channel_code] %></td>
+
+
 </tr>
 <% end %>
 </table>
