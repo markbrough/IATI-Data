@@ -1,0 +1,118 @@
+<p>
+  <b>Activity:</b>
+  <%=h @transaction.activity_id %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%=h @transaction.value %>
+</p>
+
+<p>
+  <b>Value date:</b>
+  <%=h @transaction.value_date %>
+</p>
+
+<p>
+  <b>Value currency:</b>
+  <%=h @transaction.value_currency %>
+</p>
+
+<p>
+  <b>Transaction type:</b>
+  <%=h @transaction.transaction_type %>
+</p>
+
+<p>
+  <b>Transaction type code:</b>
+  <%=h @transaction.transaction_type_code %>
+</p>
+
+<p>
+  <b>Provider org:</b>
+  <%=h @transaction.provider_org %>
+</p>
+
+<p>
+  <b>Provider org ref:</b>
+  <%=h @transaction.provider_org_ref %>
+</p>
+
+<p>
+  <b>Provider org type:</b>
+  <%=h @transaction.provider_org_type %>
+</p>
+
+<p>
+  <b>Receiver org:</b>
+  <%=h @transaction.receiver_org %>
+</p>
+
+<p>
+  <b>Receiver org ref:</b>
+  <%=h @transaction.receiver_org_ref %>
+</p>
+
+<p>
+  <b>Receiver org type:</b>
+  <%=h @transaction.receiver_org_type %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @transaction.description %>
+</p>
+
+<p>
+  <b>Transaction date:</b>
+  <%=h @transaction.transaction_date %>
+</p>
+
+<p>
+  <b>Transaction date iso:</b>
+  <%=h @transaction.transaction_date_iso %>
+</p>
+
+<p>
+  <b>Flow type:</b>
+  <%=h @transaction.flow_type %>
+</p>
+
+<p>
+  <b>Flow type code:</b>
+  <%=h @transaction.flow_type_code %>
+</p>
+
+<p>
+  <b>Aid type:</b>
+  <%=h @transaction.aid_type %>
+</p>
+
+<p>
+  <b>Aid type code:</b>
+  <%=h @transaction.aid_type_code %>
+</p>
+
+<p>
+  <b>Finance type:</b>
+  <%=h @transaction.finance_type %>
+</p>
+
+<p>
+  <b>Finance type code:</b>
+  <%=h @transaction.finance_type_code %>
+</p>
+
+<p>
+  <b>Tied status code:</b>
+  <%=h @transaction.tied_status_code %>
+</p>
+
+<p>
+  <b>Disbursement channel code:</b>
+  <%=h @transaction.disbursement_channel_code %>
+</p>
+
+
+<%= link_to 'Edit', edit_activity_transaction_path(@activity, @transaction) %> |
+<%= link_to 'Back', activity_transactions_path(@activity) %>

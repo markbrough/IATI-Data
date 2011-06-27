@@ -26,6 +26,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :activities_organisation
 
+  map.resources :getactivity
+
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

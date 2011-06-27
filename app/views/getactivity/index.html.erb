@@ -1,0 +1,16 @@
+<h1>Listing transactions</h1>
+
+<table>
+<tr>
+<th>Transaction</th>
+<th>Activity</th>
+</tr>
+<% @t.each do |transaction| %>
+<tr>
+	<td><%= transaction[:transaction_id] %></td><td><%= transaction[:activity_id] %></td>
+</tr>
+<% end %>
+</table>
+
+<br />
+

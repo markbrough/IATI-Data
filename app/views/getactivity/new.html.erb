@@ -1,0 +1,103 @@
+<h1>New transaction for activity <%=h @activity.title %></h1>
+
+<% form_for([@activity, @transaction]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :activity_id %><br />
+    <%= f.text_field :activity_id %>
+  </p>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.label :value_date %><br />
+    <%= f.text_field :value_date %>
+  </p>
+  <p>
+    <%= f.label :value_currency %><br />
+    <%= f.text_field :value_currency %>
+  </p>
+  <p>
+    <%= f.label :transaction_type %><br />
+    <%= f.text_field :transaction_type %>
+  </p>
+  <p>
+    <%= f.label :transaction_type_code %><br />
+    <%= f.text_field :transaction_type_code %>
+  </p>
+  <p>
+    <%= f.label :provider_org %><br />
+    <%= f.text_field :provider_org %>
+  </p>
+  <p>
+    <%= f.label :provider_org_ref %><br />
+    <%= f.text_field :provider_org_ref %>
+  </p>
+  <p>
+    <%= f.label :provider_org_type %><br />
+    <%= f.text_field :provider_org_type %>
+  </p>
+  <p>
+    <%= f.label :receiver_org %><br />
+    <%= f.text_field :receiver_org %>
+  </p>
+  <p>
+    <%= f.label :receiver_org_ref %><br />
+    <%= f.text_field :receiver_org_ref %>
+  </p>
+  <p>
+    <%= f.label :receiver_org_type %><br />
+    <%= f.text_field :receiver_org_type %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :transaction_date %><br />
+    <%= f.text_field :transaction_date %>
+  </p>
+  <p>
+    <%= f.label :transaction_date_iso %><br />
+    <%= f.text_field :transaction_date_iso %>
+  </p>
+  <p>
+    <%= f.label :flow_type %><br />
+    <%= f.text_field :flow_type %>
+  </p>
+  <p>
+    <%= f.label :flow_type_code %><br />
+    <%= f.text_field :flow_type_code %>
+  </p>
+  <p>
+    <%= f.label :aid_type %><br />
+    <%= f.text_field :aid_type %>
+  </p>
+  <p>
+    <%= f.label :aid_type_code %><br />
+    <%= f.text_field :aid_type_code %>
+  </p>
+  <p>
+    <%= f.label :finance_type %><br />
+    <%= f.text_field :finance_type %>
+  </p>
+  <p>
+    <%= f.label :finance_type_code %><br />
+    <%= f.text_field :finance_type_code %>
+  </p>
+  <p>
+    <%= f.label :tied_status_code %><br />
+    <%= f.text_field :tied_status_code %>
+  </p>
+  <p>
+    <%= f.label :disbursement_channel_code %><br />
+    <%= f.text_field :disbursement_channel_code %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', activity_transactions_path %>
