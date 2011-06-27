@@ -9,7 +9,7 @@ class GetactivityController < ApplicationController
 	    @ra_conditions[:activity_id] = @activity[:id]
 	    @ra_conditions[:reltype] = '3'
 	    @related_activity = RelatedActivity.find(:all, :conditions=>@ra_conditions)
-	 	@related_activity_iati_ID = @related_activity[:ref]
+	 	@related_activity_iati_ID = @related_activity.ref.to_s
 	    @related_activity_details = Activity.find_by_iati_identifier(@related_activity_iati_ID)
 	    @t << {
 		:t_id => transaction.id,
