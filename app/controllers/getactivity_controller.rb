@@ -2,6 +2,7 @@ class GetactivityController < ApplicationController
 
 	def index
 	  @t = []
+	  @messages = ''
 	  @transactions = Transaction.find(:all, :limit=>100)
 	  @transactions.each do |transaction|
 	    @activity = Activity.find(transaction.activity_id)
@@ -12,9 +13,10 @@ class GetactivityController < ApplicationController
 		@ra_iati_id = ''
 		@related_activity.each do |ra|
 		  @ra_iati_id = ra.ref
+		  @messages = @messages + ra.ref
 		end
 		#@related_activity_iati_ID = @related_activity[:ref]
-	  	@related_activity_details = Activity.find_by_iati_identifier(@ra_iati_id)
+	  	#@related_activity_details = Activity.find_by_iati_identifier(@ra_iati_id)
 
 
 		@r_id = (@related_activity_details.id if @related_activity_details.id)
