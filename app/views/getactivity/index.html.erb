@@ -29,9 +29,9 @@
 </tr>
 <% @t.each do |t| %>
 <tr>
-	<td><%= t[:t_id] %></td>
-	<td><%= t[:a_id] %></td>
-	<td><%= t[:value] %></td>
+<td><%= t[:t_id] %></td>
+<td><%= t[:a_id] %></td>
+<td><%= t[:value] %></td>
 <td><%= t[:t_value_date] %></td>
 <td><%= t[:t_value_currency] %></td>
 <td><%= t[:t_transaction_type] %></td>
@@ -53,7 +53,56 @@
 <td><%= t[:t_finance_type_code] %></td>
 <td><%= t[:t_tied_status_code] %></td>
 <td><%= t[:t_disbursement_channel_code] %></td>
-
+<td><%= t[:a_id] %></td>
+		<td><%= t[:a_package_id] %></td>
+		<td><%= t[:a_activity_lang] %></td>
+		<td><%= t[:a_default_currency] %></td>
+		<td><%= t[:a_hierarchy] %></td>
+		<td><%= t[:a_last_updated] %></td>
+		<td><%= t[:a_reporting_org] %></td>
+		<td><%= t[:a_reporting_org_ref] %></td>
+		<td><%= t[:a_reporting_org_type] %></td>
+		<td><%= t[:a_funding_org] %></td>
+		<td><%= t[:a_funding_org_ref] %></td>
+		<td><%= t[:a_funding_org_type] %></td>
+		<td><%= t[:a_extending_org] %></td>
+		<td><%= t[:a_extending_org_ref] %></td>
+		<td><%= t[:a_extending_org_type] %></td>
+		<td><%= t[:a_implementing_org] %></td>
+		<td><%= t[:a_implementing_org_ref] %></td>
+		<td><%= t[:a_implementing_org_type] %></td>
+		<td><%= t[:a_recipient_region] %></td>
+		<td><%= t[:a_recipient_region_code] %></td>
+		<td><%= t[:a_recipient_country] %></td>
+		<td><%= t[:a_recipient_country_code] %></td>
+		<td><%= t[:a_collaboration_type] %></td>
+		<td><%= t[:a_collaboration_type_code] %></td>
+		<td><%= t[:a_default_flow_type] %></td>
+		<td><%= t[:a_default_flow_type_code] %></td>
+		<td><%= t[:a_default_aid_type] %></td>
+		<td><%= t[:a_default_aid_type_code] %></td>
+		<td><%= t[:a_default_finance_type] %></td>
+		<td><%= t[:a_default_finance_type_code] %></td>
+		<td><%= t[:a_iati_identifier] %></td>
+		<td><%= t[:a_title] %></td>
+		<td><%= t[:a_description] %></td>
+		<td><%= t[:a_date_start_actual] %></td>
+		<td><%= t[:a_date_start_planned] %></td>
+		<td><%= t[:a_date_end_actual] %></td>
+		<td><%= t[:a_date_end_planned] %></td>
+		<td><%= t[:a_status_code] %></td>
+		<td><%= t[:a_status] %></td>
+		<td><%= t[:a_contact_organisation] %></td>
+		<td><%= t[:a_contact_telephone] %></td>
+		<td><%= t[:a_contact_email] %></td>
+		<td><%= t[:a_contact_mailing_address] %></td>
+		<td><%= t[:a_default_tied_status] %></td>
+		<td><%= t[:a_default_tied_status_code] %></td>
+		<td><%= t[:a_legacy_data_name] %></td>
+		<td><%= t[:a_legacy_data_value] %></td>
+		<td><%= t[:a_legacy_data_iati_equivalent] %></td>
+		<td><%= t[:a_activity_website] %></td>
+		<td><%= t[:a_countryregion_id] %></td>
 
 </tr>
 <% end %>
