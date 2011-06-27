@@ -8,9 +8,9 @@ class GetactivityController < ApplicationController
 	    @ra_conditions = {}
 	    @ra_conditions[:activity_id] = @activity[:id]
 	    @ra_conditions[:reltype] = '3'
-	    @related_activity = RelatedActivity.find(:all, :conditions=>@ra_conditions)
-	 	@related_activity_iati_ID = @related_activity.ref.to_s
-	    @related_activity_details = Activity.find_by_iati_identifier(@related_activity_iati_ID)
+	#    @related_activity = RelatedActivity.find(:all, :conditions=>@ra_conditions)
+	 #	@related_activity_iati_ID = @related_activity.ref.to_s
+	  #  @related_activity_details = Activity.find_by_iati_identifier(@related_activity_iati_ID)
 	    @t << {
 		:t_id => transaction.id,
 		:t_value => transaction.value,
@@ -83,9 +83,9 @@ class GetactivityController < ApplicationController
 		:a_legacy_data_value=>@activity.legacy_data_value,
 		:a_legacy_data_iati_equivalent=>@activity.legacy_data_iati_equivalent,
 		:a_activity_website=>@activity.activity_website,
-		:a_countryregion_id=>@activity.countryregion_id,
-		:r_title => @related_activity_details.title,
-		:r_description => @related_activity_details.description
+		:a_countryregion_id=>@activity.countryregion_id
+#		:r_title => @related_activity_details.title,
+#		:r_description => @related_activity_details.description
 		}
 	  end
 	end
