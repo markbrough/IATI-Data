@@ -17,10 +17,10 @@ class GetactivityController < ApplicationController
 	  	@related_activity_details = Activity.find_by_iati_identifier(@ra_iati_id)
 
 
-		@r_id = @related_activity_details.id if @related_activity_details.id
-		@r_iati_identifier=@related_activity_details.iati_identifier if @related_activity_details.iati_identifier
-		@r_title=@related_activity_details.title if @related_activity_details.title
-		@r_description=@related_activity_details.description if @related_activity_details.description
+		@r_id = (@related_activity_details.id if @related_activity_details.id)
+		@r_iati_identifier=(@related_activity_details.iati_identifier if @related_activity_details.iati_identifier)
+		@r_title=(@related_activity_details.title if @related_activity_details.title)
+		@r_description=(@related_activity_details.description if @related_activity_details.description)
 
 	    @t << {
 		:t_id => transaction.id,
