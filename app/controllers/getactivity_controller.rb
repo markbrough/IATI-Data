@@ -15,6 +15,13 @@ class GetactivityController < ApplicationController
 		end
 		#@related_activity_iati_ID = @related_activity[:ref]
 	  	@related_activity_details = Activity.find_by_iati_identifier(@ra_iati_id)
+
+
+		@r_id = @related_activity_details.id if @related_activity_details.id
+		@r_iati_identifier=@related_activity_details.iati_identifier if @related_activity_details.iati_identifier
+		@r_title=@related_activity_details.title if @related_activity_details.title
+		@r_description=@related_activity_details.description if @related_activity_details.description
+
 	    @t << {
 		:t_id => transaction.id,
 		:t_value => transaction.value,
@@ -88,10 +95,10 @@ class GetactivityController < ApplicationController
 		:a_legacy_data_iati_equivalent=>@activity.legacy_data_iati_equivalent,
 		:a_activity_website=>@activity.activity_website,
 		:a_countryregion_id=>@activity.countryregion_id,
-		:r_id=>@related_activity_details.id,
-		:r_iati_identifier=>@related_activity_details.iati_identifier,
-		:r_title=>@related_activity_details.title,
-		:r_description=>@related_activity_details.description
+		:r_id=>@r_id,
+		:r_iati_identifier=>@r_iati_identifier,
+		:r_title=>@r_title,
+		:r_description=>@r_description
 		}
 	  end
 	end
