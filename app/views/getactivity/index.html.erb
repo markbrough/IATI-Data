@@ -3,6 +3,7 @@
 <table>
 <tr>
 <th>T id</th>
+<th>A id</th>
 <th>T value</th>
 <th>T value_date</th>
 <th>T value_currency</th>
@@ -25,7 +26,57 @@
 <th>T finance_type_code</th>
 <th>T tied_status_code</th>
 <th>T disbursement_channel_code</th>
-<th>A_id</th>
+
+	<th>a_package_id</th>
+		<th>a_activity_lang</th>
+		<th>a_default_currency</th>
+		<th>a_hierarchy</th>
+		<th>a_last_updated</th>
+		<th>a_reporting_org</th>
+		<th>a_reporting_org_ref</th>
+		<th>a_reporting_org_type</th>
+		<th>a_funding_org</th>
+		<th>a_funding_org_ref</th>
+		<th>a_funding_org_type</th>
+		<th>a_extending_org</th>
+		<th>a_extending_org_ref</th>
+		<th>a_extending_org_type</th>
+		<th>a_implementing_org</th>
+		<th>a_implementing_org_ref</th>
+		<th>a_implementing_org_type</th>
+		<th>a_recipient_region</th>
+		<th>a_recipient_region_code</th>
+		<th>a_recipient_country</th>
+		<th>a_recipient_country_code</th>
+		<th>a_collaboration_type</th>
+		<th>a_collaboration_type_code</th>
+		<th>a_default_flow_type</th>
+		<th>a_default_flow_type_code</th>
+		<th>a_default_aid_type</th>
+		<th>a_default_aid_type_code</th>
+		<th>a_default_finance_type</th>
+		<th>a_default_finance_type_code</th>
+		<th>a_iati_identifier</th>
+		<th>a_title</th>
+		<th>a_description</th>
+		<th>a_date_start_actual</th>
+		<th>a_date_start_planned</th>
+		<th>a_date_end_actual</th>
+		<th>a_date_end_planned</th>
+		<th>a_status_code</th>
+		<th>a_status</th>
+		<th>a_contact_organisation</th>
+		<th>a_contact_telephone</th>
+		<th>a_contact_email</th>
+		<th>a_contact_mailing_address</th>
+		<th>a_default_tied_status</th>
+		<th>a_default_tied_status_code</th>
+		<th>a_legacy_data_name</th>
+		<th>a_legacy_data_value</th>
+		<th>a_legacy_data_iati_equivalent</th>
+		<th>a_activity_website</th>
+		<th>a_countryregion_id</th>
+
 </tr>
 <% @t.each do |t| %>
 <tr>
@@ -53,7 +104,6 @@
 <td><%= t[:t_finance_type_code] %></td>
 <td><%= t[:t_tied_status_code] %></td>
 <td><%= t[:t_disbursement_channel_code] %></td>
-<td><%= t[:a_id] %></td>
 		<td><%= t[:a_package_id] %></td>
 		<td><%= t[:a_activity_lang] %></td>
 		<td><%= t[:a_default_currency] %></td>
