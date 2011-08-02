@@ -3,7 +3,7 @@
 <% if @pagination.count >0 
 %>
 	<p>Page: <% @pagination.each do |p| %>
-	<%= link_to p[:page].to_s, :params => params, :page => p[:page].to_s 
+	<%= link_to p[:page].to_s, :params => params.except(:page), :page => p[:page].to_s 
 	%>
 	<% end %></p>
 <% end %>
