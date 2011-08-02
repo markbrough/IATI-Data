@@ -489,7 +489,7 @@ class IatiregistryController < ApplicationController
 		  # get other data you don't have
 		  newpackage[:packageid] = package["id"]
 		  newpackage[:tags] = package["tags"][0] if package["tags"][0]
-		  newpackage[:groups_types] = package["groups_types"][0] if package["groups_types"][0]
+		  newpackage[:groups_types] = package["groups_types"][0] if package["groups_types"][0] if package["groups_types"]
 		  newpackage[:groups] = package["groups"][0] if package["groups"][0]
 		  newpackage[:donors] = package["extras"]["donors"][0] if package["extras"]["donors"][0]
 		  newpackage[:activity_period_from] = package["extras"]["activity_period-from"]
