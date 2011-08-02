@@ -469,6 +469,7 @@ class IatiregistryController < ApplicationController
     @package_count = 0
     #packages = packages.first(1)
     # check if package already has been downloaded
+
     packages.each do |x|
 	thepackage = Package.find_by_packageid(x)
 	if thepackage
@@ -516,6 +517,7 @@ class IatiregistryController < ApplicationController
 		  newpackage.delete("relationships")
 		  newpackage.delete("extras")
 		  newpackage.delete("resources")
+		  newpackage.delete("metadata-created")
 		  
 		  @package = Package.new(newpackage)
 
