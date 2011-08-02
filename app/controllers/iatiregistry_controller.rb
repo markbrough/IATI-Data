@@ -517,7 +517,7 @@ class IatiregistryController < ApplicationController
 		  newpackage.delete("relationships")
 		  newpackage.delete("extras")
 		  newpackage.delete("resources")
-		  newpackage.delete("metadata-created")
+		  newpackage.delete("metadata_created")
 		  
 		  @package = Package.new(newpackage)
 
