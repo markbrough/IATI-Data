@@ -52,7 +52,7 @@ function SpotOverlay(markers, map, initCallback) {
 			stroke: '#eee', 
 			'stroke-opacity': 0.4, 
 			'stroke-width': 1.5,
-			fill: '#ff0000', 
+			fill: '#365e93', 
 			opacity: 0.9, 
 			scale: scaleTo
 		},
