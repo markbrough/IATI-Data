@@ -18,9 +18,9 @@ function SpotOverlay(markers, map, initCallback) {
 	spotsInternal = [],
 	mapInternal = map,
 	smallestSize = 20, 
-	mid = 100,
-	high = 150,
-	spotOutcomeMultiplier = 0.00233,
+	mid = 30,
+	high = 175,
+	spotOutcomeMultiplier = 0.00150,
 	invisibleScale = 0.00001;
 	
 
@@ -52,7 +52,7 @@ function SpotOverlay(markers, map, initCallback) {
 			stroke: '#eee', 
 			'stroke-opacity': 0.4, 
 			'stroke-width': 1.5,
-			fill: '#5f4a29', 
+			fill: '#ff0000', 
 			opacity: 0.9, 
 			scale: scaleTo
 		},
@@ -60,7 +60,6 @@ function SpotOverlay(markers, map, initCallback) {
 			stroke: '#eee', 
 			'stroke-opacity': 0.4, 
 			'stroke-width': 1.5,
-//			fill: '#ea5d0e', 
 			fill: '#365e93', 
 			opacity: 0.8, 
 			scale: scaleTo

@@ -83,19 +83,19 @@ class ActivitiesController < ApplicationController
 		@conditions[:id] << sector.activity_id
 	end
     end
-      @numcountries = Activity.count(:recipient_country_code, :distinct=>true)
-      @numregions = Activity.count(:recipient_region_code, :distinct=>true)
-    if @conditions[:hierarchy] != '1'
-      @numcountries = @numregions = ''
-    end
+ #     @numcountries = Activity.count(:recipient_country_code, :distinct=>true)
+ #     @numregions = Activity.count(:recipient_region_code, :distinct=>true)
+ #   if @conditions[:hierarchy] != '1'
+ #     @numcountries = @numregions = ''
+ #   end
 
-    @countries = Activity.all(:select => 'distinct(recipient_country)')
-    @countries.delete("")
+ #   @countries = Activity.all(:select => 'distinct(recipient_country)')
+ #   @countries.delete("")
     @activities = Activity.find(:all, :conditions=> @conditions, :limit => @limit, :offset=>pagemultiplier, :order=>'id DESC')
 
 
     # get total number of rows
-    @totalrows = Activity.find(:all, :conditions=>@conditions).count.to_f
+    @totalrows = Activity.count(:all, :conditions=>@conditions).to_f
     @numpages = (@totalrows / @limit)
     @pagination = []
 	for i in 1..@numpages

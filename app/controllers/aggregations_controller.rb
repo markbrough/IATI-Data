@@ -56,7 +56,7 @@ class AggregationsController < ApplicationController
 	aggregation[:contribs] = country.activities.count
 	aggregation[:thecontroller] = "Countries"
 	aggregation[:theid] = country.id
-	aggregation[:group] = 'countries'
+	aggregation[:group] = country.item_type
 	aggregation[:longitude] = country.longitude
 	aggregation[:latitude] = country.latitude
 	if (aggregation[:value] > 0)
